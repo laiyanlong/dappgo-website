@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DappGo — AI Automation & Model Integration</title>
+    <meta name="description" content="DappGo delivers enterprise AI automation and model integration solutions. Transform your business with intelligent workflows.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #ffffff;
+            --bg-alt: #f7f8fc;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f0f4ff;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --text-heading: #0f172a;
+            --accent: #2563eb;
+            --accent-dark: #1d4ed8;
+            --accent-glow: rgba(37, 99, 235, 0.2);
+            --accent-dim: rgba(37, 99, 235, 0.06);
+            --accent-light: #dbeafe;
+            --white: #0f172a;
+            --border: #e2e8f0;
+            --border-hover: #2563eb;
+            --nav-bg: rgba(255, 255, 255, 0.9);
+            --font: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        a { color: var(--accent); text-decoration: none; transition: color 0.3s; }
+        a:hover { color: var(--accent-dark); text-decoration: none; }
+
+        /* ===== PARTICLE CANVAS ===== */
+        #particles {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ===== NAV ===== */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 3rem;
+            background: var(--nav-bg);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            letter-spacing: -0.5px;
+        }
+        .logo span { color: var(--accent); }
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .nav-links a:hover { color: var(--accent); }
+        .lang-switch {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: var(--mono);
+            font-size: 0.8rem;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+        }
+        .lang-switch:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-heading);
+            transition: all 0.3s;
+        }
+
+        /* ===== SECTIONS ===== */
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 6rem 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-label {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--accent);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+        .section-desc {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-bottom: 3rem;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 5rem;
+        }
+        .hero-tag {
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            color: var(--accent);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.3s forwards;
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            color: var(--text-heading);
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.5s forwards;
+        }
+        .hero h1 .typewriter {
+            color: var(--accent);
+            border-right: 2px solid var(--accent);
+            animation: blink 1s step-end infinite;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 550px;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.7s forwards;
+        }
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.9s forwards;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn-primary {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            background: var(--accent);
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px var(--accent-glow);
+        }
+        .btn-primary:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--accent-glow);
+        }
+        .btn-ghost {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            background: transparent;
+            color: var(--text-heading);
+            font-weight: 500;
+            font-size: 0.95rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-ghost:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-dim);
+        }
+
+        /* ===== SERVICES GRID ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .service-card:hover {
+            border-color: var(--accent);
+            background: var(--bg-card-hover);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+        .service-card:hover::before { opacity: 1; }
+        .service-icon {
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            background: var(--accent-light);
+            color: var(--accent);
+            border-radius: 12px;
+        }
+        .service-card h3 {
+            color: var(--text-heading);
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ===== SOLUTIONS ===== */
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        .solution-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 3rem;
+            transition: all 0.4s;
+            box-shadow: var(--shadow-sm);
+        }
+        .solution-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+        .solution-badge {
+            display: inline-block;
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+        }
+        .solution-card h3 {
+            color: var(--text-heading);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+        .solution-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+        .solution-features {
+            list-style: none;
+        }
+        .solution-features li {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            padding: 0.4rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+        .solution-features li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-family: var(--mono);
+        }
+
+        /* ===== WHY DAPPGO ===== */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+        .why-item {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+        .why-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            font-family: var(--mono);
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        .why-number::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 2px;
+            background: var(--accent);
+            opacity: 0.5;
+        }
+        .why-item h4 {
+            color: var(--text-heading);
+            font-size: 1rem;
+            margin: 1rem 0 0.5rem;
+        }
+        .why-item p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* ===== CONTACT FORM ===== */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        .contact-info h3 {
+            color: var(--text-heading);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .contact-info p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        .contact-detail span:first-child {
+            color: var(--accent);
+            font-family: var(--mono);
+            font-size: 0.85rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text-heading);
+            font-family: var(--font);
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            outline: none;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent);
+            background: #ffffff;
+            box-shadow: 0 0 0 3px var(--accent-dim);
+        }
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .form-status {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            min-height: 1.5rem;
+        }
+        .form-status.success { color: #4caf50; }
+        .form-status.error { color: #ff5252; }
+
+        /* ===== FOOTER ===== */
+        footer {
+            position: relative;
+            z-index: 1;
+            border-top: 1px solid var(--border);
+            padding: 2.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-left {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .footer-links a {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover { color: var(--accent-dark); }
+
+        /* ===== ALT BACKGROUNDS ===== */
+        .bg-alt-wrap {
+            background: var(--bg-alt);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== DIVIDER ===== */
+        .section-divider {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+        .section-divider hr {
+            border: none;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 2px 8px var(--accent-glow); }
+            50% { box-shadow: 0 4px 25px var(--accent-glow); }
+        }
+        .pulse-glow { animation: pulseGlow 3s ease-in-out infinite; }
+
+        /* ===== SCROLL REVEAL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { display: none; }
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0; right: 0;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+                padding: 1.5rem;
+                border-bottom: 1px solid var(--border);
+                box-shadow: var(--shadow-md);
+                gap: 1rem;
+            }
+            .hamburger { display: flex; }
+            section { padding: 4rem 1.5rem; }
+            .hero h1 { letter-spacing: -1px; }
+            .services-grid { grid-template-columns: 1fr; }
+            .solutions-grid { grid-template-columns: 1fr; }
+            .why-grid { grid-template-columns: repeat(2, 1fr); }
+            .contact-wrapper { grid-template-columns: 1fr; gap: 2rem; }
+            footer {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+                padding: 2rem 1.5rem;
+            }
+            .section-divider { padding: 0 1.5rem; }
+        }
+        @media (max-width: 480px) {
+            .why-grid { grid-template-columns: 1fr; }
+            .hero-cta { flex-direction: column; }
+            .hero-cta .btn-primary,
+            .hero-cta .btn-ghost { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Particle Background -->
+<canvas id="particles"></canvas>
+
+<!-- Navigation -->
+<nav>
+    <div class="logo">Dapp<span>Go</span></div>
+    <div class="nav-right">
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#services" data-i18n="nav.services">Services</a></li>
+            <li><a href="#solutions" data-i18n="nav.solutions">Solutions</a></li>
+            <li><a href="#why" data-i18n="nav.why">Why Us</a></li>
+            <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+        <button class="lang-switch" id="langSwitch" title="Switch Language">EN / 中</button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+    <div class="hero-tag" data-i18n="hero.tag">AI-Powered Transformation</div>
+    <h1>
+        <span data-i18n="hero.title1">Automate. Integrate.</span><br>
+        <span class="typewriter" id="heroTypewriter"></span>
+    </h1>
+    <p data-i18n="hero.desc">We build intelligent AI pipelines that connect models, automate workflows, and scale with your business — so you can focus on what matters.</p>
+    <div class="hero-cta">
+        <a href="#contact" class="btn-primary pulse-glow" data-i18n="hero.cta1">Get Started</a>
+        <a href="#services" class="btn-ghost" data-i18n="hero.cta2">Explore Services</a>
+    </div>
+</section>
+
+<!-- Services -->
+<section id="services" class="reveal">
+    <div class="section-label" data-i18n="services.label">What We Do</div>
+    <h2 class="section-title" data-i18n="services.title">Core Services</h2>
+    <p class="section-desc" data-i18n="services.desc">End-to-end AI solutions designed for real-world business impact.</p>
+    <div class="services-grid">
+        <div class="service-card">
+            <span class="service-icon">&#x2699;</span>
+            <h3 data-i18n="services.s1.title">AI Workflow Automation</h3>
+            <p data-i18n="services.s1.desc">Design and deploy automated pipelines that replace manual processes with intelligent, self-optimizing workflows.</p>
+        </div>
+        <div class="service-card">
+            <span class="service-icon">&#x29C9;</span>
+            <h3 data-i18n="services.s2.title">Model Integration</h3>
+            <p data-i18n="services.s2.desc">Seamlessly connect multiple AI models — LLMs, vision, speech — into unified systems that work together.</p>
+        </div>
+        <div class="service-card">
+            <span class="service-icon">&#x2316;</span>
+            <h3 data-i18n="services.s3.title">Custom AI Solutions</h3>
+            <p data-i18n="services.s3.desc">Purpose-built AI applications tailored to your industry, data, and specific business objectives.</p>
+        </div>
+    </div>
+</section>
+
+<div class="bg-alt-wrap">
+<!-- Solutions -->
+<section id="solutions" class="reveal">
+    <div class="section-label" data-i18n="solutions.label">Solutions</div>
+    <h2 class="section-title" data-i18n="solutions.title">Built for Your Scale</h2>
+    <p class="section-desc" data-i18n="solutions.desc">Whether you're starting your AI journey or scaling enterprise systems.</p>
+    <div class="solutions-grid">
+        <div class="solution-card">
+            <div class="solution-badge" data-i18n="solutions.s1.badge">SMB</div>
+            <h3 data-i18n="solutions.s1.title">Growth Package</h3>
+            <p data-i18n="solutions.s1.desc">Quick-deploy AI automation for teams without dedicated ML engineers.</p>
+            <ul class="solution-features">
+                <li data-i18n="solutions.s1.f1">Pre-built automation templates</li>
+                <li data-i18n="solutions.s1.f2">Plug-and-play model APIs</li>
+                <li data-i18n="solutions.s1.f3">Dashboard & monitoring</li>
+                <li data-i18n="solutions.s1.f4">Dedicated support channel</li>
+            </ul>
+        </div>
+        <div class="solution-card">
+            <div class="solution-badge" data-i18n="solutions.s2.badge">Enterprise</div>
+            <h3 data-i18n="solutions.s2.title">Enterprise Suite</h3>
+            <p data-i18n="solutions.s2.desc">Custom AI infrastructure integrated into your existing tech stack.</p>
+            <ul class="solution-features">
+                <li data-i18n="solutions.s2.f1">Custom model training & fine-tuning</li>
+                <li data-i18n="solutions.s2.f2">On-premise / private cloud deployment</li>
+                <li data-i18n="solutions.s2.f3">Enterprise security & compliance</li>
+                <li data-i18n="solutions.s2.f4">Dedicated engineering team</li>
+            </ul>
+        </div>
+    </div>
+</section>
+</div>
+
+<!-- Why DappGo -->
+<section id="why" class="reveal">
+    <div class="section-label" data-i18n="why.label">Why DappGo</div>
+    <h2 class="section-title" data-i18n="why.title">Numbers That Matter</h2>
+    <div class="why-grid">
+        <div class="why-item">
+            <div class="why-number" id="counter1">0</div>
+            <h4 data-i18n="why.w1.title">Projects Delivered</h4>
+            <p data-i18n="why.w1.desc">Across industries and scales</p>
+        </div>
+        <div class="why-item">
+            <div class="why-number" id="counter2">0</div>
+            <h4 data-i18n="why.w2.title">Models Integrated</h4>
+            <p data-i18n="why.w2.desc">LLM, Vision, Speech & more</p>
+        </div>
+        <div class="why-item">
+            <div class="why-number" id="counter3">0<span style="font-size:1.5rem">%</span></div>
+            <h4 data-i18n="why.w3.title">Avg. Efficiency Gain</h4>
+            <p data-i18n="why.w3.desc">For automated workflows</p>
+        </div>
+        <div class="why-item">
+            <div class="why-number" id="counter4">24/7</div>
+            <h4 data-i18n="why.w4.title">Support</h4>
+            <p data-i18n="why.w4.desc">Monitoring & incident response</p>
+        </div>
+    </div>
+</section>
+
+<div class="bg-alt-wrap">
+<!-- Contact -->
+<section id="contact" class="reveal">
+    <div class="section-label" data-i18n="contact.label">Get in Touch</div>
+    <h2 class="section-title" data-i18n="contact.title">Let's Build Together</h2>
+    <div class="contact-wrapper">
+        <div class="contact-info">
+            <h3 data-i18n="contact.info.title">Ready to transform your business with AI?</h3>
+            <p data-i18n="contact.info.desc">Tell us about your project. We'll get back to you within 24 hours with a tailored proposal.</p>
+            <div class="contact-detail">
+                <span>&gt;_</span>
+                <span>contact@dappgo.com</span>
+            </div>
+            <div class="contact-detail">
+                <span>&gt;_</span>
+                <span>dappgo.com</span>
+            </div>
+        </div>
+        <form id="contactForm" action="https://formsubmit.co/laiyanlong@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="DappGo - New Inquiry">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://dappgo.com#contact">
+            <input type="text" name="_honey" style="display:none">
+            <input type="hidden" name="_template" value="table">
+            <div class="form-group">
+                <label data-i18n="contact.form.company">Company Name</label>
+                <input type="text" name="company" required placeholder="Your company">
+            </div>
+            <div class="form-group">
+                <label data-i18n="contact.form.name">Contact Person</label>
+                <input type="text" name="name" required placeholder="Your name">
+            </div>
+            <div class="form-group">
+                <label data-i18n="contact.form.email">Email</label>
+                <input type="email" name="email" required placeholder="you@company.com">
+            </div>
+            <div class="form-group">
+                <label data-i18n="contact.form.message">How can we help?</label>
+                <textarea name="message" required placeholder="Tell us about your project..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="width:100%" data-i18n="contact.form.submit">Send Message</button>
+            <div class="form-status" id="formStatus"></div>
+        </form>
+    </div>
+</section>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-left">&copy; 2025 DappGo. <span data-i18n="footer.rights">All rights reserved.</span></div>
+    <div class="footer-links">
+        <a href="#hero" data-i18n="footer.top">Back to Top</a>
+    </div>
+</footer>
+
+<script>
+/* ===== i18n ===== */
+const translations = {
+    en: {
+        'nav.services': 'Services',
+        'nav.solutions': 'Solutions',
+        'nav.why': 'Why Us',
+        'nav.contact': 'Contact',
+        'hero.tag': 'AI-Powered Transformation',
+        'hero.title1': 'Automate. Integrate.',
+        'hero.desc': 'We build intelligent AI pipelines that connect models, automate workflows, and scale with your business — so you can focus on what matters.',
+        'hero.cta1': 'Get Started',
+        'hero.cta2': 'Explore Services',
+        'hero.typewriter': ['Accelerate.', 'Innovate.', 'Scale.', 'Transform.'],
+        'services.label': 'What We Do',
+        'services.title': 'Core Services',
+        'services.desc': 'End-to-end AI solutions designed for real-world business impact.',
+        'services.s1.title': 'AI Workflow Automation',
+        'services.s1.desc': 'Design and deploy automated pipelines that replace manual processes with intelligent, self-optimizing workflows.',
+        'services.s2.title': 'Model Integration',
+        'services.s2.desc': 'Seamlessly connect multiple AI models — LLMs, vision, speech — into unified systems that work together.',
+        'services.s3.title': 'Custom AI Solutions',
+        'services.s3.desc': 'Purpose-built AI applications tailored to your industry, data, and specific business objectives.',
+        'solutions.label': 'Solutions',
+        'solutions.title': 'Built for Your Scale',
+        'solutions.desc': 'Whether you\'re starting your AI journey or scaling enterprise systems.',
+        'solutions.s1.badge': 'SMB',
+        'solutions.s1.title': 'Growth Package',
+        'solutions.s1.desc': 'Quick-deploy AI automation for teams without dedicated ML engineers.',
+        'solutions.s1.f1': 'Pre-built automation templates',
+        'solutions.s1.f2': 'Plug-and-play model APIs',
+        'solutions.s1.f3': 'Dashboard & monitoring',
+        'solutions.s1.f4': 'Dedicated support channel',
+        'solutions.s2.badge': 'Enterprise',
+        'solutions.s2.title': 'Enterprise Suite',
+        'solutions.s2.desc': 'Custom AI infrastructure integrated into your existing tech stack.',
+        'solutions.s2.f1': 'Custom model training & fine-tuning',
+        'solutions.s2.f2': 'On-premise / private cloud deployment',
+        'solutions.s2.f3': 'Enterprise security & compliance',
+        'solutions.s2.f4': 'Dedicated engineering team',
+        'why.label': 'Why DappGo',
+        'why.title': 'Numbers That Matter',
+        'why.w1.title': 'Projects Delivered',
+        'why.w1.desc': 'Across industries and scales',
+        'why.w2.title': 'Models Integrated',
+        'why.w2.desc': 'LLM, Vision, Speech & more',
+        'why.w3.title': 'Avg. Efficiency Gain',
+        'why.w3.desc': 'For automated workflows',
+        'why.w4.title': 'Support',
+        'why.w4.desc': 'Monitoring & incident response',
+        'contact.label': 'Get in Touch',
+        'contact.title': 'Let\'s Build Together',
+        'contact.info.title': 'Ready to transform your business with AI?',
+        'contact.info.desc': 'Tell us about your project. We\'ll get back to you within 24 hours with a tailored proposal.',
+        'contact.form.company': 'Company Name',
+        'contact.form.name': 'Contact Person',
+        'contact.form.email': 'Email',
+        'contact.form.message': 'How can we help?',
+        'contact.form.submit': 'Send Message',
+        'contact.form.success': 'Message sent! We\'ll be in touch soon.',
+        'contact.form.error': 'Something went wrong. Please email us directly.',
+        'footer.rights': 'All rights reserved.',
+        'footer.top': 'Back to Top',
+    },
+    zh: {
+        'nav.services': '服務項目',
+        'nav.solutions': '解決方案',
+        'nav.why': '為何選擇我們',
+        'nav.contact': '聯絡我們',
+        'hero.tag': 'AI 驅動的數位轉型',
+        'hero.title1': '自動化。整合。',
+        'hero.desc': '我們打造智慧 AI 管線，串接模型、自動化工作流程，隨業務規模擴展 — 讓您專注於最重要的事。',
+        'hero.cta1': '立即開始',
+        'hero.cta2': '探索服務',
+        'hero.typewriter': ['加速。', '創新。', '擴展。', '轉型。'],
+        'services.label': '我們的服務',
+        'services.title': '核心服務',
+        'services.desc': '端到端 AI 解決方案，為真實商業場景設計。',
+        'services.s1.title': 'AI 工作流程自動化',
+        'services.s1.desc': '設計與部署自動化管線，以智慧、自我優化的工作流程取代人工流程。',
+        'services.s2.title': '模型整合',
+        'services.s2.desc': '無縫串接多種 AI 模型 — LLM、視覺、語音 — 建構協同運作的統一系統。',
+        'services.s3.title': '客製化 AI 方案',
+        'services.s3.desc': '為您的產業、數據與商業目標量身打造的 AI 應用。',
+        'solutions.label': '解決方案',
+        'solutions.title': '為您的規模量身打造',
+        'solutions.desc': '無論您正開始 AI 之旅，或正在擴展企業系統。',
+        'solutions.s1.badge': '中小企業',
+        'solutions.s1.title': '成長方案',
+        'solutions.s1.desc': '為無專屬 ML 工程師的團隊快速部署 AI 自動化。',
+        'solutions.s1.f1': '預建自動化範本',
+        'solutions.s1.f2': '即插即用模型 API',
+        'solutions.s1.f3': '監控儀表板',
+        'solutions.s1.f4': '專屬支援管道',
+        'solutions.s2.badge': '企業級',
+        'solutions.s2.title': '企業方案',
+        'solutions.s2.desc': '客製化 AI 基礎設施，整合至您現有的技術架構。',
+        'solutions.s2.f1': '客製模型訓練與微調',
+        'solutions.s2.f2': '本地 / 私有雲部署',
+        'solutions.s2.f3': '企業級安全與合規',
+        'solutions.s2.f4': '專屬工程團隊',
+        'why.label': '為何選擇 DappGo',
+        'why.title': '數字會說話',
+        'why.w1.title': '專案交付數',
+        'why.w1.desc': '跨產業與規模',
+        'why.w2.title': '模型整合數',
+        'why.w2.desc': 'LLM、視覺、語音等',
+        'why.w3.title': '平均效率提升',
+        'why.w3.desc': '自動化工作流程',
+        'why.w4.title': '全天候支援',
+        'why.w4.desc': '監控與事件回應',
+        'contact.label': '聯絡我們',
+        'contact.title': '讓我們一起打造',
+        'contact.info.title': '準備好用 AI 轉型您的企業了嗎？',
+        'contact.info.desc': '告訴我們您的專案需求，我們將在 24 小時內回覆客製化提案。',
+        'contact.form.company': '公司名稱',
+        'contact.form.name': '聯絡人',
+        'contact.form.email': '電子郵件',
+        'contact.form.message': '我們能如何協助您？',
+        'contact.form.submit': '發送訊息',
+        'contact.form.success': '訊息已送出！我們將盡快與您聯繫。',
+        'contact.form.error': '發生錯誤，請直接寄信給我們。',
+        'footer.rights': '版權所有。',
+        'footer.top': '回到頂部',
+    }
+};
+
+let currentLang = 'en';
+
+function setLang(lang) {
+    currentLang = lang;
+    const t = translations[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key]) {
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                // skip — these are labels, not inputs
+            } else {
+                // Typewriter effect for language switch
+                const oldText = el.textContent;
+                const newText = t[key];
+                if (oldText !== newText && el.closest('.hero')) {
+                    typewriterReplace(el, newText);
+                } else {
+                    el.textContent = newText;
+                }
+            }
+        }
+    });
+    document.documentElement.lang = lang;
+    startHeroTypewriter();
+}
+
+function typewriterReplace(el, newText) {
+    const oldText = el.textContent;
+    let i = oldText.length;
+    // Erase
+    const eraseInterval = setInterval(() => {
+        el.textContent = oldText.substring(0, i);
+        i--;
+        if (i < 0) {
+            clearInterval(eraseInterval);
+            // Type new
+            let j = 0;
+            const typeInterval = setInterval(() => {
+                el.textContent = newText.substring(0, j + 1);
+                j++;
+                if (j >= newText.length) clearInterval(typeInterval);
+            }, 30);
+        }
+    }, 20);
+}
+
+document.getElementById('langSwitch').addEventListener('click', () => {
+    setLang(currentLang === 'en' ? 'zh' : 'en');
+});
+
+/* ===== HERO TYPEWRITER ===== */
+let twTimeout;
+function startHeroTypewriter() {
+    const el = document.getElementById('heroTypewriter');
+    const words = translations[currentLang]['hero.typewriter'];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    clearTimeout(twTimeout);
+
+    function tick() {
+        const word = words[wordIndex];
+        if (isDeleting) {
+            el.textContent = word.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            el.textContent = word.substring(0, charIndex + 1);
+            charIndex++;
+        }
+
+        let delay = isDeleting ? 50 : 100;
+
+        if (!isDeleting && charIndex === word.length) {
+            delay = 2000;
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+            delay = 400;
+        }
+
+        twTimeout = setTimeout(tick, delay);
+    }
+    tick();
+}
+
+/* ===== PARTICLES ===== */
+(function() {
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let w, h, particles, mouse = { x: null, y: null };
+
+    function resize() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    document.addEventListener('mousemove', e => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+    });
+
+    const count = Math.min(80, Math.floor(window.innerWidth / 20));
+    particles = Array.from({ length: count }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        r: Math.random() * 2 + 1,
+    }));
+
+    function draw() {
+        ctx.clearRect(0, 0, w, h);
+
+        for (let i = 0; i < particles.length; i++) {
+            const p = particles[i];
+            p.x += p.vx;
+            p.y += p.vy;
+            if (p.x < 0 || p.x > w) p.vx *= -1;
+            if (p.y < 0 || p.y > h) p.vy *= -1;
+
+            // Mouse attraction
+            if (mouse.x !== null) {
+                const dx = mouse.x - p.x;
+                const dy = mouse.y - p.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 200) {
+                    p.vx += dx * 0.00005;
+                    p.vy += dy * 0.00005;
+                }
+            }
+
+            // Speed limit
+            const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+            if (speed > 1.5) {
+                p.vx *= 0.99;
+                p.vy *= 0.99;
+            }
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(37, 99, 235, 0.25)';
+            ctx.fill();
+
+            // Lines
+            for (let j = i + 1; j < particles.length; j++) {
+                const p2 = particles[j];
+                const dx = p.x - p2.x;
+                const dy = p.y - p2.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 150) {
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(p2.x, p2.y);
+                    ctx.strokeStyle = `rgba(37, 99, 235, ${0.1 * (1 - dist / 150)})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.stroke();
+                }
+            }
+        }
+        requestAnimationFrame(draw);
+    }
+    draw();
+})();
+
+/* ===== COUNTER ANIMATION ===== */
+function animateCounter(el, target, suffix = '') {
+    let current = 0;
+    const step = Math.ceil(target / 60);
+    const interval = setInterval(() => {
+        current += step;
+        if (current >= target) {
+            current = target;
+            clearInterval(interval);
+        }
+        el.textContent = current + suffix;
+    }, 25);
+}
+
+/* ===== SCROLL REVEAL ===== */
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+
+            // Trigger counters
+            if (entry.target.querySelector('#counter1')) {
+                animateCounter(document.getElementById('counter1'), 50, '+');
+                animateCounter(document.getElementById('counter2'), 120, '+');
+                const c3 = document.getElementById('counter3');
+                animateCounter(c3, 40);
+                setTimeout(() => c3.innerHTML = '40<span style="font-size:1.5rem">%</span>', 1600);
+            }
+        }
+    });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ===== HAMBURGER ===== */
+document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+});
+
+// Close menu on link click
+document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('open');
+    });
+});
+
+/* ===== FORM SUBMIT ===== */
+/* FormSubmit.co handles the POST natively — no JS override needed */
+
+/* ===== INIT ===== */
+startHeroTypewriter();
+</script>
+
+</body>
+</html>
