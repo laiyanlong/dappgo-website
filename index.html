@@ -532,7 +532,7 @@
             border-top: 1px solid var(--border);
             padding: 2.5rem 3rem;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             max-width: 1200px;
             margin: 0 auto;
@@ -598,6 +598,133 @@
             transform: translateY(0);
         }
 
+        /* ===== PROCESS GRID ===== */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+        .process-step {
+            text-align: center;
+            padding: 2rem 1.5rem;
+        }
+        .step-number {
+            font-family: var(--mono);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            opacity: 0.6;
+        }
+        .process-step h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-heading);
+            margin-bottom: 0.75rem;
+        }
+        .process-step p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* ===== TECH STACK ===== */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        .tech-category {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: border-color 0.3s;
+        }
+        .tech-category:hover { border-color: var(--border-hover); }
+        .tech-category h4 {
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-family: var(--mono);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .tech-tag {
+            background: var(--accent-dim);
+            color: var(--accent);
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-family: var(--mono);
+            border: 1px solid transparent;
+            transition: all 0.3s;
+        }
+        .tech-tag:hover {
+            border-color: var(--accent);
+            background: var(--accent-light);
+        }
+
+        /* ===== HERO TRUST ===== */
+        .hero-trust {
+            margin-top: 3rem;
+            opacity: 0;
+            animation: fadeUp 0.8s 1.3s forwards;
+        }
+        .trust-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: var(--mono);
+        }
+        .trust-badges {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .trust-badge {
+            background: var(--accent-dim);
+            color: var(--text-muted);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid var(--border);
+        }
+
+        /* ===== FOOTER (updated) ===== */
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        .footer-tagline {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.3rem;
+        }
+        .footer-center {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .footer-center a {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        .footer-right {
+            text-align: right;
+        }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 900px) {
             nav { padding: 1rem 1.5rem; }
@@ -620,6 +747,8 @@
             .hero h1 { letter-spacing: -1px; }
             .services-grid { grid-template-columns: 1fr; }
             .solutions-grid { grid-template-columns: 1fr; }
+            .process-grid { grid-template-columns: 1fr 1fr; }
+            .tech-grid { grid-template-columns: 1fr; }
             .why-grid { grid-template-columns: repeat(2, 1fr); }
             .contact-wrapper { grid-template-columns: 1fr; gap: 2rem; }
             footer {
@@ -628,10 +757,13 @@
                 text-align: center;
                 padding: 2rem 1.5rem;
             }
+            .footer-content { flex-direction: column; text-align: center; }
+            .footer-right { text-align: center; }
             .section-divider { padding: 0 1.5rem; }
         }
         @media (max-width: 480px) {
             .why-grid { grid-template-columns: 1fr; }
+            .process-grid { grid-template-columns: 1fr; }
             .hero-cta { flex-direction: column; }
             .hero-cta .btn-primary,
             .hero-cta .btn-ghost { text-align: center; }
@@ -649,8 +781,10 @@
     <div class="nav-right">
         <ul class="nav-links" id="navLinks">
             <li><a href="#services" data-i18n="nav.services">Services</a></li>
+            <li><a href="#process" data-i18n="nav.process">Process</a></li>
             <li><a href="#solutions" data-i18n="nav.solutions">Solutions</a></li>
             <li><a href="#cases" data-i18n="nav.cases">Cases</a></li>
+            <li><a href="#tech" data-i18n="nav.tech">Tech</a></li>
             <li><a href="#why" data-i18n="nav.why">Why Us</a></li>
             <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
         </ul>
@@ -672,6 +806,16 @@
     <div class="hero-cta">
         <a href="#contact" class="btn-primary pulse-glow" data-i18n="hero.cta1">Get Started</a>
         <a href="#services" class="btn-ghost" data-i18n="hero.cta2">Explore Services</a>
+    </div>
+    <div class="hero-trust">
+        <span class="trust-label" data-i18n="hero.trust">Trusted across industries:</span>
+        <div class="trust-badges">
+            <span class="trust-badge" data-i18n="hero.ind1">FinTech</span>
+            <span class="trust-badge" data-i18n="hero.ind2">E-Commerce</span>
+            <span class="trust-badge" data-i18n="hero.ind3">Healthcare</span>
+            <span class="trust-badge" data-i18n="hero.ind4">Manufacturing</span>
+            <span class="trust-badge" data-i18n="hero.ind5">Media</span>
+        </div>
     </div>
 </section>
 
@@ -695,6 +839,35 @@
             <span class="service-icon">&#x2316;</span>
             <h3 data-i18n="services.s3.title">Custom AI Solutions</h3>
             <p data-i18n="services.s3.desc">Purpose-built AI applications tailored to your industry, data, and specific business objectives.</p>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works -->
+<section id="process" class="reveal">
+    <div class="section-label" data-i18n="process.label">Our Process</div>
+    <h2 class="section-title" data-i18n="process.title">How We Work</h2>
+    <p class="section-desc" data-i18n="process.desc">From discovery to deployment in weeks, not months.</p>
+    <div class="process-grid">
+        <div class="process-step">
+            <div class="step-number">01</div>
+            <h3 data-i18n="process.p1.title">Discovery</h3>
+            <p data-i18n="process.p1.desc">We analyze your workflows, identify automation opportunities, and define success metrics.</p>
+        </div>
+        <div class="process-step">
+            <div class="step-number">02</div>
+            <h3 data-i18n="process.p2.title">Design</h3>
+            <p data-i18n="process.p2.desc">Architect the AI pipeline — select models, design integrations, plan data flows.</p>
+        </div>
+        <div class="process-step">
+            <div class="step-number">03</div>
+            <h3 data-i18n="process.p3.title">Build & Test</h3>
+            <p data-i18n="process.p3.desc">Rapid development with continuous testing. You see progress weekly, not at the end.</p>
+        </div>
+        <div class="process-step">
+            <div class="step-number">04</div>
+            <h3 data-i18n="process.p4.title">Deploy & Monitor</h3>
+            <p data-i18n="process.p4.desc">Production deployment with 24/7 monitoring, alerting, and continuous optimization.</p>
         </div>
     </div>
 </section>
@@ -755,6 +928,59 @@
             <h3 data-i18n="cases.c3.title">Enterprise AI Pipeline</h3>
             <p data-i18n="cases.c3.desc">Custom AI automation for enterprise clients — from data ingestion to model inference to actionable insights. Replaces manual analysis workflows with intelligent, self-monitoring pipelines.</p>
             <span style="color:var(--text-muted);font-size:0.85rem;display:inline-block;margin-top:0.5rem" data-i18n="cases.c3.link">Client projects — contact us for details</span>
+        </div>
+    </div>
+</section>
+
+<!-- Tech Stack -->
+<section id="tech" class="reveal">
+    <div class="section-label" data-i18n="tech.label">Technology</div>
+    <h2 class="section-title" data-i18n="tech.title">Our AI Stack</h2>
+    <p class="section-desc" data-i18n="tech.desc">We work with the best tools in the AI ecosystem — and build custom solutions when off-the-shelf isn't enough.</p>
+    <div class="tech-grid">
+        <div class="tech-category">
+            <h4 data-i18n="tech.t1.title">LLM & NLP</h4>
+            <div class="tech-tags">
+                <span class="tech-tag">OpenAI GPT-4</span>
+                <span class="tech-tag">Claude</span>
+                <span class="tech-tag">Gemini</span>
+                <span class="tech-tag">LLaMA</span>
+                <span class="tech-tag">LangChain</span>
+                <span class="tech-tag">RAG</span>
+            </div>
+        </div>
+        <div class="tech-category">
+            <h4 data-i18n="tech.t2.title">Data & Analytics</h4>
+            <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Pandas</span>
+                <span class="tech-tag">NumPy</span>
+                <span class="tech-tag">Spark</span>
+                <span class="tech-tag">Airflow</span>
+                <span class="tech-tag">dbt</span>
+            </div>
+        </div>
+        <div class="tech-category">
+            <h4 data-i18n="tech.t3.title">ML & Training</h4>
+            <div class="tech-tags">
+                <span class="tech-tag">PyTorch</span>
+                <span class="tech-tag">scikit-learn</span>
+                <span class="tech-tag">XGBoost</span>
+                <span class="tech-tag">Hugging Face</span>
+                <span class="tech-tag">MLflow</span>
+                <span class="tech-tag">Fine-tuning</span>
+            </div>
+        </div>
+        <div class="tech-category">
+            <h4 data-i18n="tech.t4.title">Infrastructure</h4>
+            <div class="tech-tags">
+                <span class="tech-tag">AWS</span>
+                <span class="tech-tag">GCP</span>
+                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">Kubernetes</span>
+                <span class="tech-tag">GitHub Actions</span>
+                <span class="tech-tag">Terraform</span>
+            </div>
         </div>
     </div>
 </section>
@@ -836,9 +1062,21 @@
 
 <!-- Footer -->
 <footer>
-    <div class="footer-left">&copy; 2025 DappGo. <span data-i18n="footer.rights">All rights reserved.</span></div>
-    <div class="footer-links">
-        <a href="#hero" data-i18n="footer.top">Back to Top</a>
+    <div class="footer-content">
+        <div class="footer-left">
+            <div class="logo">Dapp<span>Go</span></div>
+            <p class="footer-tagline" data-i18n="footer.tagline">AI Automation for Enterprise</p>
+        </div>
+        <div class="footer-center">
+            <a href="#services" data-i18n="nav.services">Services</a>
+            <a href="#cases" data-i18n="nav.cases">Cases</a>
+            <a href="#tech">Tech</a>
+            <a href="#contact" data-i18n="nav.contact">Contact</a>
+        </div>
+        <div class="footer-right">
+            <p>&copy; 2025-2026 DappGo. <span data-i18n="footer.rights">All rights reserved.</span></p>
+            <p style="font-size:0.75rem;color:var(--text-muted);margin-top:0.3rem" data-i18n="footer.note">DappGo is an AI automation company. We are not affiliated with blockchain, cryptocurrency, or DeFi.</p>
+        </div>
     </div>
 </footer>
 
@@ -847,8 +1085,10 @@
 const translations = {
     en: {
         'nav.services': 'Services',
+        'nav.process': 'Process',
         'nav.solutions': 'Solutions',
         'nav.cases': 'Cases',
+        'nav.tech': 'Tech',
         'nav.why': 'Why Us',
         'nav.contact': 'Contact',
         'hero.tag': 'AI-Powered Transformation',
@@ -856,6 +1096,12 @@ const translations = {
         'hero.desc': 'We\'re an AI automation company — not blockchain, not crypto. We build intelligent pipelines that automate reporting, analyze data, and solve real enterprise problems at scale.',
         'hero.cta1': 'Get Started',
         'hero.cta2': 'Explore Services',
+        'hero.trust': 'Trusted across industries:',
+        'hero.ind1': 'FinTech',
+        'hero.ind2': 'E-Commerce',
+        'hero.ind3': 'Healthcare',
+        'hero.ind4': 'Manufacturing',
+        'hero.ind5': 'Media',
         'hero.typewriter': ['Accelerate.', 'Innovate.', 'Scale.', 'Transform.'],
         'services.label': 'What We Do',
         'services.title': 'Core Services',
@@ -866,6 +1112,17 @@ const translations = {
         'services.s2.desc': 'Seamlessly connect multiple AI models — LLMs, vision, speech — into unified systems that work together.',
         'services.s3.title': 'Custom AI Solutions',
         'services.s3.desc': 'Purpose-built AI applications tailored to your industry, data, and specific business objectives.',
+        'process.label': 'Our Process',
+        'process.title': 'How We Work',
+        'process.desc': 'From discovery to deployment in weeks, not months.',
+        'process.p1.title': 'Discovery',
+        'process.p1.desc': 'We analyze your workflows, identify automation opportunities, and define success metrics.',
+        'process.p2.title': 'Design',
+        'process.p2.desc': 'Architect the AI pipeline — select models, design integrations, plan data flows.',
+        'process.p3.title': 'Build & Test',
+        'process.p3.desc': 'Rapid development with continuous testing. You see progress weekly, not at the end.',
+        'process.p4.title': 'Deploy & Monitor',
+        'process.p4.desc': 'Production deployment with 24/7 monitoring, alerting, and continuous optimization.',
         'solutions.label': 'Solutions',
         'solutions.title': 'Built for Your Scale',
         'solutions.desc': 'Whether you\'re starting your AI journey or scaling enterprise systems.',
@@ -895,6 +1152,13 @@ const translations = {
         'cases.c3.title': 'Enterprise AI Pipeline',
         'cases.c3.desc': 'Custom AI automation for enterprise clients — from data ingestion to model inference to actionable insights. Replaces manual analysis workflows with intelligent, self-monitoring pipelines.',
         'cases.c3.link': 'Client projects — contact us for details',
+        'tech.label': 'Technology',
+        'tech.title': 'Our AI Stack',
+        'tech.desc': 'We work with the best tools in the AI ecosystem — and build custom solutions when off-the-shelf isn\'t enough.',
+        'tech.t1.title': 'LLM & NLP',
+        'tech.t2.title': 'Data & Analytics',
+        'tech.t3.title': 'ML & Training',
+        'tech.t4.title': 'Infrastructure',
         'why.label': 'Why DappGo',
         'why.title': 'Numbers That Matter',
         'why.w1.title': 'Projects Delivered',
@@ -917,12 +1181,16 @@ const translations = {
         'contact.form.success': 'Message sent! We\'ll be in touch soon.',
         'contact.form.error': 'Something went wrong. Please email us directly.',
         'footer.rights': 'All rights reserved.',
+        'footer.tagline': 'AI Automation for Enterprise',
+        'footer.note': 'DappGo is an AI automation company. We are not affiliated with blockchain, cryptocurrency, or DeFi.',
         'footer.top': 'Back to Top',
     },
     zh: {
         'nav.services': '服務項目',
+        'nav.process': '流程',
         'nav.solutions': '解決方案',
         'nav.cases': '實戰案例',
+        'nav.tech': '技術',
         'nav.why': '為何選擇我們',
         'nav.contact': '聯絡我們',
         'hero.tag': 'AI 驅動的數位轉型',
@@ -930,6 +1198,12 @@ const translations = {
         'hero.desc': '我們是一家 AI 自動化公司 — 不是區塊鏈，不是加密貨幣。我們打造智慧管線，自動化報告產出、分析數據，大規模解決真實的企業問題。',
         'hero.cta1': '立即開始',
         'hero.cta2': '探索服務',
+        'hero.trust': '跨產業信賴：',
+        'hero.ind1': '金融科技',
+        'hero.ind2': '電子商務',
+        'hero.ind3': '醫療健康',
+        'hero.ind4': '製造業',
+        'hero.ind5': '媒體',
         'hero.typewriter': ['加速。', '創新。', '擴展。', '轉型。'],
         'services.label': '我們的服務',
         'services.title': '核心服務',
@@ -940,6 +1214,17 @@ const translations = {
         'services.s2.desc': '無縫串接多種 AI 模型 — LLM、視覺、語音 — 建構協同運作的統一系統。',
         'services.s3.title': '客製化 AI 方案',
         'services.s3.desc': '為您的產業、數據與商業目標量身打造的 AI 應用。',
+        'process.label': '合作流程',
+        'process.title': '我們的工作方式',
+        'process.desc': '從需求探索到上線部署，以週為單位而非月。',
+        'process.p1.title': '需求探索',
+        'process.p1.desc': '分析您的工作流程，識別自動化機會，定義成功指標。',
+        'process.p2.title': '架構設計',
+        'process.p2.desc': '設計 AI 管線 — 選擇模型、規劃整合方式、設計數據流程。',
+        'process.p3.title': '開發測試',
+        'process.p3.desc': '敏捷開發搭配持續測試，每週都能看到進展。',
+        'process.p4.title': '部署監控',
+        'process.p4.desc': '正式環境部署，24/7 監控、告警與持續優化。',
         'solutions.label': '解決方案',
         'solutions.title': '為您的規模量身打造',
         'solutions.desc': '無論您正開始 AI 之旅，或正在擴展企業系統。',
@@ -969,6 +1254,13 @@ const translations = {
         'cases.c3.title': '企業 AI 自動化管線',
         'cases.c3.desc': '為企業客戶打造的客製 AI 自動化方案 — 從數據擷取到模型推論到可行洞察。以智慧型自我監控管線取代人工分析流程。',
         'cases.c3.link': '客戶專案 — 歡迎洽詢',
+        'tech.label': '技術棧',
+        'tech.title': '我們的 AI 技術',
+        'tech.desc': '我們使用 AI 生態系最優秀的工具 — 當現成方案不夠用時，我們自己打造。',
+        'tech.t1.title': 'LLM 與自然語言',
+        'tech.t2.title': '數據與分析',
+        'tech.t3.title': '機器學習與訓練',
+        'tech.t4.title': '基礎設施',
         'why.label': '為何選擇 DappGo',
         'why.title': '數字會說話',
         'why.w1.title': '專案交付數',
@@ -991,6 +1283,8 @@ const translations = {
         'contact.form.success': '訊息已送出！我們將盡快與您聯繫。',
         'contact.form.error': '發生錯誤，請直接寄信給我們。',
         'footer.rights': '版權所有。',
+        'footer.tagline': '企業級 AI 自動化',
+        'footer.note': 'DappGo 是一家 AI 自動化公司，與區塊鏈、加密貨幣或 DeFi 無關。',
         'footer.top': '回到頂部',
     }
 };
