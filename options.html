@@ -219,6 +219,19 @@
             color: var(--text-heading);
         }
 
+        /* ── Highlight markers (shared palette with mobile app) ── */
+        .hl {
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            white-space: nowrap;
+            display: inline;
+        }
+        .hl-pos  { background: rgba(16,185,129,.15); color: #065f46; }
+        .hl-neg  { background: rgba(239,68,68,.15);  color: #991b1b; }
+        .hl-key  { background: rgba(245,158,11,.18); color: #92400e; }
+        .hl-warn { background: rgba(249,115,22,.18); color: #9a3412; }
+
         /* Markdown rendering */
         .ai-content h1, .ai-content h2, .ai-content h3, .ai-content h4 {
             color: var(--text-heading);
@@ -626,7 +639,19 @@ function renderContent(payload) {
     // Render markdown with marked (configured safely)
     try {
         marked.setOptions({ breaks: true, gfm: true });
-        const html = marked.parse(body);
+        // Convert [[pos:text]] → <mark class="hl-pos">text</mark> BEFORE markdown parse.
+        // (Escape the payload text so any markdown inside the bracket doesn't re-interpret.)
+        const withHighlights = body.replace(
+            /\[\[(pos|neg|key|warn):([^\]\r\n]{1,120})\]\]/g,
+            (_, type, raw) => {
+                const safe = raw
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;');
+                return `<mark class="hl hl-${type}">${safe}</mark>`;
+            }
+        );
+        const html = marked.parse(withHighlights);
         contentEl.innerHTML = html;
     } catch (e) {
         console.warn('[options] markdown render failed:', e);
