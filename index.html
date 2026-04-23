@@ -935,6 +935,172 @@
         @media (max-width: 900px) {
             .flagship-card { grid-template-columns: 1fr; padding: 2rem 1.5rem; gap: 1.5rem; }
         }
+
+        /* ─── Subscribe popup (non-intrusive) ──────── */
+        .sub-pop {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 340px;
+            max-width: calc(100vw - 40px);
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(15,23,42,0.18), 0 4px 12px rgba(15,23,42,0.08);
+            padding: 20px 20px 16px;
+            z-index: 998;
+            transform: translateY(120%) translateZ(0);
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.45s cubic-bezier(0.25, 0.1, 0.25, 1),
+                        opacity 0.3s ease-out;
+        }
+        .sub-pop.visible {
+            transform: translateY(0) translateZ(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .sub-pop::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+            border-radius: 16px 16px 0 0;
+        }
+        .sub-pop-close {
+            position: absolute;
+            top: 8px; right: 10px;
+            background: transparent;
+            border: none;
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            color: var(--text-muted);
+            font-size: 20px;
+            line-height: 1;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.15s, color 0.15s;
+        }
+        .sub-pop-close:hover { background: var(--bg-alt); color: var(--text-heading); }
+        .sub-pop-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+        .sub-pop-emoji {
+            font-size: 24px;
+            margin: 2px 0 10px;
+        }
+        .sub-pop-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin-bottom: 4px;
+            letter-spacing: -0.01em;
+        }
+        .sub-pop-desc {
+            font-size: 12.5px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .sub-pop form {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+        .sub-pop input[type="email"] {
+            flex: 1;
+            min-width: 0;
+            padding: 8px 10px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 13px;
+            background: var(--bg);
+            color: var(--text);
+        }
+        .sub-pop input[type="email"]:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 1px;
+            border-color: var(--accent);
+        }
+        .sub-pop button[type="submit"] {
+            padding: 8px 14px;
+            border: none;
+            border-radius: 8px;
+            background: var(--accent);
+            color: #fff;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: background 0.15s;
+            white-space: nowrap;
+        }
+        .sub-pop button[type="submit"]:hover { background: var(--accent-dark); }
+        .sub-pop button[type="submit"]:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        .sub-pop-lang-row {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        .sub-pop-lang-opt {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-family: inherit;
+            font-size: 11.5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.15s, color 0.15s, border-color 0.15s;
+        }
+        .sub-pop-lang-opt:hover { border-color: var(--accent); color: var(--accent); }
+        .sub-pop-lang-opt.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
+        .sub-pop-lang-opt:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+        .sub-pop-status {
+            font-size: 12px;
+            min-height: 1em;
+            margin-bottom: 4px;
+        }
+        .sub-pop-status.ok  { color: #047857; }
+        .sub-pop-status.err { color: #dc2626; }
+
+        .sub-pop-legal {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+        .sub-pop-legal a { color: var(--accent); text-decoration: none; }
+        .sub-pop-legal a:hover { text-decoration: underline; }
+
+        /* Mobile: full-width bottom sheet */
+        @media (max-width: 560px) {
+            .sub-pop {
+                width: auto;
+                right: 12px;
+                left: 12px;
+                bottom: 12px;
+                max-width: none;
+                padding: 16px 16px 14px;
+                border-radius: 14px;
+            }
+        }
+
+        /* Respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .sub-pop { transition: opacity 0.2s ease-out; transform: none; }
+            .sub-pop:not(.visible) { transform: none; }
+        }
     </style>
 </head>
 <body>
@@ -1300,6 +1466,42 @@
     </div>
 </footer>
 
+<!-- ═══════════ Subscribe Popup (non-intrusive) ═══════════ -->
+<div id="subPop" class="sub-pop" role="dialog" aria-labelledby="subPopTitle" aria-describedby="subPopDesc" aria-hidden="true">
+    <button type="button" class="sub-pop-close" id="subPopClose" aria-label="Close">&times;</button>
+    <div class="sub-pop-emoji" aria-hidden="true">📬</div>
+    <div class="sub-pop-title" id="subPopTitle" data-i18n="pop.title">Daily AI options report</div>
+    <div class="sub-pop-desc" id="subPopDesc" data-i18n="pop.desc">Free while in beta. One email per weekday, delivered before US market open. Unsubscribe anytime.</div>
+    <form id="subPopForm"
+          action="https://formsubmit.co/ajax/laiyanlong@gmail.com"
+          method="POST"
+          novalidate>
+        <label class="visually-hidden" for="subPopEmail">Email</label>
+        <input type="email"
+               id="subPopEmail"
+               name="email"
+               required
+               autocomplete="email"
+               placeholder="you@example.com"
+               data-i18n-placeholder="pop.placeholder" />
+        <input type="hidden" name="lang" id="subPopLang" value="en" />
+        <input type="hidden" name="_subject" value="New Options subscriber" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="source" value="dappgo.com popup" />
+        <button type="submit" data-i18n="pop.submit">Subscribe</button>
+    </form>
+    <div class="sub-pop-lang-row">
+        <span data-i18n="pop.lang">Language:</span>
+        <button type="button" class="sub-pop-lang-opt" data-lang="en" data-i18n="pop.en">EN</button>
+        <button type="button" class="sub-pop-lang-opt" data-lang="zh" data-i18n="pop.zh">中</button>
+    </div>
+    <div class="sub-pop-status" id="subPopStatus" aria-live="polite"></div>
+    <div class="sub-pop-legal">
+        <span data-i18n="pop.legal">No spam. </span><a href="/privacy" data-i18n="pop.privacy">Privacy</a>
+    </div>
+</div>
+
 <script>
 /* ===== i18n ===== */
 const translations = {
@@ -1378,6 +1580,17 @@ const translations = {
         'flagship.form.privacy': 'By subscribing you agree to receive daily option analysis emails. We don’t share your address. <a href="/privacy" style="color:var(--accent)">Privacy</a>.',
         'flagship.form.success': '🎉 You’re subscribed! Check your inbox for confirmation.',
         'flagship.form.error': 'Something went wrong. Please try again, or email us directly.',
+        'pop.title': 'Daily AI options report',
+        'pop.desc': 'Free while in beta. One email per weekday, delivered before US market open. Unsubscribe anytime.',
+        'pop.placeholder': 'you@example.com',
+        'pop.submit': 'Subscribe',
+        'pop.lang': 'Language:',
+        'pop.en': 'EN',
+        'pop.zh': '中',
+        'pop.ok': '🎉 You’re subscribed — check your inbox.',
+        'pop.err': 'Couldn’t send. Please retry.',
+        'pop.legal': 'No spam. ',
+        'pop.privacy': 'Privacy',
         'cases.label': 'Case Studies',
         'cases.title': 'Real Results, Real Impact',
         'cases.desc': 'See how our AI automation delivers measurable value.',
@@ -1498,6 +1711,17 @@ const translations = {
         'flagship.form.privacy': '訂閱即表示您同意接收每日選擇權分析 email。我們不會轉售您的地址。<a href="/privacy" style="color:var(--accent)">隱私政策</a>。',
         'flagship.form.success': '🎉 訂閱成功！請到您的信箱確認。',
         'flagship.form.error': '發生錯誤，請稍後再試，或直接寄信給我們。',
+        'pop.title': '每日 AI 選擇權報告',
+        'pop.desc': 'Beta 期間免費。每個交易日一封信，美股開盤前送達。隨時可取消。',
+        'pop.placeholder': 'you@example.com',
+        'pop.submit': '訂閱',
+        'pop.lang': '語言：',
+        'pop.en': 'EN',
+        'pop.zh': '中',
+        'pop.ok': '🎉 訂閱成功，請查收信箱。',
+        'pop.err': '送出失敗，請再試一次。',
+        'pop.legal': '不會有垃圾郵件。',
+        'pop.privacy': '隱私政策',
         'cases.label': '實戰案例',
         'cases.title': '真實成果，看得見的價值',
         'cases.desc': '看看我們的 AI 自動化如何為客戶帶來可量化的成效。',
@@ -1823,6 +2047,121 @@ document.querySelectorAll('.nav-links a').forEach(a => {
         }
     });
 
+})();
+
+/* ══════════════════════════════════════════════
+   Subscribe popup — non-intrusive
+   - Defaults closed
+   - Shows after the user engages (scroll > 40% OR dwell > 25s)
+   - Dismissed state cached 14 days in localStorage
+   - Successful submit: cached 180 days (effectively "subscribed, don't
+     nag this device again")
+   - Respects prefers-reduced-motion via CSS
+   ══════════════════════════════════════════════ */
+(function() {
+    const pop = document.getElementById('subPop');
+    if (!pop) return;
+
+    const LS_KEY = 'dappgo-subpop';
+    const DISMISS_DAYS = 14;
+    const SUCCESS_DAYS = 180;
+    const DWELL_MS = 25000;
+    const SCROLL_TRIGGER = 0.40;
+
+    // Don't pop if the user just dismissed / already subscribed
+    try {
+        const cached = JSON.parse(localStorage.getItem(LS_KEY) || 'null');
+        if (cached && cached.until && Date.now() < cached.until) return;
+    } catch (_) {}
+
+    // Don't pop while the flagship subscribe form is already in view
+    // (user sees the same CTA above the fold — don't double-nag).
+    const flagship = document.getElementById('subscribeForm');
+
+    const form      = document.getElementById('subPopForm');
+    const emailIn   = document.getElementById('subPopEmail');
+    const langIn    = document.getElementById('subPopLang');
+    const statusEl  = document.getElementById('subPopStatus');
+    const closeBtn  = document.getElementById('subPopClose');
+    const langBtns  = pop.querySelectorAll('.sub-pop-lang-opt');
+
+    // Mark English selected by default
+    langBtns.forEach(b => b.classList.toggle('active', b.dataset.lang === 'en'));
+
+    langBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            langBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            langIn.value = btn.dataset.lang;
+        });
+    });
+
+    let shown = false;
+    function show() {
+        if (shown) return;
+        // Guard: don't show while the flagship form is in the viewport
+        if (flagship) {
+            const rect = flagship.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) return;
+        }
+        shown = true;
+        pop.classList.add('visible');
+        pop.setAttribute('aria-hidden', 'false');
+        // Clean up triggers once shown
+        window.removeEventListener('scroll', onScroll);
+        clearTimeout(dwellTimer);
+    }
+
+    function dismiss(days) {
+        pop.classList.remove('visible');
+        pop.setAttribute('aria-hidden', 'true');
+        try {
+            localStorage.setItem(
+                LS_KEY,
+                JSON.stringify({ until: Date.now() + days * 86400000 })
+            );
+        } catch (_) {}
+    }
+
+    closeBtn.addEventListener('click', () => dismiss(DISMISS_DAYS));
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && pop.classList.contains('visible')) dismiss(DISMISS_DAYS);
+    });
+
+    function onScroll() {
+        const doc = document.documentElement;
+        const scrolled = (window.scrollY + window.innerHeight) / doc.scrollHeight;
+        if (scrolled >= SCROLL_TRIGGER) show();
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    const dwellTimer = setTimeout(show, DWELL_MS);
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        statusEl.className = 'sub-pop-status';
+        statusEl.textContent = '';
+
+        try {
+            const resp = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' },
+            });
+            if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+            const t = translations[currentLang] || translations.en;
+            statusEl.className = 'sub-pop-status ok';
+            statusEl.textContent = t['pop.ok'] || 'You&rsquo;re subscribed!';
+            // Auto-close after 2.5s, cache for 180 days
+            setTimeout(() => dismiss(SUCCESS_DAYS), 2500);
+        } catch (err) {
+            const t = translations[currentLang] || translations.en;
+            statusEl.className = 'sub-pop-status err';
+            statusEl.textContent = t['pop.err'] || 'Something went wrong.';
+            btn.disabled = false;
+        }
+    });
 })();
 
 /* ===== INIT ===== */
