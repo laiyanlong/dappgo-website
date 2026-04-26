@@ -34,9 +34,10 @@ jobs:
       - name: Run lychee link checker
         uses: lycheeverse/lychee-action@v2
         with:
-          # Check all .html files at repo root; allow 200-399, fail on 4xx/5xx.
+          # --base resolves root-relative paths (/favicon.svg, /fonts/...).
           # --max-concurrency 3 stays polite to external servers.
           args: >-
+            --base .
             --max-concurrency 3
             --cache
             --cache-exclude-status '429'
@@ -74,4 +75,8 @@ jobs:
             "title-require": true
           }
           EOF
-          htmlhint --rulesdir=./.htmlhintrc "./*.html"
+          # Explicit list — excludes Google Search Console verification
+          # file (googlefXXXX.html), which is a 1-line plain-text marker
+          # not actual HTML and trips the doctype-first rule.
+          htmlhint --rulesdir=./.htmlhintrc \
+            index.html options.html privacy.html 404.html
