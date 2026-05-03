@@ -857,6 +857,98 @@
             border: 0;
         }
 
+        /* ===== WHAT'S NEW SECTION ===== */
+        .whats-new-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .new-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.8rem 1.6rem;
+            transition: all 0.35s;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+        .new-card::after {
+            content: 'NEW';
+            position: absolute;
+            top: 12px; right: 12px;
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            background: var(--accent-dim);
+            border: 1px solid var(--accent-light);
+            border-radius: 4px;
+            padding: 2px 6px;
+        }
+        .new-card:hover {
+            border-color: var(--accent);
+            background: var(--bg-card-hover);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        .new-card-icon {
+            font-size: 1.6rem;
+            margin-bottom: 0.9rem;
+            display: block;
+        }
+        .new-card-group {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
+        }
+        .new-card h3 {
+            color: var(--text-heading);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .new-card p {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        @media (max-width: 900px) {
+            .whats-new-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .whats-new-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ===== SUBSCRIBE CTA (hero) ===== */
+        .btn-subscribe {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.9rem 1.8rem;
+            background: transparent;
+            color: var(--text-heading);
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 0.3px;
+            font-family: var(--font);
+            text-decoration: none;
+        }
+        .btn-subscribe:hover {
+            background: var(--accent);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--accent-glow);
+        }
+
         /* ─── Subscribe popup (non-intrusive) ──────── */
         .sub-pop {
             position: fixed;
@@ -953,8 +1045,14 @@
 
         .sub-pop form {
             display: flex;
+            flex-direction: column;
             gap: 6px;
             margin-bottom: 10px;
+        }
+        /* Email + submit on one row */
+        .sub-pop-email-row {
+            display: flex;
+            gap: 6px;
         }
         .sub-pop input[type="email"] {
             flex: 1;
@@ -1031,6 +1129,39 @@
         .sub-pop-legal a { color: var(--accent); text-decoration: none; }
         .sub-pop-legal a:hover { text-decoration: underline; }
 
+        /* Product checkboxes inside popup */
+        .sub-pop-products {
+            margin-bottom: 12px;
+        }
+        .sub-pop-products-label {
+            font-size: 11.5px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .sub-pop-product-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 0;
+            cursor: pointer;
+        }
+        .sub-pop-product-item input[type="checkbox"] {
+            width: 15px;
+            height: 15px;
+            accent-color: var(--accent);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .sub-pop-product-item span {
+            font-size: 12.5px;
+            color: var(--text);
+            line-height: 1.4;
+        }
+
         /* Mobile: full-width bottom sheet */
         @media (max-width: 560px) {
             .sub-pop {
@@ -1091,6 +1222,7 @@
     <div class="hero-cta">
         <a href="#contact" class="btn-primary pulse-glow" data-i18n="hero.cta1">Get Started</a>
         <a href="#services" class="btn-ghost" data-i18n="hero.cta2">Explore Services</a>
+        <button class="btn-subscribe" onclick="openSubscribePopup()" data-i18n="hero.cta3">📩 免費訂閱每日報告</button>
     </div>
     <div class="hero-trust">
         <span class="trust-label" data-i18n="hero.trust">Trusted across industries:</span>
@@ -1103,6 +1235,71 @@
         </div>
     </div>
 </section>
+
+<!-- What's New -->
+<div class="bg-alt-wrap">
+<section id="whats-new" class="reveal">
+    <div class="section-label" data-i18n="new.label">What's New</div>
+    <h2 class="section-title" data-i18n="new.title">最新功能 <span style="font-size:1.2rem;font-weight:400;color:var(--text-muted)">(2026-05)</span></h2>
+    <p class="section-desc" data-i18n="new.desc">過去一個月持續推出的新功能，跨 🇹🇼 台股、🇺🇸 美股、📊 選擇權三款 App。</p>
+    <div class="whats-new-grid">
+        <div class="new-card">
+            <span class="new-card-icon">📊</span>
+            <div class="new-card-group" data-i18n="new.g1">視覺</div>
+            <h3 data-i18n="new.f1.title">K 線 / 走勢切換</h3>
+            <p data-i18n="new.f1.desc">支援 K 線圖與折線圖切換，搭配 1M / 3M / 6M / 1Y / 3Y 時間軸選擇。</p>
+        </div>
+        <div class="new-card">
+            <span class="new-card-icon">🌐</span>
+            <div class="new-card-group" data-i18n="new.g2">訊號</div>
+            <h3 data-i18n="new.f2.title">市場環境分類</h3>
+            <p data-i18n="new.f2.desc">自動偵測 risk_on / risk_off / mixed，以 TAIEX + SPY 為基準，提供整體市場定位。</p>
+        </div>
+        <div class="new-card">
+            <span class="new-card-icon">🆚</span>
+            <div class="new-card-group" data-i18n="new.g3">進階</div>
+            <h3 data-i18n="new.f3.title">個股比較</h3>
+            <p data-i18n="new.f3.desc">兩檔股票並排比較 PE / EPS / RSI / 股利殖利率等指標，自動標示勝方。</p>
+        </div>
+        <div class="new-card">
+            <span class="new-card-icon">📈</span>
+            <div class="new-card-group" data-i18n="new.g2">訊號</div>
+            <h3 data-i18n="new.f4.title">本週訊號變化</h3>
+            <p data-i18n="new.f4.desc">7 天訊號升級 / 降級榜，快速掌握本週動能轉變最顯著的標的。</p>
+        </div>
+        <div class="new-card">
+            <span class="new-card-icon">🗞️</span>
+            <div class="new-card-group" data-i18n="new.g2">訊號</div>
+            <h3 data-i18n="new.f5.title">新聞情緒分析</h3>
+            <p data-i18n="new.f5.desc">Rule-based 情緒分析，同時支援繁體中文與英文新聞，自動標示正 / 負面訊號。</p>
+        </div>
+        <div class="new-card">
+            <span class="new-card-icon">📉</span>
+            <div class="new-card-group" data-i18n="new.g3">進階</div>
+            <h3 data-i18n="new.f6.title">期權異常 Flow</h3>
+            <p data-i18n="new.f6.desc">Put/Call ratio、IV skew 即時追蹤，識別潛在的選擇權異常佈局方向。</p>
+        </div>
+        <div class="new-card">
+            <span class="new-card-icon">🏭</span>
+            <div class="new-card-group" data-i18n="new.g3">進階</div>
+            <h3 data-i18n="new.f7.title">產業相對強度</h3>
+            <p data-i18n="new.f7.desc">個股 vs 同業 vs 大盤的三層相對強度對比，精準定位產業輪動機會。</p>
+        </div>
+        <div class="new-card">
+            <span class="new-card-icon">💼</span>
+            <div class="new-card-group" data-i18n="new.g1">視覺</div>
+            <h3 data-i18n="new.f8.title">基本面卡片</h3>
+            <p data-i18n="new.f8.desc">PE / EPS / PEG / 股利殖利率，美股加入 Form 4 內部人交易 cluster 偵測。</p>
+        </div>
+        <div class="new-card">
+            <span class="new-card-icon">🎛️</span>
+            <div class="new-card-group" data-i18n="new.g1">視覺</div>
+            <h3 data-i18n="new.f9.title">卡片顯示 Toggle</h3>
+            <p data-i18n="new.f9.desc">自選哪些分析卡片要顯示，打造屬於你的個人化看盤介面。</p>
+        </div>
+    </div>
+</section>
+</div>
 
 <!-- Services -->
 <section id="services" class="reveal">
@@ -1360,7 +1557,8 @@
         </div>
         <div class="footer-right">
             <p>&copy; 2025-2026 DappGo. <span data-i18n="footer.rights">All rights reserved.</span></p>
-            <p style="font-size:0.75rem;color:var(--text-muted);margin-top:0.3rem" data-i18n="footer.note">DappGo is an AI automation company. We are not affiliated with blockchain, cryptocurrency, or DeFi.</p>
+            <p style="font-size:0.75rem;color:var(--text-muted);margin-top:0.3rem" data-i18n="footer.apps">&#x1F1F9;&#x1F1FC; 台股 &nbsp;|&nbsp; &#x1F1FA;&#x1F1F8; 美股 &nbsp;|&nbsp; &#x1F4CA; 選擇權 — 三款每日訊號 App</p>
+            <p style="font-size:0.75rem;color:var(--text-muted);margin-top:0.2rem" data-i18n="footer.note">DappGo is an AI automation company. We are not affiliated with blockchain, cryptocurrency, or DeFi.</p>
         </div>
     </div>
 </footer>
@@ -1369,26 +1567,44 @@
 <div id="subPop" class="sub-pop" role="dialog" aria-labelledby="subPopTitle" aria-describedby="subPopDesc" aria-hidden="true">
     <button type="button" class="sub-pop-close" id="subPopClose" aria-label="Close">&times;</button>
     <div class="sub-pop-emoji" aria-hidden="true">📬</div>
-    <div class="sub-pop-title" id="subPopTitle" data-i18n="pop.title">Daily AI options report</div>
-    <div class="sub-pop-desc" id="subPopDesc" data-i18n="pop.desc">Free while in beta. One email per weekday, delivered before US market open. Unsubscribe anytime.</div>
+    <div class="sub-pop-title" id="subPopTitle" data-i18n="pop.title">免費訂閱每日報告</div>
+    <div class="sub-pop-desc" id="subPopDesc" data-i18n="pop.desc">每個交易日 06:30 送達信箱。Beta 期間免費，隨時可取消。</div>
     <form id="subPopForm"
           action="https://formsubmit.co/ajax/laiyanlong@gmail.com"
           method="POST"
           novalidate>
-        <label class="visually-hidden" for="subPopEmail">Email</label>
-        <input type="email"
-               id="subPopEmail"
-               name="email"
-               required
-               autocomplete="email"
-               placeholder="you@example.com"
-               data-i18n-placeholder="pop.placeholder" />
+        <!-- Product checkboxes -->
+        <div class="sub-pop-products">
+            <span class="sub-pop-products-label" data-i18n="pop.products.label">訂閱報告</span>
+            <label class="sub-pop-product-item">
+                <input type="checkbox" name="products" value="tw_stocks" id="subPopTW" checked />
+                <span>&#x1F1F9;&#x1F1FC; <span data-i18n="pop.products.tw">台股每日訊號</span></span>
+            </label>
+            <label class="sub-pop-product-item">
+                <input type="checkbox" name="products" value="us_stocks" id="subPopUS" checked />
+                <span>&#x1F1FA;&#x1F1F8; <span data-i18n="pop.products.us">美股每日訊號</span></span>
+            </label>
+            <label class="sub-pop-product-item">
+                <input type="checkbox" name="products" value="options" id="subPopOpts" checked />
+                <span>&#x1F4CA; <span data-i18n="pop.products.opts">美股選擇權每日策略</span></span>
+            </label>
+        </div>
+        <div class="sub-pop-email-row">
+            <label class="visually-hidden" for="subPopEmail">Email</label>
+            <input type="email"
+                   id="subPopEmail"
+                   name="email"
+                   required
+                   autocomplete="email"
+                   placeholder="you@example.com"
+                   data-i18n-placeholder="pop.placeholder" />
+            <button type="submit" data-i18n="pop.submit">Subscribe</button>
+        </div>
         <input type="hidden" name="lang" id="subPopLang" value="en" />
-        <input type="hidden" name="_subject" value="New Options subscriber" />
+        <input type="hidden" name="_subject" value="New DappGo subscriber" />
         <input type="hidden" name="_template" value="table" />
         <input type="hidden" name="_captcha" value="false" />
         <input type="hidden" name="source" value="dappgo.com popup" />
-        <button type="submit" data-i18n="pop.submit">Subscribe</button>
     </form>
     <div class="sub-pop-lang-row">
         <span data-i18n="pop.lang">Language:</span>
@@ -1417,6 +1633,7 @@ const translations = {
         'hero.desc': 'We\'re an AI automation company — not blockchain, not crypto. We build intelligent pipelines that automate reporting, analyze data, and solve real enterprise problems at scale.',
         'hero.cta1': 'Get Started',
         'hero.cta2': 'Explore Services',
+        'hero.cta3': '📩 Free Daily Reports',
         'hero.trust': 'Trusted across industries:',
         'hero.ind1': 'FinTech',
         'hero.ind2': 'E-Commerce',
@@ -1479,17 +1696,47 @@ const translations = {
         'flagship.form.privacy': 'By subscribing you agree to receive daily option analysis emails. We don’t share your address. <a href="/privacy" style="color:var(--accent)">Privacy</a>.',
         'flagship.form.success': '🎉 You’re subscribed! Check your inbox for confirmation.',
         'flagship.form.error': 'Something went wrong. Please try again, or email us directly.',
-        'pop.title': 'Daily AI options report',
-        'pop.desc': 'Free while in beta. One email per weekday, delivered before US market open. Unsubscribe anytime.',
-        'pop.placeholder': 'you@example.com',
-        'pop.submit': 'Subscribe',
-        'pop.lang': 'Language:',
-        'pop.en': 'EN',
-        'pop.zh': '中',
-        'pop.ok': '🎉 You’re subscribed — check your inbox.',
-        'pop.err': 'Couldn’t send. Please retry.',
-        'pop.legal': 'No spam. ',
-        'pop.privacy': 'Privacy',
+        ‘pop.title’: ‘Free Daily Reports’,
+        ‘pop.desc’: ‘Delivered at 06:30 every trading day. Free in beta. Unsubscribe anytime.’,
+        ‘pop.products.label’: ‘Choose reports:’,
+        ‘pop.products.tw’: ‘TW Stocks daily signals’,
+        ‘pop.products.us’: ‘US Stocks daily signals’,
+        ‘pop.products.opts’: ‘US Options daily strategy’,
+        ‘pop.placeholder’: ‘you@example.com’,
+        ‘pop.submit’: ‘Subscribe’,
+        ‘pop.lang’: ‘Language:’,
+        ‘pop.en’: ‘EN’,
+        ‘pop.zh’: ‘中’,
+        ‘pop.ok’: ‘🎉 Subscribed! Check your inbox.’,
+        ‘pop.ok_multi’: ‘✓ Subscribed to {n} reports — delivered daily at 06:30’,
+        ‘pop.err’: ‘Couldn\’t send. Please retry.’,
+        ‘pop.nocheck’: ‘Please select at least one report.’,
+        ‘pop.legal’: ‘No spam. ‘,
+        ‘pop.privacy’: ‘Privacy’,
+        'new.label': "What's New",
+        'new.title': 'Latest Features (2026-05)',
+        'new.desc': 'New features shipped this month across the TW Stocks, US Stocks, and Options apps.',
+        'new.g1': 'Visual',
+        'new.g2': 'Signals',
+        'new.g3': 'Advanced',
+        'new.f1.title': 'Candlestick / Line Toggle',
+        'new.f1.desc': 'Switch between candlestick and line charts with 1M / 3M / 6M / 1Y / 3Y timeframe chips.',
+        'new.f2.title': 'Market Environment',
+        'new.f2.desc': 'Auto-classifies risk_on / risk_off / mixed using TAIEX + SPY as anchors for overall market context.',
+        'new.f3.title': 'Stock Comparison',
+        'new.f3.desc': 'Side-by-side comparison of two tickers across PE / EPS / RSI / yield — winner auto-highlighted.',
+        'new.f4.title': 'Weekly Signal Changes',
+        'new.f4.desc': '7-day upgrade / downgrade leaderboard — instantly see which tickers shifted momentum this week.',
+        'new.f5.title': 'News Sentiment',
+        'new.f5.desc': 'Rule-based sentiment scoring for zh-TW and en-US news, with positive / negative signal flags.',
+        'new.f6.title': 'Options Flow Anomaly',
+        'new.f6.desc': 'Put/Call ratio and IV skew tracking to spot unusual options positioning before the move.',
+        'new.f7.title': 'Industry Relative Strength',
+        'new.f7.desc': 'Three-layer comparison: stock vs sector vs index — pinpoints sector rotation opportunities.',
+        'new.f8.title': 'Fundamentals Card',
+        'new.f8.desc': 'PE / EPS / PEG / dividend yield. US stocks include Form 4 insider-transaction cluster detection.',
+        'new.f9.title': 'Card Visibility Toggle',
+        'new.f9.desc': 'Choose which analysis cards to show — build your own personalized dashboard layout.',
         'cases.label': 'Case Studies',
         'cases.title': 'Real Results, Real Impact',
         'cases.desc': 'See how our AI automation delivers measurable value.',
@@ -1532,6 +1779,7 @@ const translations = {
         'contact.form.error': 'Something went wrong. Please email us directly.',
         'footer.rights': 'All rights reserved.',
         'footer.tagline': 'AI Automation for Enterprise',
+        'footer.apps': '🇹🇼 TW Stocks | 🇺🇸 US Stocks | 📊 Options — 3 daily-signal apps',
         'footer.note': 'DappGo is an AI automation company. We are not affiliated with blockchain, cryptocurrency, or DeFi.',
         'footer.top': 'Back to Top',
     },
@@ -1548,6 +1796,7 @@ const translations = {
         'hero.desc': '我們是一家 AI 自動化公司 — 不是區塊鏈，不是加密貨幣。我們打造智慧管線，自動化報告產出、分析數據，大規模解決真實的企業問題。',
         'hero.cta1': '立即開始',
         'hero.cta2': '探索服務',
+        'hero.cta3': '📩 免費訂閱每日報告',
         'hero.trust': '跨產業信賴：',
         'hero.ind1': '金融科技',
         'hero.ind2': '電子商務',
@@ -1610,17 +1859,47 @@ const translations = {
         'flagship.form.privacy': '訂閱即表示您同意接收每日選擇權分析 email。我們不會轉售您的地址。<a href="/privacy" style="color:var(--accent)">隱私政策</a>。',
         'flagship.form.success': '🎉 訂閱成功！請到您的信箱確認。',
         'flagship.form.error': '發生錯誤，請稍後再試，或直接寄信給我們。',
-        'pop.title': '每日 AI 選擇權報告',
-        'pop.desc': 'Beta 期間免費。每個交易日一封信，美股開盤前送達。隨時可取消。',
+        'pop.title': '免費訂閱每日報告',
+        'pop.desc': '每個交易日 06:30 送達。Beta 期間免費，隨時可取消。',
+        'pop.products.label': '選擇報告：',
+        'pop.products.tw': '台股每日訊號',
+        'pop.products.us': '美股每日訊號',
+        'pop.products.opts': '美股選擇權每日策略',
         'pop.placeholder': 'you@example.com',
         'pop.submit': '訂閱',
         'pop.lang': '語言：',
         'pop.en': 'EN',
         'pop.zh': '中',
         'pop.ok': '🎉 訂閱成功，請查收信箱。',
+        'pop.ok_multi': '✓ 已訂閱 {n} 種報告，每日 06:30 收信',
         'pop.err': '送出失敗，請再試一次。',
+        'pop.nocheck': '請至少選擇一種報告。',
         'pop.legal': '不會有垃圾郵件。',
         'pop.privacy': '隱私政策',
+        'new.label': '最新動態',
+        'new.title': '最新功能 (2026-05)',
+        'new.desc': '過去一個月持續推出的新功能，跨 🇹🇼 台股、🇺🇸 美股、📊 選擇權三款 App。',
+        'new.g1': '視覺',
+        'new.g2': '訊號',
+        'new.g3': '進階',
+        'new.f1.title': 'K 線 / 走勢切換',
+        'new.f1.desc': '支援 K 線圖與折線圖切換，搭配 1M / 3M / 6M / 1Y / 3Y 時間軸選擇。',
+        'new.f2.title': '市場環境分類',
+        'new.f2.desc': '自動偵測 risk_on / risk_off / mixed，以 TAIEX + SPY 為基準，提供整體市場定位。',
+        'new.f3.title': '個股比較',
+        'new.f3.desc': '兩檔股票並排比較 PE / EPS / RSI / 股利殖利率，自動標示勝方。',
+        'new.f4.title': '本週訊號變化',
+        'new.f4.desc': '7 天訊號升級 / 降級榜，快速掌握本週動能轉變最顯著的標的。',
+        'new.f5.title': '新聞情緒分析',
+        'new.f5.desc': 'Rule-based 情緒分析，同時支援繁體中文與英文新聞，自動標示正 / 負面訊號。',
+        'new.f6.title': '期權異常 Flow',
+        'new.f6.desc': 'Put/Call ratio、IV skew 即時追蹤，識別潛在選擇權異常佈局方向。',
+        'new.f7.title': '產業相對強度',
+        'new.f7.desc': '個股 vs 同業 vs 大盤三層相對強度對比，精準定位產業輪動機會。',
+        'new.f8.title': '基本面卡片',
+        'new.f8.desc': 'PE / EPS / PEG / 股利殖利率，美股加入 Form 4 內部人交易 cluster 偵測。',
+        'new.f9.title': '卡片顯示 Toggle',
+        'new.f9.desc': '自選哪些分析卡片要顯示，打造屬於你的個人化看盤介面。',
         'cases.label': '實戰案例',
         'cases.title': '真實成果，看得見的價值',
         'cases.desc': '看看我們的 AI 自動化如何為客戶帶來可量化的成效。',
@@ -1663,6 +1942,7 @@ const translations = {
         'contact.form.error': '發生錯誤，請直接寄信給我們。',
         'footer.rights': '版權所有。',
         'footer.tagline': '企業級 AI 自動化',
+        'footer.apps': '🇹🇼 台股 | 🇺🇸 美股 | 📊 選擇權 — 三款每日訊號 App',
         'footer.note': 'DappGo 是一家 AI 自動化公司，與區塊鏈、加密貨幣或 DeFi 無關。',
         'footer.top': '回到頂部',
     }
@@ -1965,6 +2245,9 @@ document.querySelectorAll('.nav-links a').forEach(a => {
         } catch (_) {}
     }
 
+    // Expose for external callers (e.g. hero CTA button)
+    window.openSubscribePopup = function() { show(); };
+
     let shown = false;
     function show() {
         if (shown) return;
@@ -2004,7 +2287,17 @@ document.querySelectorAll('.nav-links a').forEach(a => {
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        track('subscribe_submit', { lang: langIn.value });
+        const t = translations[currentLang] || translations.en;
+
+        // Validate: at least one product selected
+        const checked = form.querySelectorAll('input[name="products"]:checked');
+        if (checked.length === 0) {
+            statusEl.className = 'sub-pop-status err';
+            statusEl.textContent = t['pop.nocheck'] || 'Please select at least one report.';
+            return;
+        }
+
+        track('subscribe_submit', { lang: langIn.value, products: checked.length });
         const btn = form.querySelector('button[type="submit"]');
         btn.disabled = true;
         statusEl.className = 'sub-pop-status';
@@ -2017,25 +2310,25 @@ document.querySelectorAll('.nav-links a').forEach(a => {
                 headers: { 'Accept': 'application/json' },
             });
             if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-            track('subscribe_success', { lang: langIn.value });
-            const t = translations[currentLang] || translations.en;
+            track('subscribe_success', { lang: langIn.value, products: checked.length });
             statusEl.className = 'sub-pop-status ok';
-            statusEl.textContent = t['pop.ok'] || 'You&rsquo;re subscribed!';
+            const multiTpl = t['pop.ok_multi'] || '✓ Subscribed to {n} reports — daily at 06:30';
+            statusEl.textContent = multiTpl.replace('{n}', checked.length);
             // Auto-close after 2.5s, cache for 180 days
             setTimeout(() => dismiss(SUCCESS_DAYS), 2500);
         } catch (err) {
             track('subscribe_error', { lang: langIn.value });
-            const t = translations[currentLang] || translations.en;
             statusEl.className = 'sub-pop-status err';
             // Offer a mailto fallback when FormSubmit fails (network/outage).
-            // Users can still reach us — we just add them manually on receipt.
             const emailVal = encodeURIComponent(emailIn.value || '');
             const langVal = encodeURIComponent(langIn.value || 'en');
+            const products = Array.from(checked).map(c => c.value).join(', ');
             const fallbackUrl =
                 `mailto:dappgo.options@gmail.com` +
-                `?subject=${encodeURIComponent('Subscribe to Options daily AI report')}` +
+                `?subject=${encodeURIComponent('Subscribe to DappGo daily reports')}` +
                 `&body=${encodeURIComponent('Hi,\n\nPlease add me to the subscriber list.\n\nEmail: ')}${emailVal}` +
-                `${encodeURIComponent('\nLanguage: ')}${langVal}`;
+                `${encodeURIComponent('\nLanguage: ')}${langVal}` +
+                `${encodeURIComponent('\nReports: ')}${encodeURIComponent(products)}`;
             statusEl.innerHTML =
                 (t['pop.err'] || 'Something went wrong.') +
                 ` <a href="${fallbackUrl}" style="color:inherit;text-decoration:underline;">` +
