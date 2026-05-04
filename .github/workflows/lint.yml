@@ -49,7 +49,7 @@ jobs:
             --exclude '^mailto:'
             --exclude 'formsubmit.co'
             --exclude '\.woff2$'
-            --exclude 'file:.*/(options|privacy)$'
+            --exclude 'file:.*/(options|privacy|terms)$'
             './**/*.html'
           fail: true
 
