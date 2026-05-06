@@ -32,6 +32,17 @@
 - [Options weekly summary](https://cdn.jsdelivr.net/gh/YanlongLai/options-daily-report@latest/dashboard/weekly_summary.json): rolled-up weekly view across the options universe
 - [Options AI commentary (latest)](https://cdn.jsdelivr.net/gh/YanlongLai/options-daily-report@latest/dashboard/ai_commentary/latest.json): natural-language commentary for the most recent trading day
 
+## JSON Schema definitions
+
+- [TW v1 schema](https://cdn.jsdelivr.net/gh/YanlongLai/tw-stocks-daily-report@latest/schema/v1.json)
+- [US v1 schema](https://cdn.jsdelivr.net/gh/YanlongLai/us-stocks-daily-report@latest/schema/v1.json)
+- [Options v1 schema](https://cdn.jsdelivr.net/gh/YanlongLai/options-daily-report@latest/schema/v1.json)
+
+## V2 schema + MCP server (in development)
+
+- `dappgo-stocks-schema` — canonical layered V2 JSON Schema repo (envelope, asset, insight, recommendation, market_context). Currently private; will publish at `https://schema.dappgo.com/v2/core.json` once stabilised.
+- `dappgo-stocks-mcp` — Model Context Protocol server (Node + TypeScript) exposing the 3 daily reports as AI-callable tools (list_tickers, get_ticker, get_market_overview, list_insights, get_data_quality, get_options_strategies, get_schema). Currently private; will be installable via `npx @yanlonglai/dappgo-stocks-mcp` once published.
+
 ## Web pages
 
 - [Home](https://dappgo.com/): product overview, links to TW / US / Options apps
