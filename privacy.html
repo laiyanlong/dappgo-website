@@ -353,7 +353,7 @@
         <span class="lang-en">Privacy Policy</span>
         <span class="lang-zh">隱私政策</span>
     </h1>
-    <p class="updated">最後更新 Last updated: 2026-05-09</p>
+    <p class="updated">最後更新 Last updated: 2026-05-17</p>
 
     <div class="summary">
         <div class="lang-zh">
@@ -473,6 +473,46 @@
         </p>
     </div>
 
+    <!-- Firestore collections (C1 disclosure) -->
+    <div class="lang-zh">
+        <h2>App 端儲存的 Firestore 集合</h2>
+        <p>
+            App 透過 Firebase Anonymous Auth 取得一組<strong>匿名 uid</strong>。此 uid 為 Firebase 自動產生的隨機識別碼，<strong>不包含您的姓名、email、Apple ID 或任何直接識別資訊</strong>，依 GDPR 第 4(5) 條定義屬「假名化識別碼（pseudonymous identifier）」。重新安裝 App 或點選「刪除我的資料」即重置。
+        </p>
+        <p>
+            為了讓 App 運作，我們在 Google Firestore 儲存以下集合（Firebase 為資料處理者）：
+        </p>
+        <ul>
+            <li><strong><code>events/</code></strong> — 匿名事件紀錄：uid、event 類型、timestamp、market（TW/US/options），可選 ticker / screen / strike。用於產品分析（熱門 ticker、DAU、推播 CTR）。<strong>保留：原始事件 30 天，聚合資料 90 天。</strong></li>
+            <li><strong><code>feedback/</code></strong> — 使用者主動透過 App 內 Feedback 表單提交的文字意見：uid、類別、評分、訊息內容、App 版本。用於產品改善與審計紀錄。<strong>保留：3 年後刪除識別欄位。</strong></li>
+            <li><strong><code>users/{uid}</code></strong> — APNs 推播裝置 token、通知偏好、locale、device_tz、bundle_id、訂閱市場（markets_subscribed）。APNs token 為 Apple 提供的每台裝置不透明識別碼，<strong>非個人識別資料</strong>。<strong>保留：直到您關閉通知或刪除資料為止。</strong></li>
+            <li><strong><code>push_log/</code></strong> — 推播發送嘗試紀錄：uid、market、結果（success/failure）、timestamp。用於除錯與發送品質監測。<strong>保留：30 天以上，依除錯需要。</strong></li>
+            <li><strong><code>iv_history/{ticker}</code></strong> — 每檔 ticker 的每日 IV 快照。<strong>不與使用者綁定，無隱私影響。</strong></li>
+        </ul>
+        <p>
+            您可隨時於 App「設定」內點選「<strong>刪除我的資料</strong>」按鈕，立即清除上述所有與您 uid 相關的 Firestore 文件；如需更進階的請求（例如資料匯出、特定欄位修正），請來信 <a href="mailto:admin@dappgo.com">admin@dappgo.com</a>。
+        </p>
+    </div>
+    <div class="lang-en">
+        <h2>Firestore collections stored on our backend</h2>
+        <p>
+            The app obtains an <strong>anonymous uid</strong> via Firebase Anonymous Authentication. This uid is a random identifier issued by Firebase that does <strong>not contain your name, email, Apple ID, or any directly-identifying information</strong>; under GDPR Article 4(5) it qualifies as a "pseudonymous identifier". The uid is reset when you reinstall the app or tap "Delete my data".
+        </p>
+        <p>
+            To make the app work, we store the following collections in Google Firestore (Firebase acts as data processor):
+        </p>
+        <ul>
+            <li><strong><code>events/</code></strong> — anonymous user-event log: uid, event type, timestamp, market (TW/US/options), optional ticker / screen / strike. Used for product analytics (top tickers, DAU, push CTR). <strong>Retention: 30 days raw, 90 days aggregated.</strong></li>
+            <li><strong><code>feedback/</code></strong> — user-submitted text feedback from the in-app Feedback form: uid, category, rating, body, app version. Used for product improvement and audit. <strong>Retention: identifying fields removed after 3 years.</strong></li>
+            <li><strong><code>users/{uid}</code></strong> — APNs device token, notification preferences, locale, device_tz, bundle_id, markets_subscribed. The APNs token is a per-device opaque identifier issued by Apple and is <strong>not a personal identifier</strong>. <strong>Retention: until you opt out of notifications or delete your data.</strong></li>
+            <li><strong><code>push_log/</code></strong> — record of push delivery attempts: uid, market, outcome (success/failure), timestamp. Used for debugging and delivery-quality monitoring. <strong>Retention: 30+ days as needed for debugging.</strong></li>
+            <li><strong><code>iv_history/{ticker}</code></strong> — per-ticker daily IV snapshot. <strong>Not user-scoped, no privacy impact.</strong></li>
+        </ul>
+        <p>
+            You can tap the <strong>"Delete my data"</strong> button in the app's Settings at any time to immediately clear all Firestore documents tied to your uid. For more advanced requests (export, field-level correction), email <a href="mailto:admin@dappgo.com">admin@dappgo.com</a>.
+        </p>
+    </div>
+
     <!-- AI Processing -->
     <div class="lang-zh">
         <h2>AI 處理</h2>
@@ -531,6 +571,8 @@
             <li><strong>Supabase</strong>（<a href="https://supabase.com/privacy" target="_blank" rel="noopener">privacy</a>）— 匿名使用事件；DappGo 的 Supabase 專案託管於 AWS us-east-1（已驗證 2026-05-10）。歐盟使用者的資料透過 Supabase DPA（已納入標準合約條款 SCCs）傳輸至美國。</li>
             <li><strong>Google Analytics 4</strong>（<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">privacy</a>，Google LLC）— 網站匿名訪客分析，IP 已自動匿名化；資料中心 US。</li>
             <li><strong>Firebase Analytics</strong>（<a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">privacy</a>，Google LLC）— iOS app 內事件分析（DAU、留存、功能使用），透過 Apple App Instance ID 識別（非裝置 IDFA、非個資），<u>未綁定您的姓名或 email</u>，重新安裝即重置。資料中心 US。歐盟使用者透過 Google DPF（Data Privacy Framework）合規傳輸。</li>
+            <li><strong>Firebase Firestore &amp; Anonymous Auth</strong>（Google LLC）— 後端資料庫，儲存 §「App 端儲存的 Firestore 集合」所列集合（events / feedback / users / push_log / iv_history）。資料中心 US（multi-region nam5）；歐盟傳輸依 Google 的 DPF 認證與 Firebase DPA 中的 SCCs。用途：產品分析、推播路由、使用者偏好儲存。</li>
+            <li><strong>Apple Push Notification Service (APNs)</strong>（Apple Inc.）— 傳遞推播通知至您的裝置。我們將 APNs 提供的不透明 device token 儲存於 <code>users/{uid}</code>，並透過 Apple 伺服器傳送通知 payload。Apple 不向我們透露您的 Apple ID。資料處理依 <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple 隱私政策</a>規範。</li>
             <li><strong>Google Forms</strong>（Google LLC）— 處理 Contact Form 與 Feedback Form 提交；data sub-processor for DappGo。</li>
             <li><strong>Google Workspace</strong>（Google LLC）— admin@dappgo.com 信箱、Drive 儲存 Form 回應、Apps Script 執行週期任務（每週彙總、每日報告寄送）。</li>
             <li><strong>Google Gemini API</strong>（Google LLC）— AI 分析公開市場數據（無個人資料），詳見上方 §AI 處理。</li>
@@ -547,6 +589,8 @@
             <li><strong>Supabase</strong> (<a href="https://supabase.com/privacy" target="_blank" rel="noopener">privacy</a>) — anonymous analytics events. Our Supabase projects are hosted in AWS us-east-1 (verified 2026-05-10). Data is transferred from EU users to US via the Supabase DPA which incorporates Standard Contractual Clauses (SCCs).</li>
             <li><strong>Google Analytics 4</strong> (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">privacy</a>, Google LLC) — anonymized website visitor analytics; IP anonymization enabled; US data center.</li>
             <li><strong>Firebase Analytics</strong> (<a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">privacy</a>, Google LLC) — iOS in-app event analytics (DAU, retention, feature usage), identified by Apple App Instance ID (not IDFA, not PII), <u>not linked to your name or email</u>, resets on reinstall. US data center; EU user data transferred under Google's Data Privacy Framework (DPF) certification.</li>
+            <li><strong>Firebase Firestore &amp; Anonymous Auth</strong> (Google LLC) — backend database storing the collections listed under §"Firestore collections stored on our backend" (events / feedback / users / push_log / iv_history). US data center (multi-region nam5); EU transfers governed by Google's DPF certification and SCCs in the Firebase DPA. Purpose: product analytics, push routing, user-preference storage.</li>
+            <li><strong>Apple Push Notification Service (APNs)</strong> (Apple Inc.) — delivers push notifications to your device. We store the opaque APNs device token Apple provides in <code>users/{uid}</code> and send notification payloads via Apple's servers. Apple does not disclose your Apple ID to us. Governed by <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple's privacy policy</a>.</li>
             <li><strong>Google Forms</strong> (Google LLC) — processes Contact and Feedback form submissions on DappGo's behalf.</li>
             <li><strong>Google Workspace</strong> (Google LLC) — admin@dappgo.com mailbox, Drive storage of form responses, Apps Script for scheduled tasks (weekly digest, daily report sending).</li>
             <li><strong>Google Gemini API</strong> (Google LLC) — AI analysis on public market data only (no personal data); see "AI Processing" above.</li>
@@ -617,8 +661,9 @@
     <div class="lang-zh">
         <h2>您的權利</h2>
         <ul>
-            <li><strong>GDPR</strong>（歐盟使用者）：可請求查看、修正、刪除、限制處理或攜出您的資料。寄 email 給我們，我們承諾於收到合理可驗證請求後 30 天內回覆。您亦有權向您所在歐盟成員國的主管監督機關提出申訴，監督機關名錄請見 <a href="https://edpb.europa.eu/about-edpb/board/members_en" target="_blank" rel="noopener">https://edpb.europa.eu/about-edpb/board/members_en</a>。</li>
-            <li><strong>CCPA / CPRA</strong>（加州使用者）：可請求知曉收集的資料、刪除、修正、限制 sensitive personal information 使用，或選擇退出資料販售（雖然我們本來就不販售）。寄 email 即可。</li>
+            <li><strong>App 內「刪除我的資料」按鈕</strong>：App「設定」內提供一鍵刪除按鈕，立即清除上述所有與您匿名 uid 相關的 Firestore 文件（events、feedback、users/{uid}、push_log）。這是最快、最直接的行使刪除權方式。</li>
+            <li><strong>GDPR</strong>（歐盟使用者，第 15-22 條）：可行使<strong>查閱權（Art. 15）</strong>、<strong>更正權（Art. 16）</strong>、<strong>刪除權／被遺忘權（Art. 17）</strong>、<strong>限制處理權（Art. 18）</strong>、<strong>資料可攜權（Art. 20）</strong>、<strong>異議權（Art. 21）</strong>、以及<strong>不受自動化決定影響權（Art. 22）</strong>。可透過 App 內「刪除我的資料」按鈕（適用刪除權）或寄信至 <a href="mailto:admin@dappgo.com">admin@dappgo.com</a> 行使其餘權利。我們承諾於收到合理可驗證請求後 30 天內回覆。您亦有權向您所在歐盟成員國的主管監督機關提出申訴，名錄請見 <a href="https://edpb.europa.eu/about-edpb/board/members_en" target="_blank" rel="noopener">https://edpb.europa.eu/about-edpb/board/members_en</a>。</li>
+            <li><strong>CCPA / CPRA</strong>（加州使用者，§1798.100 et seq.）：可行使<strong>知情權（§1798.110）</strong>、<strong>刪除權（§1798.105）</strong>、<strong>更正權（§1798.106）</strong>、<strong>限制使用敏感個人資訊（§1798.121）</strong>、以及<strong>選擇退出販售／分享</strong>（§1798.120；我們本就不販售亦不分享）。可透過 App 內「刪除我的資料」按鈕或寄信 <a href="mailto:admin@dappgo.com">admin@dappgo.com</a> 行使。</li>
             <li><strong>回覆期限計算</strong>：查閱 / 刪除請求的回覆期限，依 GDPR 第 12(3) 條規定（1 個月，複雜請求可延長 2 個月）及 CCPA §1798.130（45 天，可延長一次），從我們<strong>收到可驗證請求之日</strong>起算。</li>
             <li><strong>退訂</strong>：回覆任一封 email「<code>unsubscribe</code>」，或寄信給 <a href="mailto:admin@dappgo.com?subject=Unsubscribe">admin@dappgo.com</a>。</li>
         </ul>
@@ -626,8 +671,9 @@
     <div class="lang-en">
         <h2>Your rights</h2>
         <ul>
-            <li><strong>GDPR</strong> (EU users): right to access, rectify, delete, restrict, or port your data. Email us; reply within 30 days of a verifiable request. You also have the right to lodge a complaint with your local EU supervisory authority. A directory is at <a href="https://edpb.europa.eu/about-edpb/board/members_en" target="_blank" rel="noopener">https://edpb.europa.eu/about-edpb/board/members_en</a>.</li>
-            <li><strong>CCPA / CPRA</strong> (California users): right to know, delete, correct, restrict sensitive PI, or opt out of sale (we don't sell anyway). Email us.</li>
+            <li><strong>In-app "Delete my data" button</strong>: The app's Settings screen exposes a one-tap delete button that immediately purges every Firestore document tied to your anonymous uid (events, feedback, users/{uid}, push_log). This is the fastest, most direct way to exercise the right to erasure.</li>
+            <li><strong>GDPR</strong> (EU users, Arts. 15–22): you may exercise the <strong>right of access (Art. 15)</strong>, <strong>rectification (Art. 16)</strong>, <strong>erasure / right to be forgotten (Art. 17)</strong>, <strong>restriction of processing (Art. 18)</strong>, <strong>data portability (Art. 20)</strong>, <strong>objection (Art. 21)</strong>, and the right to <strong>not be subject to automated decision-making (Art. 22)</strong>. Use the in-app "Delete my data" button (for erasure) or email <a href="mailto:admin@dappgo.com">admin@dappgo.com</a> for any other right. We reply within 30 days of a verifiable request. You also have the right to lodge a complaint with your local EU supervisory authority — directory at <a href="https://edpb.europa.eu/about-edpb/board/members_en" target="_blank" rel="noopener">https://edpb.europa.eu/about-edpb/board/members_en</a>.</li>
+            <li><strong>CCPA / CPRA</strong> (California users, §1798.100 et seq.): you may exercise the <strong>right to know (§1798.110)</strong>, <strong>delete (§1798.105)</strong>, <strong>correct (§1798.106)</strong>, <strong>limit use of sensitive personal information (§1798.121)</strong>, and <strong>opt out of sale/sharing (§1798.120)</strong> — we do not sell or share. Use the in-app "Delete my data" button or email <a href="mailto:admin@dappgo.com">admin@dappgo.com</a>.</li>
             <li><strong>Response time limits</strong>: Time limits for responding to access/deletion requests are calculated from the date we receive a verifiable request, in accordance with GDPR Article 12(3) (1 month, extendable by 2 additional months for complex requests) and CCPA §1798.130 (45 days, extendable once).</li>
             <li><strong>Unsubscribe</strong> by replying <code>unsubscribe</code> or emailing <a href="mailto:admin@dappgo.com?subject=Unsubscribe">admin@dappgo.com</a>.</li>
         </ul>
@@ -661,13 +707,13 @@
     <div class="lang-zh">
         <h2>兒童與 COPPA</h2>
         <p>
-            DappGo 在所有平台（iPhone、iPad、Mac、Vision Pro）的 App Store 評級均為 <strong>4+</strong>。我們對任何使用者（包括 13 歲以下未成年人）收集的唯一資料，是一組匿名、本地產生的裝置 ID（UUID 儲存於作業系統 keychain，重新安裝 App 即重置），僅用於分析去重；以及選擇性的當機報告（不含個人資訊）。我們不在安裝或使用時收集姓名、email、位置或任何其他個人資訊。在 COPPA（美國《兒童線上隱私保護法》）定義的範圍內，我們不會故意收集 13 歲以下兒童的個人資訊。App 內 Feedback 表單的選填 Email 欄位附有提示「未滿 13 歲？跳過此欄即可。」，作為防止無意間收集未成年人個人資訊的產品層面措施。若您或您的孩童認為我們已收集了任何個人資訊，請透過 <a href="mailto:admin@dappgo.com">admin@dappgo.com</a> 聯絡我們進行審查；我們將於 30 天內回覆並協助處理。
+            DappGo 在所有平台（iPhone、iPad、Mac、Vision Pro）的 App Store 評級均為 <strong>4+</strong>。我們對任何使用者（包括 13 歲以下未成年人）收集的資料，是一組透過 Firebase Anonymous Auth 產生的匿名 uid 與相關事件記錄（見 §「App 端儲存的 Firestore 集合」），以及選擇性的當機報告（不含個人資訊）。我們<strong>不</strong>在安裝或使用 App 時收集姓名、email、位置或任何其他直接識別個人的資訊。在 COPPA（美國《兒童線上隱私保護法》）定義的範圍內，我們不會故意收集 13 歲以下兒童的個人資訊。App 內 Feedback 表單顯示明確警告：「<strong>本 App 內容含投資相關資訊，不適合未滿 18 歲使用者。請勿提交可識別個人的資訊。</strong>」，作為產品層面之事前提醒。若您或您的孩童認為我們已收集了任何兒童個人資訊，請透過 <a href="mailto:admin@dappgo.com">admin@dappgo.com</a> 聯絡我們，我們將於 30 天內審查並刪除。
         </p>
     </div>
     <div class="lang-en">
         <h2>Children &amp; COPPA</h2>
         <p>
-            DappGo's App Store age rating is <strong>4+</strong> across all platforms (iPhone, iPad, Mac, Vision Pro). The only data we collect from any user — including minors under 13 — is an anonymous, locally-generated device ID (UUID stored in the OS keychain, resettable by app reinstall) for analytics deduplication, plus optional crash reports without personal information. We do not collect names, email addresses, location, or any other personal information at install or use. We do not knowingly collect personal information from children under 13 within the meaning of COPPA. The optional Email field in our in-app Feedback form is labeled with the note "Under 13? Skip this field." as a product-level mitigation against inadvertent collection of personal information from minors. A child or parent who believes any personal information has been collected may contact us at <a href="mailto:admin@dappgo.com">admin@dappgo.com</a> for review; we will respond within 30 days.
+            DappGo's App Store age rating is <strong>4+</strong> across all platforms (iPhone, iPad, Mac, Vision Pro). The data we collect from any user — including minors under 13 — is an anonymous Firebase uid plus the associated event records described in §"Firestore collections stored on our backend", along with optional crash reports that do not contain personal information. We do <strong>not</strong> collect names, email addresses, location, or any other directly-identifying personal information at install or use. We do not knowingly collect personal information from children under 13 within the meaning of COPPA. The in-app Feedback form displays a prominent warning — "<strong>This app contains investment-related content and is not intended for users under 18. Do not submit any personally identifiable information.</strong>" — as a product-level mitigation. A child or parent who believes personal information has been collected may contact us at <a href="mailto:admin@dappgo.com">admin@dappgo.com</a>; we will review and delete within 30 days.
         </p>
     </div>
 
