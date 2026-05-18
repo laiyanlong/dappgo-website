@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://cdn.jsdelivr.net https://formsubmit.co https://www.google-analytics.com https://api.github.com https://ufshdzyfrbwgtdhtymsf.supabase.co; font-src 'self'; frame-ancestors 'none'; base-uri 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://cdn.jsdelivr.net https://formsubmit.co https://www.google-analytics.com https://api.github.com; font-src 'self'; frame-ancestors 'none'; base-uri 'self'">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Options Daily Report — Market Commentary | DappGo</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -504,20 +504,12 @@
     </article>
 </section>
 
-<!-- ═════ HOT STRIKES — community signal from app ═════ -->
-<section class="ai-wrap" id="hot-section" hidden>
-    <article class="ai-card">
-        <header class="ai-card-header">
-            <span class="ai-card-eyebrow"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:middle;margin-right:4px"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>Community signal · past 7 days</span>
-            <h2 class="ai-card-title">Hot Strikes</h2>
-        </header>
-        <p style="color:var(--text-muted);font-size:.95rem;margin-bottom:1rem">
-            Aggregated from anonymous mobile-app users tapping strikes in the Matrix view.
-            Counts are unique devices — not raw clicks.
-        </p>
-        <div id="hot-table"></div>
-    </article>
-</section>
+<!-- Hot Strikes website widget removed 2026-05-19 alongside Supabase
+     retirement: analytics_daily/ aggregator output (the replacement
+     source) lives under Firestore rules that deny anonymous browser
+     reads. The same community signal is still surfaced inside the
+     DappGo Options app (`HotStrikesWidget`), which authenticates via
+     Firebase Anonymous Auth. -->
 
 <!-- ═════ CONTEXT ═════ -->
 <section class="context">
@@ -765,66 +757,15 @@ window.addEventListener('storage', (e) => {
 });
 
 /* ════════════════════════════════════════════
-   Hot Strikes — public anon-key read of popular_options view
-   ════════════════════════════════════════════ */
-const SUPABASE_URL = 'https://ufshdzyfrbwgtdhtymsf.supabase.co';
-const SUPABASE_ANON = 'sb_publishable_5XoK3V6IU1hRVEoFXRmq8A_Tnz384qU';
-
-async function loadHotStrikes() {
-    try {
-        const r = await fetch(
-            `${SUPABASE_URL}/rest/v1/popular_options?select=symbol,option_type,strike,unique_users,total_taps&order=unique_users.desc,total_taps.desc&limit=10`,
-            { headers: { apikey: SUPABASE_ANON, Authorization: `Bearer ${SUPABASE_ANON}` } }
-        );
-        if (!r.ok) return;
-        const rows = await r.json();
-        if (!Array.isArray(rows) || rows.length === 0) return;
-
-        const html = `
-            <table style="width:100%;border-collapse:collapse;font-size:.95rem">
-                <thead>
-                    <tr style="border-bottom:1px solid var(--border);text-align:left">
-                        <th style="padding:.5rem .25rem;color:var(--text-muted);font-weight:500">#</th>
-                        <th style="padding:.5rem .25rem;color:var(--text-muted);font-weight:500">Symbol</th>
-                        <th style="padding:.5rem .25rem;color:var(--text-muted);font-weight:500">Type</th>
-                        <th style="padding:.5rem .25rem;color:var(--text-muted);font-weight:500;text-align:right">Strike</th>
-                        <th style="padding:.5rem .25rem;color:var(--text-muted);font-weight:500;text-align:right">Users</th>
-                        <th style="padding:.5rem .25rem;color:var(--text-muted);font-weight:500;text-align:right">Taps</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    ${rows.map((r, i) => `
-                        <tr style="border-bottom:1px solid var(--border)">
-                            <td style="padding:.5rem .25rem;color:var(--text-muted)">${i + 1}</td>
-                            <td style="padding:.5rem .25rem;font-weight:700;color:var(--gold)">${r.symbol}</td>
-                            <td style="padding:.5rem .25rem;color:${r.option_type === 'put' ? 'var(--negative)' : 'var(--positive)'};font-weight:600;text-transform:uppercase">${r.option_type}</td>
-                            <td style="padding:.5rem .25rem;text-align:right;font-family:ui-monospace,monospace">$${r.strike}</td>
-                            <td style="padding:.5rem .25rem;text-align:right">${r.unique_users}</td>
-                            <td style="padding:.5rem .25rem;text-align:right;color:var(--text-muted)">${r.total_taps}</td>
-                        </tr>
-                    `).join('')}
-                </tbody>
-            </table>
-        `;
-        document.getElementById('hot-table').innerHTML = html;
-        document.getElementById('hot-section').hidden = false;
-    } catch {
-        /* silent — section stays hidden */
-    }
-}
-
-/* ════════════════════════════════════════════
    Init
    ════════════════════════════════════════════ */
 applyStaticI18n();
 loadAI();
-loadHotStrikes();
 
 // Re-check every 10 min while tab is visible (catches same-day updates)
 setInterval(() => {
     if (document.visibilityState === 'visible') {
         loadAI();
-        loadHotStrikes();
     }
 }, 10 * 60 * 1000);
 </script>
