@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://cdn.jsdelivr.net https://www.google-analytics.com; font-src 'self'; frame-ancestors 'none'; base-uri 'self'">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DappGo — AI Automation & Model Integration</title>
+    <title>DappGo — AI Products & Automation</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <meta name="msvalidate.01" content="40676D3D6E27383E43D6405635C74712">
     <!-- Theme init (pre-paint, avoids flash) -->
@@ -27,7 +27,7 @@
         gtag('js', new Date());
         gtag('config', 'G-C9K7KCERPP');
     </script>
-    <meta name="description" content="DappGo builds AI automation pipelines for reporting, data analysis, and model integration — not blockchain or crypto. Free daily stock and options signal apps for TW and US markets.">
+    <meta name="description" content="DappGo builds AI products and automation pipelines for reporting, data analysis, model integration, and custom workflows.">
     <meta name="keywords" content="AI automation, model integration, LLM, machine learning, workflow automation, enterprise AI, custom AI solutions, DappGo">
     <meta name="author" content="DappGo">
     <link rel="canonical" href="https://dappgo.com/">
@@ -35,8 +35,8 @@
     <!-- Open Graph (Facebook, LinkedIn) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://dappgo.com/">
-    <meta property="og:title" content="DappGo — AI Automation & Model Integration">
-    <meta property="og:description" content="We build AI pipelines that automate reporting, connect models, and replace manual work — not blockchain, not crypto.">
+    <meta property="og:title" content="DappGo — AI Products & Automation">
+    <meta property="og:description" content="From market intelligence apps to custom AI pipelines, DappGo turns complex data and workflows into useful products.">
     <meta property="og:image" content="https://dappgo.com/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -46,8 +46,8 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="DappGo — AI Automation & Model Integration">
-    <meta name="twitter:description" content="We build AI pipelines that automate reporting, connect models, and replace manual work — not blockchain, not crypto.">
+    <meta name="twitter:title" content="DappGo — AI Products & Automation">
+    <meta name="twitter:description" content="From market intelligence apps to custom AI pipelines, DappGo turns complex data and workflows into useful products.">
     <meta name="twitter:image" content="https://dappgo.com/og-image.png">
 
     <!-- JSON-LD Structured Data -->
@@ -58,7 +58,7 @@
         "name": "DappGo",
         "url": "https://dappgo.com",
         "logo": "https://dappgo.com/icons/icon-512.png",
-        "description": "Enterprise AI automation and model integration solutions.",
+        "description": "AI products, automation pipelines, and model integration solutions.",
         "contactPoint": {
             "@type": "ContactPoint",
             "email": "admin@dappgo.com",
@@ -435,6 +435,92 @@
             line-height: 1.6;
         }
 
+        /* ===== PRODUCTS ===== */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        .product-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            min-height: 260px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s;
+        }
+        .product-card:hover {
+            border-color: var(--accent);
+            background: var(--bg-card-hover);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+        .product-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .product-icon {
+            display: block;
+            width: 56px;
+            height: 56px;
+            flex: 0 0 56px;
+            object-fit: cover;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 15px;
+            box-shadow: 0 8px 18px rgba(8, 15, 30, 0.18);
+            transition: transform 0.4s ease;
+        }
+        .product-card:hover .product-icon { transform: scale(1.04); }
+        .product-status {
+            color: var(--accent);
+            border: 1px solid var(--accent-light);
+            border-radius: 999px;
+            padding: 0.3rem 0.7rem;
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .product-card h3 {
+            color: var(--text-heading);
+            font-size: 1.25rem;
+            margin-bottom: 0.7rem;
+        }
+        .product-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.65;
+            margin-bottom: 1.5rem;
+        }
+        .product-card-bottom {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: auto;
+        }
+        .product-meta {
+            color: var(--text-muted);
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            line-height: 1.5;
+            letter-spacing: 0.2px;
+        }
+        .product-link {
+            flex-shrink: 0;
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .product-link:hover { color: var(--accent-dark); }
+
         /* ===== SOLUTIONS ===== */
         .solutions-grid {
             display: grid;
@@ -492,46 +578,6 @@
             left: 0;
             color: var(--accent);
             font-family: var(--mono);
-        }
-
-        /* ===== WHY DAPPGO ===== */
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-        }
-        .why-item {
-            text-align: center;
-            padding: 2rem 1rem;
-        }
-        .why-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--accent);
-            font-family: var(--mono);
-            margin-bottom: 0.5rem;
-            position: relative;
-            display: inline-block;
-        }
-        .why-number::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 30px;
-            height: 2px;
-            background: var(--accent);
-            opacity: 0.5;
-        }
-        .why-item h4 {
-            color: var(--text-heading);
-            font-size: 1rem;
-            margin: 1rem 0 0.5rem;
-        }
-        .why-item p {
-            color: var(--text-muted);
-            font-size: 0.85rem;
         }
 
         /* ===== CONTACT FORM ===== */
@@ -749,34 +795,6 @@
             background: var(--accent-light);
         }
 
-        /* ===== HERO TRUST ===== */
-        .hero-trust {
-            margin-top: 3rem;
-            opacity: 0;
-            animation: fadeUp 0.8s 1.3s forwards;
-        }
-        .trust-label {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-family: var(--mono);
-        }
-        .trust-badges {
-            display: flex;
-            gap: 0.75rem;
-            margin-top: 0.75rem;
-            flex-wrap: wrap;
-        }
-        .trust-badge {
-            background: var(--accent-dim);
-            color: var(--text-muted);
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            border: 1px solid var(--border);
-        }
-
         /* ===== FOOTER (updated) ===== */
         .footer-content {
             display: flex;
@@ -825,10 +843,10 @@
             section { padding: 4rem 1.5rem; }
             .hero h1 { letter-spacing: -1px; }
             .services-grid { grid-template-columns: 1fr; }
+            .products-grid { grid-template-columns: 1fr; }
             .solutions-grid { grid-template-columns: 1fr; }
             .process-grid { grid-template-columns: 1fr 1fr; }
             .tech-grid { grid-template-columns: 1fr; }
-            .why-grid { grid-template-columns: repeat(2, 1fr); }
             .contact-wrapper { grid-template-columns: 1fr; gap: 2rem; }
             footer {
                 flex-direction: column;
@@ -841,7 +859,6 @@
             .section-divider { padding: 0 1.5rem; }
         }
         @media (max-width: 480px) {
-            .why-grid { grid-template-columns: 1fr; }
             .process-grid { grid-template-columns: 1fr; }
             .hero-cta { flex-direction: column; }
             .hero-cta .btn-primary,
@@ -888,12 +905,17 @@
             border-radius: 4px;
             padding: 2px 6px;
         }
+        html[data-lang="zh"] .new-card::after { content: '最新'; }
         .new-card:hover {
             border-color: var(--accent);
             background: var(--bg-card-hover);
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
         }
+        /* Keep the updates section focused on the highest-signal changes. */
+        #whats-new .new-card:nth-child(4),
+        #whats-new .new-card:nth-child(7),
+        #whats-new .new-card:nth-child(9) { display: none; }
         .new-card-icon {
             margin-bottom: 0.9rem;
             display: block;
@@ -928,31 +950,6 @@
         }
         @media (max-width: 480px) {
             .whats-new-grid { grid-template-columns: 1fr; }
-        }
-
-        /* ===== SUBSCRIBE CTA (hero) ===== */
-        .btn-subscribe {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.9rem 1.8rem;
-            background: transparent;
-            color: var(--text-heading);
-            font-weight: 600;
-            font-size: 0.95rem;
-            border: 2px solid var(--accent);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-            letter-spacing: 0.3px;
-            font-family: var(--font);
-            text-decoration: none;
-        }
-        .btn-subscribe:hover {
-            background: var(--accent);
-            color: #ffffff;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px var(--accent-glow);
         }
 
         /* ─── Subscribe popup (non-intrusive) ──────── */
@@ -1198,20 +1195,18 @@
     <div class="logo">Dapp<span>Go</span></div>
     <div class="nav-right">
         <ul class="nav-links" id="navLinks">
+            <li><a href="#products" data-i18n="nav.products">Products</a></li>
             <li><a href="#services" data-i18n="nav.services">Services</a></li>
             <li><a href="#process" data-i18n="nav.process">Process</a></li>
-            <li><a href="#solutions" data-i18n="nav.solutions">Solutions</a></li>
             <li><a href="#cases" data-i18n="nav.cases">Cases</a></li>
-            <li><a href="#tech" data-i18n="nav.tech">Tech</a></li>
-            <li><a href="#why" data-i18n="nav.why">Why Us</a></li>
             <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
         </ul>
-        <button class="lang-switch" id="langSwitch" title="Switch Language">EN / 中</button>
-        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme" title="Toggle color theme">
+        <button class="lang-switch" id="langSwitch" data-i18n-title="lang.switch" title="Switch language">EN / 中</button>
+        <button class="theme-toggle" id="themeToggle" type="button" data-i18n-aria-label="theme.toggle" data-i18n-title="theme.toggle" aria-label="Toggle color theme" title="Toggle color theme">
             <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
         </button>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
+        <button class="hamburger" id="hamburger" data-i18n-aria-label="nav.menu" aria-label="Menu">
             <span></span><span></span><span></span>
         </button>
     </div>
@@ -1219,26 +1214,72 @@
 
 <!-- Hero -->
 <section class="hero" id="hero">
-    <div class="hero-tag" data-i18n="hero.tag">AI Automation & Model Integration</div>
+    <div class="hero-tag" data-i18n="hero.tag">AI Products & Automation</div>
     <h1>
-        <span data-i18n="hero.title1">Automate. Integrate.</span><br>
+        <span data-i18n="hero.title1">From data to action.</span><br>
         <span class="typewriter" id="heroTypewriter"></span>
     </h1>
-    <p data-i18n="hero.desc">We're an AI automation company — not blockchain, not crypto. We build pipelines that automate reporting, connect models, and replace manual work at scale.</p>
+    <p data-i18n="hero.desc">DappGo builds market intelligence products and reliable AI workflows for teams that need useful outputs, not prototypes.</p>
     <div class="hero-cta">
-        <a href="#contact" class="btn-primary pulse-glow" data-i18n="hero.cta1">Get Started</a>
-        <a href="#services" class="btn-ghost" data-i18n="hero.cta2">Explore Services</a>
-        <button class="btn-subscribe" onclick="openSubscribePopup()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><span data-i18n="hero.cta3">免費訂閱每日報告</span></button>
+        <a href="#products" class="btn-primary pulse-glow" data-i18n="hero.cta1">View products</a>
+        <a href="#contact" class="btn-ghost" data-i18n="hero.cta2">Discuss a project</a>
     </div>
-    <div class="hero-trust">
-        <span class="trust-label" data-i18n="hero.trust">Trusted across industries:</span>
-        <div class="trust-badges">
-            <span class="trust-badge" data-i18n="hero.ind1">FinTech</span>
-            <span class="trust-badge" data-i18n="hero.ind2">E-Commerce</span>
-            <span class="trust-badge" data-i18n="hero.ind3">Healthcare</span>
-            <span class="trust-badge" data-i18n="hero.ind4">Manufacturing</span>
-            <span class="trust-badge" data-i18n="hero.ind5">Media</span>
-        </div>
+</section>
+
+<!-- Products -->
+<section id="products" class="reveal">
+    <div class="section-label" data-i18n="products.label">Products</div>
+    <h2 class="section-title" data-i18n="products.title">DappGo products</h2>
+    <p class="section-desc" data-i18n="products.desc">Live products built and maintained by DappGo, from market intelligence to mobile entertainment.</p>
+    <div class="products-grid">
+        <article class="product-card">
+            <div class="product-card-top">
+                <img class="product-icon" src="assets/app-icons/tw-stocks-icon.png" alt="TW Stocks app icon" width="56" height="56" loading="lazy" decoding="async" data-i18n-alt="products.p1.alt">
+                <span class="product-status" data-i18n="products.p1.status">In production</span>
+            </div>
+            <h3 data-i18n="products.p1.title">TW Stocks</h3>
+            <p data-i18n="products.p1.desc">Daily signals, market breadth, sector rotation, and company-level analysis for Taiwan-listed stocks.</p>
+            <div class="product-card-bottom">
+                <span class="product-meta" data-i18n="products.p1.meta">TW market · Mobile app</span>
+                <a href="#contact" class="product-link" data-i18n="products.p1.link">Request access →</a>
+            </div>
+        </article>
+        <article class="product-card">
+            <div class="product-card-top">
+                <img class="product-icon" src="assets/app-icons/us-stocks-icon.png" alt="US Stocks app icon" width="56" height="56" loading="lazy" decoding="async" data-i18n-alt="products.p2.alt">
+                <span class="product-status" data-i18n="products.p2.status">In production</span>
+            </div>
+            <h3 data-i18n="products.p2.title">US Stocks</h3>
+            <p data-i18n="products.p2.desc">A research app combining price action, fundamentals, news sentiment, insider activity, and options flow.</p>
+            <div class="product-card-bottom">
+                <span class="product-meta" data-i18n="products.p2.meta">US market · Mobile app</span>
+                <a href="#contact" class="product-link" data-i18n="products.p2.link">Request access →</a>
+            </div>
+        </article>
+        <article class="product-card">
+            <div class="product-card-top">
+                <img class="product-icon" src="assets/app-icons/options-icon.png" alt="Options app icon" width="56" height="56" loading="lazy" decoding="async" data-i18n-alt="products.p3.alt">
+                <span class="product-status" data-i18n="products.p3.status">In production</span>
+            </div>
+            <h3 data-i18n="products.p3.title">Options</h3>
+            <p data-i18n="products.p3.desc">An automated options pipeline with Black–Scholes pricing, timing signals, open-interest concentration, and model-assisted commentary.</p>
+            <div class="product-card-bottom">
+                <span class="product-meta" data-i18n="products.p3.meta">US options · Report + app</span>
+                <a href="/options" class="product-link" data-i18n="products.p3.link">See daily report →</a>
+            </div>
+        </article>
+        <article class="product-card">
+            <div class="product-card-top">
+                <img class="product-icon" src="assets/app-icons/number-merge-icon.png" alt="Number Merge app icon" width="56" height="56" loading="lazy" decoding="async" data-i18n-alt="products.p4.alt">
+                <span class="product-status" data-i18n="products.p4.status">Product experiment</span>
+            </div>
+            <h3 data-i18n="products.p4.title">Number Merge</h3>
+            <p data-i18n="products.p4.desc">A focused number-merging game and a compact experiment in product design.</p>
+            <div class="product-card-bottom">
+                <span class="product-meta" data-i18n="products.p4.meta">Mobile game · Ad-supported</span>
+                <a href="#contact" class="product-link" data-i18n="products.p4.link">Learn more →</a>
+            </div>
+        </article>
     </div>
 </section>
 
@@ -1246,62 +1287,62 @@
 <div class="bg-alt-wrap">
 <section id="whats-new" class="reveal">
     <div class="section-label" data-i18n="new.label">What's New</div>
-    <h2 class="section-title" data-i18n="new.title">最新功能 <span style="font-size:1.2rem;font-weight:400;color:var(--text-muted)">(2026-05)</span></h2>
-    <p class="section-desc" data-i18n="new.desc">這個月陸續上線的東西。三款 app（台股、美股、選擇權）都有更新，不是一次性的大改版，而是每週有什麼順手就先推。</p>
+    <h2 class="section-title" data-i18n="new.title">Latest Product Updates</h2>
+    <p class="section-desc" data-i18n="new.desc">Recent improvements across TW Stocks, US Stocks, and Options.</p>
     <div class="whats-new-grid">
         <div class="new-card">
             <span class="new-card-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg></span>
-            <div class="new-card-group" data-i18n="new.g1">圖表</div>
-            <h3 data-i18n="new.f1.title">圖表切換 + 時間軸</h3>
-            <p data-i18n="new.f1.desc">現在可以在 K 線圖跟折線圖之間切換，時間軸從 1 個月到 3 年都有。我自己最常用 6M 搭折線，看趨勢比較清楚。</p>
+            <div class="new-card-group" data-i18n="new.g1">Charts</div>
+            <h3 data-i18n="new.f1.title">Chart views and time ranges</h3>
+            <p data-i18n="new.f1.desc">Switch between candlestick and line charts, with ranges from one month to three years.</p>
         </div>
         <div class="new-card">
             <span class="new-card-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></span>
-            <div class="new-card-group" data-i18n="new.g2">訊號</div>
-            <h3 data-i18n="new.f2.title">現在市場偏多還是偏空？</h3>
-            <p data-i18n="new.f2.desc">App 會自動判斷目前整體市場偏多、偏空還是中性。根據台股加權指數加上 SPY 的走勢一起算，結果直接顯示在首頁。</p>
+            <div class="new-card-group" data-i18n="new.g2">Signals</div>
+            <h3 data-i18n="new.f2.title">Market direction signals</h3>
+            <p data-i18n="new.f2.desc">A combined signal uses the Taiwan Weighted Index and SPY to indicate bullish, bearish, or neutral conditions.</p>
         </div>
         <div class="new-card">
             <span class="new-card-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="3"/><path d="M12 6h5a2 2 0 0 1 2 2v7"/><path d="m15 9-3-3 3-3"/><circle cx="19" cy="18" r="3"/><path d="M12 18H7a2 2 0 0 1-2-2V9"/><path d="m9 15 3 3-3 3"/></svg></span>
-            <div class="new-card-group" data-i18n="new.g3">進階</div>
-            <h3 data-i18n="new.f3.title">兩檔股票並排比</h3>
-            <p data-i18n="new.f3.desc">你可以把兩支股票放在一起看：本益比、每股盈餘、動能指標、殖利率這些都並排。哪邊比較好的格子會自動標出來，不用自己算。</p>
+            <div class="new-card-group" data-i18n="new.g3">Advanced</div>
+            <h3 data-i18n="new.f3.title">Side-by-side stock comparison</h3>
+            <p data-i18n="new.f3.desc">Compare valuation, earnings, momentum, and yield metrics in one view.</p>
         </div>
         <div class="new-card">
             <span class="new-card-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span>
-            <div class="new-card-group" data-i18n="new.g2">訊號</div>
-            <h3 data-i18n="new.f4.title">這週哪些股票在動？</h3>
-            <p data-i18n="new.f4.desc">看過去 7 天訊號有明顯變化的標的。有時候比看大盤更有用 — 市場沒方向的時候，某幾支還是在悄悄轉強。</p>
+            <div class="new-card-group" data-i18n="new.g2">Signals</div>
+            <h3 data-i18n="new.f4.title">Signal movers</h3>
+            <p data-i18n="new.f4.desc">Review stocks with the largest signal changes over the past seven days.</p>
         </div>
         <div class="new-card">
             <span class="new-card-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg></span>
-            <div class="new-card-group" data-i18n="new.g2">訊號</div>
-            <h3 data-i18n="new.f5.title">新聞情緒</h3>
-            <p data-i18n="new.f5.desc">針對每支股票的相關新聞，App 會自動判斷是正面還是負面。繁體中文跟英文新聞都支援，不是 AI 摘要，是直接對標題做情緒標記。</p>
+            <div class="new-card-group" data-i18n="new.g2">Signals</div>
+            <h3 data-i18n="new.f5.title">News sentiment</h3>
+            <p data-i18n="new.f5.desc">Classify related headlines as positive or negative across Traditional Chinese and English sources.</p>
         </div>
         <div class="new-card">
             <span class="new-card-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg></span>
-            <div class="new-card-group" data-i18n="new.g3">進階</div>
-            <h3 data-i18n="new.f6.title">選擇權異常動向</h3>
-            <p data-i18n="new.f6.desc">追蹤買權跟賣權的成交比例，以及波動率曲線的偏斜。有時候正股還沒動，這邊就先出現異常。我加這個主要是因為自己看大戶布局用得到。</p>
+            <div class="new-card-group" data-i18n="new.g3">Advanced</div>
+            <h3 data-i18n="new.f6.title">Options flow anomalies</h3>
+            <p data-i18n="new.f6.desc">Track call-to-put volume and volatility skew to identify unusual options activity.</p>
         </div>
         <div class="new-card">
             <span class="new-card-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></svg></span>
-            <div class="new-card-group" data-i18n="new.g3">進階</div>
-            <h3 data-i18n="new.f7.title">這支股票在同產業裡強嗎？</h3>
-            <p data-i18n="new.f7.desc">三層比較：個股跟同類股比、同類股跟大盤比。產業輪動的時候這個最好用 — 你會知道是整個族群在漲，還是只有這支在動。</p>
+            <div class="new-card-group" data-i18n="new.g3">Advanced</div>
+            <h3 data-i18n="new.f7.title">Relative strength by sector</h3>
+            <p data-i18n="new.f7.desc">Compare a stock with its peers and the broader index to identify sector leadership.</p>
         </div>
         <div class="new-card">
             <span class="new-card-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span>
-            <div class="new-card-group" data-i18n="new.g1">圖表</div>
-            <h3 data-i18n="new.f8.title">基本面一覽</h3>
-            <p data-i18n="new.f8.desc">本益比、每股盈餘、股利殖利率集中在一張卡片。美股另外多了一個功能：如果最近有內部人在大量買賣自家股票，App 會特別標記出來。</p>
+            <div class="new-card-group" data-i18n="new.g1">Charts</div>
+            <h3 data-i18n="new.f8.title">Fundamentals at a glance</h3>
+            <p data-i18n="new.f8.desc">Review valuation, earnings, dividend yield, and US insider activity in one card.</p>
         </div>
         <div class="new-card">
             <span class="new-card-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="21" x2="14" y1="4" y2="4"/><line x1="10" x2="3" y1="4" y2="4"/><line x1="21" x2="12" y1="12" y2="12"/><line x1="8" x2="3" y1="12" y2="12"/><line x1="21" x2="16" y1="20" y2="20"/><line x1="12" x2="3" y1="20" y2="20"/><line x1="14" x2="14" y1="2" y2="6"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="16" x2="16" y1="18" y2="22"/></svg></span>
-            <div class="new-card-group" data-i18n="new.g1">圖表</div>
-            <h3 data-i18n="new.f9.title">自己決定要看哪些卡片</h3>
-            <p data-i18n="new.f9.desc">分析頁面可以自己選要顯示哪些區塊，不想看的就關掉。功能很簡單，但加了之後畫面清爽很多。</p>
+            <div class="new-card-group" data-i18n="new.g1">Charts</div>
+            <h3 data-i18n="new.f9.title">Customizable analysis layout</h3>
+            <p data-i18n="new.f9.desc">Choose which analysis sections appear on the page and keep the workspace focused.</p>
         </div>
     </div>
 </section>
@@ -1309,53 +1350,53 @@
 
 <!-- Services -->
 <section id="services" class="reveal">
-    <div class="section-label" data-i18n="services.label">What We Do</div>
-    <h2 class="section-title" data-i18n="services.title">Core Services</h2>
-    <p class="section-desc" data-i18n="services.desc">AI that ships. From quick automations to full pipeline builds.</p>
+    <div class="section-label" data-i18n="services.label">Services</div>
+    <h2 class="section-title" data-i18n="services.title">Automation services</h2>
+    <p class="section-desc" data-i18n="services.desc">Design, integrate, and operate reliable AI workflows around your data.</p>
     <div class="services-grid">
         <div class="service-card">
             <span class="service-icon">&#x2699;</span>
-            <h3 data-i18n="services.s1.title">AI Workflow Automation</h3>
-            <p data-i18n="services.s1.desc">We map your manual processes, find what can be automated, and build pipelines that run without someone watching them.</p>
+            <h3 data-i18n="services.s1.title">Workflow automation</h3>
+            <p data-i18n="services.s1.desc">We map manual processes and build monitored pipelines that run on schedule with minimal intervention.</p>
         </div>
         <div class="service-card">
             <span class="service-icon">&#x29C9;</span>
-            <h3 data-i18n="services.s2.title">Model Integration</h3>
-            <p data-i18n="services.s2.desc">Connect LLMs, vision, speech, or whatever combination makes sense — as one system, not five separate experiments.</p>
+            <h3 data-i18n="services.s2.title">Model and data integration</h3>
+            <p data-i18n="services.s2.desc">Connect language, vision, and speech models with the data and systems your workflow already uses.</p>
         </div>
         <div class="service-card">
             <span class="service-icon">&#x2316;</span>
-            <h3 data-i18n="services.s3.title">Custom AI Solutions</h3>
-            <p data-i18n="services.s3.desc">When the off-the-shelf tools don't fit your data or workflow, we build something that does.</p>
+            <h3 data-i18n="services.s3.title">Custom AI systems</h3>
+            <p data-i18n="services.s3.desc">When standard tools do not fit, we design a production system around your data, controls, and operating needs.</p>
         </div>
     </div>
 </section>
 
 <!-- How It Works -->
 <section id="process" class="reveal">
-    <div class="section-label" data-i18n="process.label">Our Process</div>
-    <h2 class="section-title" data-i18n="process.title">How We Work</h2>
-    <p class="section-desc" data-i18n="process.desc">Weeks to production, not quarters.</p>
+    <div class="section-label" data-i18n="process.label">Delivery process</div>
+    <h2 class="section-title" data-i18n="process.title">From scope to production</h2>
+    <p class="section-desc" data-i18n="process.desc">A focused path from a defined use case to a monitored production workflow.</p>
     <div class="process-grid">
         <div class="process-step">
             <div class="step-number">01</div>
-            <h3 data-i18n="process.p1.title">Discovery</h3>
-            <p data-i18n="process.p1.desc">We look at your workflows, figure out what's worth automating, and agree on what success looks like.</p>
+            <h3 data-i18n="process.p1.title">Define the use case</h3>
+            <p data-i18n="process.p1.desc">Map the current workflow, identify the right opportunity, and define a measurable outcome.</p>
         </div>
         <div class="process-step">
             <div class="step-number">02</div>
-            <h3 data-i18n="process.p2.title">Design</h3>
-            <p data-i18n="process.p2.desc">Pick the models, sketch the integrations, map the data flows. Nothing is built until this is clear.</p>
+            <h3 data-i18n="process.p2.title">Design the system</h3>
+            <p data-i18n="process.p2.desc">Select the models, integrations, and data flows before implementation begins.</p>
         </div>
         <div class="process-step">
             <div class="step-number">03</div>
-            <h3 data-i18n="process.p3.title">Build & Test</h3>
-            <p data-i18n="process.p3.desc">Weekly builds, ongoing tests. You see the thing working before it ships — not after.</p>
+            <h3 data-i18n="process.p3.title">Build and validate</h3>
+            <p data-i18n="process.p3.desc">Release in small increments and validate the workflow with real inputs before launch.</p>
         </div>
         <div class="process-step">
             <div class="step-number">04</div>
-            <h3 data-i18n="process.p4.title">Deploy & Monitor</h3>
-            <p data-i18n="process.p4.desc">Production deployment with monitoring and alerts. We stay on it after go-live.</p>
+            <h3 data-i18n="process.p4.title">Deploy and operate</h3>
+            <p data-i18n="process.p4.desc">Deploy with monitoring, alerts, and a clear operating handoff after go-live.</p>
         </div>
     </div>
 </section>
@@ -1363,30 +1404,28 @@
 <div class="bg-alt-wrap">
 <!-- Solutions -->
 <section id="solutions" class="reveal">
-    <div class="section-label" data-i18n="solutions.label">Solutions</div>
-    <h2 class="section-title" data-i18n="solutions.title">Fits where you are</h2>
-    <p class="section-desc" data-i18n="solutions.desc">Early-stage team or established enterprise — we've worked with both.</p>
+    <div class="section-label" data-i18n="solutions.label">Engagement models</div>
+    <h2 class="section-title" data-i18n="solutions.title">Start focused. Scale when ready.</h2>
+    <p class="section-desc" data-i18n="solutions.desc">Begin with one measurable workflow or build a production system around your operations.</p>
     <div class="solutions-grid">
         <div class="solution-card">
-            <div class="solution-badge" data-i18n="solutions.s1.badge">SMB</div>
-            <h3 data-i18n="solutions.s1.title">Growth Package</h3>
-            <p data-i18n="solutions.s1.desc">AI automation that doesn't require an ML team to run it.</p>
+            <div class="solution-badge" data-i18n="solutions.s1.badge">Focused</div>
+            <h3 data-i18n="solutions.s1.title">Workflow starter</h3>
+            <p data-i18n="solutions.s1.desc">A focused automation for a defined process and a measurable outcome.</p>
             <ul class="solution-features">
-                <li data-i18n="solutions.s1.f1">Pre-built automation templates</li>
-                <li data-i18n="solutions.s1.f2">Plug-and-play model APIs</li>
-                <li data-i18n="solutions.s1.f3">Dashboard & monitoring</li>
-                <li data-i18n="solutions.s1.f4">Dedicated support channel</li>
+                <li data-i18n="solutions.s1.f1">Process mapping and workflow design</li>
+                <li data-i18n="solutions.s1.f2">Model and API integration</li>
+                <li data-i18n="solutions.s1.f3">Monitoring and handoff</li>
             </ul>
         </div>
         <div class="solution-card">
-            <div class="solution-badge" data-i18n="solutions.s2.badge">Enterprise</div>
-            <h3 data-i18n="solutions.s2.title">Enterprise Suite</h3>
-            <p data-i18n="solutions.s2.desc">Custom AI infrastructure that slots into your existing stack.</p>
+            <div class="solution-badge" data-i18n="solutions.s2.badge">Scale</div>
+            <h3 data-i18n="solutions.s2.title">Production system</h3>
+            <p data-i18n="solutions.s2.desc">A production-grade system integrated with your existing stack and operating model.</p>
             <ul class="solution-features">
-                <li data-i18n="solutions.s2.f1">Custom model training & fine-tuning</li>
-                <li data-i18n="solutions.s2.f2">On-premise / private cloud deployment</li>
-                <li data-i18n="solutions.s2.f3">Enterprise security & compliance</li>
-                <li data-i18n="solutions.s2.f4">Dedicated engineering team</li>
+                <li data-i18n="solutions.s2.f1">Model evaluation and customization</li>
+                <li data-i18n="solutions.s2.f2">Private deployment options</li>
+                <li data-i18n="solutions.s2.f3">Security, monitoring, and support</li>
             </ul>
         </div>
     </div>
@@ -1395,26 +1434,26 @@
 
 <!-- Case Studies -->
 <section id="cases" class="reveal">
-    <div class="section-label" data-i18n="cases.label">Case Studies</div>
-    <h2 class="section-title" data-i18n="cases.title">Things we've actually built</h2>
-    <p class="section-desc" data-i18n="cases.desc">Not mockups. These are running in production.</p>
+    <div class="section-label" data-i18n="cases.label">Selected work</div>
+    <h2 class="section-title" data-i18n="cases.title">Products and systems in production</h2>
+    <p class="section-desc" data-i18n="cases.desc">Examples of products and automation systems we build and operate.</p>
     <div class="services-grid">
         <div class="service-card">
             <span class="service-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg></span>
-            <h3 data-i18n="cases.c1.title">Daily AI Options Report</h3>
-            <p data-i18n="cases.c1.desc">A fully automated options selling strategy that runs every weekday before the US market opens. Black-Scholes pricing, AI commentary, OI concentration, timing signals — delivered to your inbox and the companion iOS app. Free while in beta.</p>
+            <h3 data-i18n="cases.c1.title">Daily options intelligence</h3>
+            <p data-i18n="cases.c1.desc">An automated weekday pipeline covering Black–Scholes pricing, timing signals, open-interest concentration, and model-assisted commentary.</p>
             <a href="/options" style="color:var(--accent);font-size:0.85rem;display:inline-block;margin-top:0.5rem" data-i18n="cases.c1.link">See today&rsquo;s report &rarr;</a>
         </div>
         <div class="service-card">
             <span class="service-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></span>
-            <h3 data-i18n="cases.c2.title">Companion iOS App</h3>
-            <p data-i18n="cases.c2.desc">The daily analysis, live strike matrix, backtest simulator, and watchlist — all in one native app. Built with Expo + React Native. TestFlight access available on request.</p>
-            <a href="/#contact" style="color:var(--accent);font-size:0.85rem;display:inline-block;margin-top:0.5rem" data-i18n="cases.c2.link">Request TestFlight access &rarr;</a>
+            <h3 data-i18n="cases.c2.title">DappGo mobile products</h3>
+            <p data-i18n="cases.c2.desc">Three native market applications turn daily data pipelines into practical research tools with analysis, watchlists, and charts.</p>
+            <a href="#products" style="color:var(--accent);font-size:0.85rem;display:inline-block;margin-top:0.5rem" data-i18n="cases.c2.link">Explore the products &rarr;</a>
         </div>
         <div class="service-card">
             <span class="service-icon">&#x2699;</span>
-            <h3 data-i18n="cases.c3.title">Enterprise AI Pipeline</h3>
-            <p data-i18n="cases.c3.desc">Custom end-to-end automation for enterprise clients. We handle the data ingestion, model inference, and output delivery — so your team gets the insight without the manual work.</p>
+            <h3 data-i18n="cases.c3.title">Enterprise automation</h3>
+            <p data-i18n="cases.c3.desc">End-to-end workflow automation covering data ingestion, model inference, and reliable output delivery.</p>
             <a href="/#contact" style="color:var(--accent);font-size:0.85rem;display:inline-block;margin-top:0.5rem" data-i18n="cases.c3.link">Discuss your use case &rarr;</a>
         </div>
     </div>
@@ -1423,18 +1462,16 @@
 <!-- Tech Stack -->
 <section id="tech" class="reveal">
     <div class="section-label" data-i18n="tech.label">Technology</div>
-    <h2 class="section-title" data-i18n="tech.title">Our AI Stack</h2>
-    <p class="section-desc" data-i18n="tech.desc">We use what the problem needs. Sometimes that's GPT-4, sometimes it's a fine-tuned open model, sometimes it's something we build ourselves.</p>
+    <h2 class="section-title" data-i18n="tech.title">Technology, applied</h2>
+    <p class="section-desc" data-i18n="tech.desc">We select the models, data stack, and infrastructure to fit the problem—not the other way around.</p>
     <div class="tech-grid">
         <div class="tech-category">
-            <h4 data-i18n="tech.t1.title">LLM & NLP</h4>
+            <h4 data-i18n="tech.t1.title">Language models and NLP</h4>
             <div class="tech-tags">
                 <span class="tech-tag">OpenAI GPT-4</span>
                 <span class="tech-tag">Claude</span>
                 <span class="tech-tag">Gemini</span>
-                <span class="tech-tag">LLaMA</span>
                 <span class="tech-tag">LangChain</span>
-                <span class="tech-tag">RAG</span>
             </div>
         </div>
         <div class="tech-category">
@@ -1443,9 +1480,7 @@
                 <span class="tech-tag">Python</span>
                 <span class="tech-tag">Pandas</span>
                 <span class="tech-tag">NumPy</span>
-                <span class="tech-tag">Spark</span>
                 <span class="tech-tag">Airflow</span>
-                <span class="tech-tag">dbt</span>
             </div>
         </div>
         <div class="tech-category">
@@ -1455,8 +1490,6 @@
                 <span class="tech-tag">scikit-learn</span>
                 <span class="tech-tag">XGBoost</span>
                 <span class="tech-tag">Hugging Face</span>
-                <span class="tech-tag">MLflow</span>
-                <span class="tech-tag">Fine-tuning</span>
             </div>
         </div>
         <div class="tech-category">
@@ -1465,38 +1498,8 @@
                 <span class="tech-tag">AWS</span>
                 <span class="tech-tag">GCP</span>
                 <span class="tech-tag">Docker</span>
-                <span class="tech-tag">Kubernetes</span>
                 <span class="tech-tag">GitHub Actions</span>
-                <span class="tech-tag">Terraform</span>
             </div>
-        </div>
-    </div>
-</section>
-
-<!-- Why DappGo -->
-<section id="why" class="reveal">
-    <div class="section-label" data-i18n="why.label">Why DappGo</div>
-    <h2 class="section-title" data-i18n="why.title">Numbers That Matter</h2>
-    <div class="why-grid">
-        <div class="why-item">
-            <div class="why-number" id="counter1">0</div>
-            <h4 data-i18n="why.w1.title">Projects Delivered</h4>
-            <p data-i18n="why.w1.desc">Across industries and scales</p>
-        </div>
-        <div class="why-item">
-            <div class="why-number" id="counter2">0</div>
-            <h4 data-i18n="why.w2.title">Models Integrated</h4>
-            <p data-i18n="why.w2.desc">LLM, Vision, Speech & more</p>
-        </div>
-        <div class="why-item">
-            <div class="why-number" id="counter3">0<span style="font-size:1.5rem">%</span></div>
-            <h4 data-i18n="why.w3.title">Avg. Efficiency Gain</h4>
-            <p data-i18n="why.w3.desc">For automated workflows</p>
-        </div>
-        <div class="why-item">
-            <div class="why-number" id="counter4">24/7</div>
-            <h4 data-i18n="why.w4.title">Support</h4>
-            <p data-i18n="why.w4.desc">Monitoring & incident response</p>
         </div>
     </div>
 </section>
@@ -1504,12 +1507,12 @@
 <div class="bg-alt-wrap">
 <!-- Contact -->
 <section id="contact" class="reveal">
-    <div class="section-label" data-i18n="contact.label">Get in Touch</div>
-    <h2 class="section-title" data-i18n="contact.title">Let's Build Together</h2>
+    <div class="section-label" data-i18n="contact.label">Contact</div>
+    <h2 class="section-title" data-i18n="contact.title">Discuss your requirements</h2>
     <div class="contact-wrapper">
         <div class="contact-info">
-            <h3 data-i18n="contact.info.title">Have a project in mind?</h3>
-            <p data-i18n="contact.info.desc">Tell us what you're trying to automate. We'll get back within 24 hours.</p>
+            <h3 data-i18n="contact.info.title">Have an automation need?</h3>
+            <p data-i18n="contact.info.desc">Tell us which workflow you want to improve. We'll reply within 24 hours.</p>
             <div class="contact-detail">
                 <span>&gt;_</span>
                 <span>admin@dappgo.com</span>
@@ -1525,7 +1528,7 @@
                target="_blank" rel="noopener noreferrer"
                class="btn-primary"
                style="display:inline-block;text-align:center;text-decoration:none"
-               data-i18n="contact.cta.button">Get in Touch &rarr;</a>
+               data-i18n="contact.cta.button">Contact DappGo &rarr;</a>
             <p style="margin:0;font-size:0.85rem;color:var(--text-muted)" data-i18n="contact.cta.note">Goes to admin@dappgo.com. Powered by Google Forms.</p>
         </div>
     </div>
@@ -1537,21 +1540,22 @@
     <div class="footer-content">
         <div class="footer-left">
             <div class="logo">Dapp<span>Go</span></div>
-            <p class="footer-tagline" data-i18n="footer.tagline">AI Automation & Model Integration</p>
+            <p class="footer-tagline" data-i18n="footer.tagline">AI products and automation</p>
         </div>
         <div class="footer-center">
+            <a href="#products" data-i18n="nav.products">Products</a>
             <a href="#services" data-i18n="nav.services">Services</a>
             <a href="#cases" data-i18n="nav.cases">Cases</a>
-            <a href="#tech">Tech</a>
+            <a href="#tech" data-i18n="nav.tech">Technology</a>
             <a href="#contact" data-i18n="nav.contact">Contact</a>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSdbPRZYypmKayxXJhB13UuV4BcUD8nqvSwpDYkyj4-XGt4sOw/viewform" target="_blank" rel="noopener noreferrer" data-i18n="nav.feedback">Feedback</a>
-            <a href="/support">Support</a>
+            <a href="/support" data-i18n="nav.support">Support</a>
             <a href="/privacy" data-i18n="nav.privacy">Privacy</a>
             <a href="/terms" data-i18n="nav.terms">Terms</a>
         </div>
         <div class="footer-right">
             <p>&copy; 2025-2026 DappGo. <span data-i18n="footer.rights">All rights reserved.</span></p>
-            <p style="font-size:0.75rem;color:var(--text-muted);margin-top:0.3rem;display:flex;align-items:center;gap:0.3rem;flex-wrap:wrap;justify-content:flex-end" data-i18n="footer.apps">&#x1F1F9;&#x1F1FC; 台股 &nbsp;|&nbsp; &#x1F1FA;&#x1F1F8; 美股 &nbsp;|&nbsp; <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:middle;flex-shrink:0"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg> 選擇權 — 三款每日訊號 App</p>
+            <p style="font-size:0.75rem;color:var(--text-muted);margin-top:0.3rem;display:flex;align-items:center;gap:0.3rem;flex-wrap:wrap;justify-content:flex-end" data-i18n="footer.products">TW Stocks | US Stocks | Options | Number Merge — DappGo product family</p>
             <p style="font-size:0.75rem;color:var(--text-muted);margin-top:0.2rem" data-i18n="footer.note">DappGo is an AI automation company. We are not affiliated with blockchain, cryptocurrency, or DeFi.</p>
         </div>
     </div>
@@ -1559,10 +1563,10 @@
 
 <!-- ═══════════ Subscribe Popup (non-intrusive) ═══════════ -->
 <div id="subPop" class="sub-pop" role="dialog" aria-labelledby="subPopTitle" aria-describedby="subPopDesc" aria-hidden="true">
-    <button type="button" class="sub-pop-close" id="subPopClose" aria-label="Close">&times;</button>
+    <button type="button" class="sub-pop-close" id="subPopClose" data-i18n-aria-label="pop.close" aria-label="Close">&times;</button>
     <div class="sub-pop-emoji" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.2 8.4c.5.38.8.97.8 1.6v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V10a2 2 0 0 1 .8-1.6l8-6a2 2 0 0 1 2.4 0l8 6Z"/><path d="m22 10-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 10"/></svg></div>
-    <div class="sub-pop-title" id="subPopTitle" data-i18n="pop.title">免費訂閱每日報告</div>
-    <div class="sub-pop-desc" id="subPopDesc" data-i18n="pop.desc">每個交易日早上 06:30 寄到信箱。Beta 期間免費，不想收隨時取消。</div>
+    <div class="sub-pop-title" id="subPopTitle" data-i18n="pop.title">Daily market reports</div>
+    <div class="sub-pop-desc" id="subPopDesc" data-i18n="pop.desc">Weekday reports delivered at 6:30 AM PT. Free during beta; unsubscribe anytime.</div>
     <!-- Subscribe CTA — opens the DappGo Subscribe Google Form in a new tab.
          User picks products, language, and submits there.
          FormSubmit was removed 2026-05-10 in favor of Google Forms (which has
@@ -1574,10 +1578,10 @@
        target="_blank"
        rel="noopener"
        style="display:block; text-align:center; padding:14px 24px; margin-top:12px; font-weight:700; text-decoration:none;">
-        <span data-i18n="pop.cta">Open subscribe form →</span>
+        <span data-i18n="pop.cta">Open subscription form →</span>
     </a>
     <div class="sub-pop-cta-hint" style="margin-top:10px; font-size:12px; line-height:1.6; color:var(--text-muted); text-align:center;">
-        <span data-i18n="pop.cta_hint">Pick which reports (TW / US / Options) and your language on the form. Takes 30 seconds.</span>
+        <span data-i18n="pop.cta_hint">Select the reports and language you want. Takes about 30 seconds.</span>
     </div>
     <div class="sub-pop-legal">
         <span data-i18n="pop.legal">No spam. </span><a href="/privacy" data-i18n="pop.privacy">Privacy</a>
@@ -1590,332 +1594,292 @@ const translations = {
     en: {
         'nav.services': 'Services',
         'nav.process': 'Process',
-        'nav.solutions': 'Solutions',
-        'nav.cases': 'Cases',
-        'nav.tech': 'Tech',
-        'nav.why': 'Why Us',
+        'nav.cases': 'Work',
+        'nav.tech': 'Technology',
         'nav.contact': 'Contact',
+        'nav.support': 'Support',
+        'nav.menu': 'Menu',
+        'lang.switch': 'Switch language',
+        'theme.toggle': 'Toggle color theme',
+        'page.title': 'DappGo — AI Products & Automation',
+        'nav.products': 'Products',
         'nav.privacy': 'Privacy',
         'nav.terms': 'Terms',
-        'hero.tag': 'AI Automation & Model Integration',
-        'hero.title1': 'Automate. Integrate.',
-        'hero.desc': 'We\'re an AI automation company — not blockchain, not crypto. We build pipelines that automate reporting, connect models, and replace manual work at scale.',
-        'hero.cta1': 'Get Started',
-        'hero.cta2': 'Explore Services',
-        'hero.cta3': 'Free Daily Reports',
-        'hero.trust': 'Trusted across industries:',
-        'hero.ind1': 'FinTech',
-        'hero.ind2': 'E-Commerce',
-        'hero.ind3': 'Healthcare',
-        'hero.ind4': 'Manufacturing',
-        'hero.ind5': 'Media',
-        'hero.typewriter': ['Accelerate.', 'Innovate.', 'Scale.', 'Transform.'],
-        'services.label': 'What We Do',
-        'services.title': 'Core Services',
-        'services.desc': 'AI that ships. From quick automations to full pipeline builds.',
-        'services.s1.title': 'AI Workflow Automation',
-        'services.s1.desc': 'We map your manual processes, find what can be automated, and build pipelines that run without someone watching them.',
-        'services.s2.title': 'Model Integration',
-        'services.s2.desc': 'Connect LLMs, vision, speech, or whatever combination makes sense — as one system, not five separate experiments.',
-        'services.s3.title': 'Custom AI Solutions',
-        'services.s3.desc': 'When the off-the-shelf tools don\'t fit your data or workflow, we build something that does.',
-        'process.label': 'Our Process',
-        'process.title': 'How We Work',
-        'process.desc': 'Weeks to production, not quarters.',
-        'process.p1.title': 'Discovery',
-        'process.p1.desc': 'We look at your workflows, figure out what\'s worth automating, and agree on what success looks like.',
-        'process.p2.title': 'Design',
-        'process.p2.desc': 'Pick the models, sketch the integrations, map the data flows. Nothing is built until this is clear.',
-        'process.p3.title': 'Build & Test',
-        'process.p3.desc': 'Weekly builds, ongoing tests. You see the thing working before it ships — not after.',
-        'process.p4.title': 'Deploy & Monitor',
-        'process.p4.desc': 'Production deployment with monitoring and alerts. We stay on it after go-live.',
-        'solutions.label': 'Solutions',
-        'solutions.title': 'Fits where you are',
-        'solutions.desc': 'Early-stage team or established enterprise — we\'ve worked with both.',
-        'solutions.s1.badge': 'SMB',
-        'solutions.s1.title': 'Growth Package',
-        'solutions.s1.desc': 'AI automation that doesn\'t require an ML team to run it.',
-        'solutions.s1.f1': 'Pre-built automation templates',
-        'solutions.s1.f2': 'Plug-and-play model APIs',
-        'solutions.s1.f3': 'Dashboard & monitoring',
-        'solutions.s1.f4': 'Dedicated support channel',
-        'solutions.s2.badge': 'Enterprise',
-        'solutions.s2.title': 'Enterprise Suite',
-        'solutions.s2.desc': 'Custom AI infrastructure that slots into your existing stack.',
-        'solutions.s2.f1': 'Custom model training & fine-tuning',
-        'solutions.s2.f2': 'On-premise / private cloud deployment',
-        'solutions.s2.f3': 'Enterprise security & compliance',
-        'solutions.s2.f4': 'Dedicated engineering team',
-        'flagship.tag': 'Flagship Case Study',
-        'flagship.title': 'Daily AI Options Report',
-        'flagship.desc': 'Our production AI pipeline analyzes the US options market every weekday morning — Black-Scholes pricing, timing signals, OI concentration, and a 5-model Gemini commentary. Delivered to your inbox before the market opens. Free while in beta.',
-        'flagship.b1': '📬 Fresh report in your inbox every weekday at 6:20 AM PT',
-        'flagship.b2': '🤖 AI commentary with highlighted key levels & risks',
-        'flagship.b3': '🌐 Bilingual — 繁體中文 or English, your choice',
-        'flagship.b4': '🔓 No credit card, no paywall, one-click unsubscribe',
-        'flagship.view': 'See today’s report →',
-        'flagship.form.title': 'Subscribe — free while in beta',
-        'flagship.form.desc': 'We’ll email you the daily AI options report. Unsubscribe any time.',
-        'flagship.form.placeholder': 'you@example.com',
-        'flagship.form.lang': 'Report language:',
-        'flagship.form.zh': '繁體中文',
-        'flagship.form.en': 'English',
-        'flagship.form.submit': 'Get daily reports',
-        'flagship.form.privacy': 'By subscribing you agree to receive daily option analysis emails. We don’t share your address. <a href="/privacy" style="color:var(--accent)">Privacy</a>.',
-        'flagship.form.success': '🎉 You’re subscribed! Check your inbox for confirmation.',
-        'flagship.form.error': 'Something went wrong. Please try again, or email us directly.',
-        'pop.title': 'Free Daily Reports',
-        'pop.desc': 'In your inbox by 06:30 every trading day. Free while in beta. Unsubscribe any time.',
-        'pop.products.label': 'Choose reports:',
-        'pop.products.tw': 'TW Stocks daily signals',
-        'pop.products.us': 'US Stocks daily signals',
-        'pop.products.opts': 'US Options daily strategy',
-        'pop.placeholder': 'you@example.com',
-        'pop.submit': 'Subscribe',
-        'pop.lang': 'Language:',
-        'pop.en': 'EN',
-        'pop.zh': '中',
-        'pop.ok': '🎉 Subscribed! Check your inbox.',
-        'pop.ok_multi': '✓ Subscribed to {n} reports — delivered daily at 06:30',
-        'pop.err': 'Couldn\'t send. Please retry.',
-        'pop.nocheck': 'Please select at least one report.',
+        'hero.tag': 'AI Products & Automation',
+        'hero.title1': 'From data to action.',
+        'hero.desc': 'DappGo builds market intelligence products and reliable AI workflows for teams that need useful outputs, not prototypes.',
+        'hero.cta1': 'View products',
+        'hero.cta2': 'Discuss a project',
+        'hero.typewriter': ['Automate.', 'Integrate.', 'Operate.', 'Scale.'],
+        'products.label': 'Products',
+        'products.title': 'DappGo products',
+        'products.desc': 'Live products built and maintained by DappGo, from market intelligence to mobile entertainment.',
+        'products.p1.status': 'In production',
+        'products.p1.title': 'TW Stocks',
+        'products.p1.alt': 'TW Stocks app icon',
+        'products.p1.desc': 'Daily signals, market breadth, sector rotation, and company-level analysis for Taiwan-listed stocks.',
+        'products.p1.meta': 'TW market · Mobile app',
+        'products.p1.link': 'Request access →',
+        'products.p2.status': 'In production',
+        'products.p2.title': 'US Stocks',
+        'products.p2.alt': 'US Stocks app icon',
+        'products.p2.desc': 'A research app combining price action, fundamentals, news sentiment, insider activity, and options flow.',
+        'products.p2.meta': 'US market · Mobile app',
+        'products.p2.link': 'Request access →',
+        'products.p3.status': 'In production',
+        'products.p3.title': 'Options',
+        'products.p3.alt': 'Options app icon',
+        'products.p3.desc': 'An automated options pipeline with Black–Scholes pricing, timing signals, open-interest concentration, and model-assisted commentary.',
+        'products.p3.meta': 'US options · Report + app',
+        'products.p3.link': 'See daily report →',
+        'products.p4.status': 'Product experiment',
+        'products.p4.title': 'Number Merge',
+        'products.p4.alt': 'Number Merge app icon',
+        'products.p4.desc': 'A focused number-merging game and a compact experiment in product design.',
+        'products.p4.meta': 'Mobile game · Ad-supported',
+        'products.p4.link': 'Learn more →',
+        'services.label': 'Services',
+        'services.title': 'Automation services',
+        'services.desc': 'Design, integrate, and operate reliable AI workflows around your data.',
+        'services.s1.title': 'Workflow automation',
+        'services.s1.desc': 'We map manual processes and build monitored pipelines that run on schedule with minimal intervention.',
+        'services.s2.title': 'Model and data integration',
+        'services.s2.desc': 'Connect language, vision, and speech models with the data and systems your workflow already uses.',
+        'services.s3.title': 'Custom AI systems',
+        'services.s3.desc': 'When standard tools do not fit, we design a production system around your data, controls, and operating needs.',
+        'process.label': 'Delivery process',
+        'process.title': 'From scope to production',
+        'process.desc': 'A focused path from a defined use case to a monitored production workflow.',
+        'process.p1.title': 'Define the use case',
+        'process.p1.desc': 'Map the current workflow, identify the right opportunity, and define a measurable outcome.',
+        'process.p2.title': 'Design the system',
+        'process.p2.desc': 'Select the models, integrations, and data flows before implementation begins.',
+        'process.p3.title': 'Build and validate',
+        'process.p3.desc': 'Release in small increments and validate the workflow with real inputs before launch.',
+        'process.p4.title': 'Deploy and operate',
+        'process.p4.desc': 'Deploy with monitoring, alerts, and a clear operating handoff after go-live.',
+        'solutions.label': 'Engagement models',
+        'solutions.title': 'Start focused. Scale when ready.',
+        'solutions.desc': 'Begin with one measurable workflow or build a production system around your operations.',
+        'solutions.s1.badge': 'Focused',
+        'solutions.s1.title': 'Workflow starter',
+        'solutions.s1.desc': 'A focused automation for a defined process and a measurable outcome.',
+        'solutions.s1.f1': 'Process mapping and workflow design',
+        'solutions.s1.f2': 'Model and API integration',
+        'solutions.s1.f3': 'Monitoring and handoff',
+        'solutions.s2.badge': 'Scale',
+        'solutions.s2.title': 'Production system',
+        'solutions.s2.desc': 'A production-grade system integrated with your existing stack and operating model.',
+        'solutions.s2.f1': 'Model evaluation and customization',
+        'solutions.s2.f2': 'Private deployment options',
+        'solutions.s2.f3': 'Security, monitoring, and support',
+        'pop.title': 'Daily market reports',
+        'pop.desc': 'Weekday reports delivered at 6:30 AM PT. Free during beta; unsubscribe anytime.',
+        'pop.close': 'Close',
         'pop.legal': 'No spam. ',
         'pop.privacy': 'Privacy',
         'new.label': "What's New",
-        'new.title': 'Latest Features (2026-05)',
-        'new.desc': 'Things I shipped this month across all three apps — TW Stocks, US Stocks, and Options. Not one big release, just rolling out stuff as it\'s ready.',
+        'new.title': 'Latest Product Updates',
+        'new.desc': 'Recent improvements across TW Stocks, US Stocks, and Options.',
         'new.g1': 'Charts',
         'new.g2': 'Signals',
         'new.g3': 'Advanced',
-        'new.f1.title': 'Chart type + timeframe picker',
-        'new.f1.desc': 'You can now switch between candlestick and line chart, and pick any timeframe from 1 month to 3 years. I mostly use 6M line — cleaner for spotting trends.',
-        'new.f2.title': 'Is the market risk-on or risk-off right now?',
-        'new.f2.desc': 'The app reads the overall market mood — bullish, bearish, or in between — using both the Taiwan index and SPY together. Shows up right on the home screen.',
-        'new.f3.title': 'Compare two stocks side by side',
-        'new.f3.desc': 'Pick any two tickers and see their valuation, earnings, momentum, and yield next to each other. The better number in each row gets highlighted automatically.',
-        'new.f4.title': 'What moved this week?',
-        'new.f4.desc': 'Shows tickers whose signals shifted most in the past 7 days. Sometimes more useful than watching the index — a few names quietly strengthen even when the market drifts.',
+        'new.f1.title': 'Chart views and time ranges',
+        'new.f1.desc': 'Switch between candlestick and line charts, with ranges from one month to three years.',
+        'new.f2.title': 'Market direction signals',
+        'new.f2.desc': 'A combined signal uses the Taiwan Weighted Index and SPY to indicate bullish, bearish, or neutral conditions.',
+        'new.f3.title': 'Side-by-side stock comparison',
+        'new.f3.desc': 'Compare valuation, earnings, momentum, and yield metrics in one view.',
+        'new.f4.title': 'Signal movers',
+        'new.f4.desc': 'Review stocks with the largest signal changes over the past seven days.',
         'new.f5.title': 'News sentiment',
-        'new.f5.desc': 'For each stock, the app tags related headlines as positive or negative. Works for both Traditional Chinese and English news. It\'s not an AI summary — just direct sentiment labeling on the headline.',
+        'new.f5.desc': 'Classify related headlines as positive or negative across Traditional Chinese and English sources.',
         'new.f6.title': 'Options flow anomalies',
-        'new.f6.desc': 'Tracks the ratio of calls to puts, and whether the volatility curve is skewing in an unusual direction. Sometimes this moves before the stock does. I added it because I use it myself when watching for unusual positioning.',
-        'new.f7.title': 'Is this stock strong within its sector?',
-        'new.f7.desc': 'Three-layer view: stock vs. peers, peers vs. the index. Really useful during rotation — you can tell if an entire sector is lifting or if one name is just running alone.',
+        'new.f6.desc': 'Track call-to-put volume and volatility skew to identify unusual options activity.',
+        'new.f7.title': 'Relative strength by sector',
+        'new.f7.desc': 'Compare a stock with its peers and the broader index to identify sector leadership.',
         'new.f8.title': 'Fundamentals at a glance',
-        'new.f8.desc': 'P/E, EPS, and dividend yield, all in one card. For US stocks there\'s an extra flag: if insiders have been buying or selling their own shares in a cluster recently, the app calls it out.',
-        'new.f9.title': 'Choose which cards to show',
-        'new.f9.desc': 'You can hide any analysis section you don\'t use. Simple feature, but the screen feels a lot less cluttered once you\'ve set it up.',
-        'cases.label': 'Case Studies',
-        'cases.title': 'Things we\'ve actually built',
-        'cases.desc': 'Not mockups. These are running in production.',
-        'cases.c1.title': 'Daily AI Options Report',
-        'cases.c1.desc': 'A fully automated options selling strategy that runs every weekday before the US market opens. Black-Scholes pricing, AI commentary, OI concentration, timing signals — delivered to your inbox and the companion iOS app. Free while in beta.',
+        'new.f8.desc': 'Review valuation, earnings, dividend yield, and US insider activity in one card.',
+        'new.f9.title': 'Customizable analysis layout',
+        'new.f9.desc': 'Choose which analysis sections appear on the page and keep the workspace focused.',
+        'cases.label': 'Selected work',
+        'cases.title': 'Products and systems in production',
+        'cases.desc': 'Examples of products and automation systems we build and operate.',
+        'cases.c1.title': 'Daily options intelligence',
+        'cases.c1.desc': 'An automated weekday pipeline covering Black–Scholes pricing, timing signals, open-interest concentration, and model-assisted commentary.',
         'cases.c1.link': 'See today\u2019s report \u2192',
-        'cases.c2.title': 'Companion iOS App',
-        'cases.c2.desc': 'The daily analysis, live strike matrix, backtest simulator, and watchlist — all in one native app. Built with Expo + React Native. TestFlight access available on request.',
-        'cases.c2.link': 'View today’s report \u2192',
-        'cases.c3.title': 'Enterprise AI Pipeline',
-        'cases.c3.desc': 'Custom end-to-end automation for enterprise clients. We handle the data ingestion, model inference, and output delivery — so your team gets the insight without the manual work.',
+        'cases.c2.title': 'DappGo mobile products',
+        'cases.c2.desc': 'Three native market applications turn daily data pipelines into practical research tools with analysis, watchlists, and charts.',
+        'cases.c2.link': 'Explore the products \u2192',
+        'cases.c3.title': 'Enterprise automation',
+        'cases.c3.desc': 'End-to-end workflow automation covering data ingestion, model inference, and reliable output delivery.',
         'cases.c3.link': 'Discuss your use case \u2192',
         'tech.label': 'Technology',
-        'tech.title': 'Our AI Stack',
-        'tech.desc': 'We use what the problem needs. Sometimes that\'s GPT-4, sometimes it\'s a fine-tuned open model, sometimes it\'s something we build ourselves.',
-        'tech.t1.title': 'LLM & NLP',
+        'tech.title': 'Technology, applied',
+        'tech.desc': 'We select the models, data stack, and infrastructure to fit the problem—not the other way around.',
+        'tech.t1.title': 'Language models and NLP',
         'tech.t2.title': 'Data & Analytics',
         'tech.t3.title': 'ML & Training',
         'tech.t4.title': 'Infrastructure',
-        'why.label': 'Why DappGo',
-        'why.title': 'Numbers That Matter',
-        'why.w1.title': 'Projects Delivered',
-        'why.w1.desc': 'Across industries and scales',
-        'why.w2.title': 'Models Integrated',
-        'why.w2.desc': 'LLM, Vision, Speech & more',
-        'why.w3.title': 'Avg. Efficiency Gain',
-        'why.w3.desc': 'For automated workflows',
-        'why.w4.title': 'Support',
-        'why.w4.desc': 'Monitoring & incident response',
-        'contact.label': 'Get in Touch',
-        'contact.title': 'Let\'s Build Together',
-        'contact.info.title': 'Have a project in mind?',
-        'contact.info.desc': 'Tell us what you\'re trying to automate. We\'ll get back within 24 hours.',
-        'contact.form.company': 'Company Name',
-        'contact.form.name': 'Contact Person',
-        'contact.form.email': 'Email',
-        'contact.form.message': 'How can we help?',
-        'contact.form.submit': 'Send Message',
-        'contact.form.success': 'Message sent! We\'ll be in touch soon.',
-        'contact.form.error': 'Something went wrong. Please email us directly.',
+        'contact.label': 'Contact',
+        'contact.title': 'Discuss your requirements',
+        'contact.info.title': 'Have an automation need?',
+        'contact.info.desc': 'Tell us which workflow you want to improve. We\'ll reply within 24 hours.',
+        'contact.cta.body': 'Click below to open our contact form. Takes 30 seconds. Reply within 24 hours.',
+        'contact.cta.button': 'Contact DappGo →',
+        'contact.cta.note': 'Goes to admin@dappgo.com. Powered by Google Forms.',
+        'nav.feedback': 'Feedback',
+        'pop.cta': 'Open subscription form →',
+        'pop.cta_hint': 'Select the reports and language you want. Takes about 30 seconds.',
         'footer.rights': 'All rights reserved.',
-        'footer.tagline': 'AI Automation & Model Integration',
-        'footer.apps': '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:middle;flex-shrink:0"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" x2="4" y1="22" y2="15"/></svg> TW Stocks | <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:middle;flex-shrink:0"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" x2="4" y1="22" y2="15"/></svg> US Stocks | <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:middle;flex-shrink:0"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg> Options — 3 daily-signal apps',
-        'footer.note': 'DappGo is an AI automation company. We are not affiliated with blockchain, cryptocurrency, or DeFi.',
-        'footer.top': 'Back to Top',
+        'footer.tagline': 'AI products and automation',
+        'footer.products': 'TW Stocks | US Stocks | Options | Number Merge — DappGo product family',
+        'footer.note': 'DappGo builds AI products and automation systems. We are not affiliated with blockchain, cryptocurrency, or DeFi.',
     },
     zh: {
         'nav.services': '服務項目',
         'nav.process': '流程',
-        'nav.solutions': '解決方案',
-        'nav.cases': '實戰案例',
+        'nav.cases': '成果',
         'nav.tech': '技術',
-        'nav.why': '為何選擇我們',
         'nav.contact': '聯絡我們',
+        'nav.support': '支援',
+        'nav.menu': '選單',
+        'lang.switch': '切換語言',
+        'theme.toggle': '切換色彩主題',
+        'page.title': 'DappGo — 人工智慧產品與自動化',
+        'nav.products': '產品',
         'nav.privacy': '隱私政策',
         'nav.terms': '服務條款',
-        'hero.tag': 'AI 自動化與模型整合',
-        'hero.title1': '自動化。整合。',
-        'hero.desc': '我們是一家 AI 自動化公司 — 不是區塊鏈，不是加密貨幣。我們打造管線，把報告產出、數據分析、人工重複作業這些事自動化掉。',
-        'hero.cta1': '立即開始',
-        'hero.cta2': '探索服務',
-        'hero.cta3': '免費訂閱每日報告',
-        'hero.trust': '跨產業信賴：',
-        'hero.ind1': '金融科技',
-        'hero.ind2': '電子商務',
-        'hero.ind3': '醫療健康',
-        'hero.ind4': '製造業',
-        'hero.ind5': '媒體',
-        'hero.typewriter': ['加速。', '創新。', '擴展。', '轉型。'],
-        'services.label': '我們的服務',
-        'services.title': '核心服務',
-        'services.desc': 'AI 真的落地。從小型自動化到完整管線建置都有。',
-        'services.s1.title': 'AI 工作流程自動化',
-        'services.s1.desc': '我們梳理你的作業流程，找出值得自動化的地方，然後建一條不需要人盯著跑的管線。',
-        'services.s2.title': '模型整合',
-        'services.s2.desc': '串接 LLM、視覺、語音，或任何你需要的組合 — 整合成一套系統，不是五個各自為政的實驗。',
-        'services.s3.title': '客製化 AI 方案',
-        'services.s3.desc': '現成工具不適合你的數據或流程的時候，我們自己做一個合適的。',
-        'process.label': '合作流程',
-        'process.title': '我們的工作方式',
-        'process.desc': '幾週上線，不是幾季。',
-        'process.p1.title': '需求探索',
-        'process.p1.desc': '看你的流程，想清楚哪些值得自動化，說好成功是什麼樣子。',
-        'process.p2.title': '架構設計',
-        'process.p2.desc': '選模型、規劃整合、設計數據流。想清楚再動工。',
-        'process.p3.title': '開發測試',
-        'process.p3.desc': '每週都有進展可以看，不是等到最後才看到成品。',
-        'process.p4.title': '部署監控',
-        'process.p4.desc': '上線部署，加上監控與告警。上線後我們繼續顧。',
-        'solutions.label': '解決方案',
-        'solutions.title': '剛起步或已有規模，都有對應方案',
-        'solutions.desc': '早期團隊或成熟企業，我們都做過。',
-        'solutions.s1.badge': '中小企業',
-        'solutions.s1.title': '成長方案',
-        'solutions.s1.desc': '不需要 ML 工程師就能跑起來的 AI 自動化。',
-        'solutions.s1.f1': '預建自動化範本',
-        'solutions.s1.f2': '即插即用模型 API',
-        'solutions.s1.f3': '監控儀表板',
-        'solutions.s1.f4': '專屬支援管道',
-        'solutions.s2.badge': '企業級',
-        'solutions.s2.title': '企業方案',
-        'solutions.s2.desc': '客製 AI 基礎設施，接進你現有的技術架構。',
-        'solutions.s2.f1': '客製模型訓練與微調',
-        'solutions.s2.f2': '本地 / 私有雲部署',
-        'solutions.s2.f3': '企業級安全與合規',
-        'solutions.s2.f4': '專屬工程團隊',
-        'flagship.tag': '旗艦案例',
-        'flagship.title': '每日 AI 選擇權報告',
-        'flagship.desc': '我們的正式 AI 管線，每個交易日早上自動分析美股選擇權市場 — Black-Scholes 定價、交易時機訊號、OI 持倉分佈，以及 5 個 Gemini 模型生成的市場解讀。美股開盤前送達您的信箱。Beta 期間免費。',
-        'flagship.b1': '📬 每個交易日美西 6:20 AM 新報告寄到信箱',
-        'flagship.b2': '🤖 AI 市場解讀，重點數字與風險自動標示',
-        'flagship.b3': '🌐 雙語 — 繁體中文或 English，任君選擇',
-        'flagship.b4': '🔓 免信用卡、無付費牆，一鍵取消訂閱',
-        'flagship.view': '查看今日報告 →',
-        'flagship.form.title': '立即訂閱 — Beta 期間免費',
-        'flagship.form.desc': '我們會每天寄送 AI 選擇權報告給您。隨時可取消訂閱。',
-        'flagship.form.placeholder': 'you@example.com',
-        'flagship.form.lang': '報告語言：',
-        'flagship.form.zh': '繁體中文',
-        'flagship.form.en': 'English',
-        'flagship.form.submit': '開始每日收報告',
-        'flagship.form.privacy': '訂閱即表示您同意接收每日選擇權分析 email。我們不會轉售您的地址。<a href="/privacy" style="color:var(--accent)">隱私政策</a>。',
-        'flagship.form.success': '🎉 訂閱成功！請到您的信箱確認。',
-        'flagship.form.error': '發生錯誤，請稍後再試，或直接寄信給我們。',
-        'pop.title': '免費訂閱每日報告',
-        'pop.desc': '每個交易日早上 06:30 寄到信箱。Beta 期間免費，不想收隨時取消。',
-        'pop.products.label': '選擇報告：',
-        'pop.products.tw': '台股每日訊號',
-        'pop.products.us': '美股每日訊號',
-        'pop.products.opts': '美股選擇權每日策略',
-        'pop.placeholder': 'you@example.com',
-        'pop.submit': '訂閱',
-        'pop.lang': '語言：',
-        'pop.en': 'EN',
-        'pop.zh': '中',
-        'pop.ok': '🎉 訂閱成功，請查收信箱。',
-        'pop.ok_multi': '✓ 已訂閱 {n} 種報告，每日 06:30 收信',
-        'pop.err': '送出失敗，請再試一次。',
-        'pop.nocheck': '請至少選擇一種報告。',
+        'hero.tag': '人工智慧產品與自動化',
+        'hero.title1': '從資料到行動。',
+        'hero.desc': 'DappGo 打造市場情報產品與可靠的人工智慧工作流程，讓團隊取得可直接使用的結果，而不只是原型。',
+        'hero.cta1': '查看產品',
+        'hero.cta2': '討論專案',
+        'hero.typewriter': ['自動化。', '整合。', '運行。', '擴展。'],
+        'products.label': '產品',
+        'products.title': 'DappGo 產品',
+        'products.desc': 'DappGo 打造並持續維護的正式產品，涵蓋市場情報與行動娛樂。',
+        'products.p1.status': '正式運行',
+        'products.p1.title': '台股分析',
+        'products.p1.alt': '台股分析應用程式圖示',
+        'products.p1.desc': '提供台股每日訊號、市場廣度、產業輪動與個股分析。',
+        'products.p1.meta': '台股市場・行動應用程式',
+        'products.p1.link': '申請使用 →',
+        'products.p2.status': '正式運行',
+        'products.p2.title': '美股分析',
+        'products.p2.alt': '美股分析應用程式圖示',
+        'products.p2.desc': '整合價格走勢、基本面、新聞情緒、內部人動向與選擇權流量的研究工具。',
+        'products.p2.meta': '美股市場・行動應用程式',
+        'products.p2.link': '申請使用 →',
+        'products.p3.status': '正式運行',
+        'products.p3.title': '選擇權報告',
+        'products.p3.alt': '選擇權報告應用程式圖示',
+        'products.p3.desc': '自動化選擇權管線，包含 Black-Scholes 定價、時機訊號、未平倉量集中度與模型輔助解讀。',
+        'products.p3.meta': '美股選擇權・報告＋應用程式',
+        'products.p3.link': '查看每日報告 →',
+        'products.p4.status': '產品實驗',
+        'products.p4.title': '數字合併',
+        'products.p4.alt': '數字合併遊戲圖示',
+        'products.p4.desc': 'DappGo 打造的數字合併遊戲，也是探索產品設計的輕量實驗。',
+        'products.p4.meta': '行動遊戲・廣告支援',
+        'products.p4.link': '了解更多 →',
+        'services.label': '服務',
+        'services.title': '自動化服務',
+        'services.desc': '圍繞您的資料，設計、整合並運行可靠的人工智慧工作流程。',
+        'services.s1.title': '工作流程自動化',
+        'services.s1.desc': '梳理手工作業，建立具備監控機制、可依排程運行的自動化管線。',
+        'services.s2.title': '模型與資料整合',
+        'services.s2.desc': '將語言、視覺與語音模型接入既有資料和系統，形成完整工作流程。',
+        'services.s3.title': '客製化人工智慧系統',
+        'services.s3.desc': '當標準工具不適用時，依您的資料、控管要求與營運需求設計正式系統。',
+        'process.label': '交付流程',
+        'process.title': '從需求定義到正式運行',
+        'process.desc': '從明確使用情境開始，逐步交付可監控的正式工作流程。',
+        'process.p1.title': '定義使用情境',
+        'process.p1.desc': '盤點現有流程，找出合適的自動化機會，並定義可衡量的成果。',
+        'process.p2.title': '設計系統架構',
+        'process.p2.desc': '在開發前確認模型、整合方式與資料流向。',
+        'process.p3.title': '開發與驗證',
+        'process.p3.desc': '分階段交付，使用真實資料驗證工作流程後再正式上線。',
+        'process.p4.title': '部署與運行',
+        'process.p4.desc': '配置監控、告警與交接機制，確保上線後持續穩定運作。',
+        'solutions.label': '合作模式',
+        'solutions.title': '從單點流程開始，逐步擴展',
+        'solutions.desc': '先解決一個可衡量的流程，再依營運需求擴展為正式系統。',
+        'solutions.s1.badge': '聚焦',
+        'solutions.s1.title': '流程起步方案',
+        'solutions.s1.desc': '針對明確流程與成果設計的單點自動化。',
+        'solutions.s1.f1': '流程盤點與工作流程設計',
+        'solutions.s1.f2': '模型與介面整合',
+        'solutions.s1.f3': '監控與交接',
+        'solutions.s2.badge': '擴展',
+        'solutions.s2.title': '正式運行系統',
+        'solutions.s2.desc': '整合既有技術架構與營運方式的正式系統。',
+        'solutions.s2.f1': '模型評估與客製化',
+        'solutions.s2.f2': '私有部署選項',
+        'solutions.s2.f3': '安全性、監控與支援',
+        'pop.title': '每日市場報告',
+        'pop.desc': '每個交易日太平洋時間早上 6:30 寄送。測試期間免費，隨時可以取消訂閱。',
+        'pop.close': '關閉',
         'pop.legal': '不會有垃圾郵件。',
         'pop.privacy': '隱私政策',
         'new.label': '最新動態',
-        'new.title': '最新功能 (2026-05)',
-        'new.desc': '這個月陸續上線的東西。三款 app（台股、美股、選擇權）都有更新，不是一次性的大改版，而是每週有什麼順手就先推。',
+        'new.title': '產品最新動態',
+        'new.desc': '台股、美股與選擇權產品的近期功能更新。',
         'new.g1': '圖表',
         'new.g2': '訊號',
         'new.g3': '進階',
-        'new.f1.title': '圖表切換 + 時間軸',
-        'new.f1.desc': '現在可以在 K 線圖跟折線圖之間切換，時間軸從 1 個月到 3 年都有。我自己最常用 6M 搭折線，看趨勢比較清楚。',
-        'new.f2.title': '現在市場偏多還是偏空？',
-        'new.f2.desc': 'App 會自動判斷目前整體市場偏多、偏空還是中性。根據台股加權指數加上 SPY 的走勢一起算，結果直接顯示在首頁。',
-        'new.f3.title': '兩檔股票並排比',
-        'new.f3.desc': '你可以把兩支股票放在一起看：本益比、每股盈餘、動能指標、殖利率這些都並排。哪邊比較好的格子會自動標出來，不用自己算。',
-        'new.f4.title': '這週哪些股票在動？',
-        'new.f4.desc': '看過去 7 天訊號有明顯變化的標的。有時候比看大盤更有用 — 市場沒方向的時候，某幾支還是在悄悄轉強。',
-        'new.f5.title': '新聞情緒',
-        'new.f5.desc': '針對每支股票的相關新聞，App 會自動判斷是正面還是負面。繁體中文跟英文新聞都支援，不是 AI 摘要，是直接對標題做情緒標記。',
-        'new.f6.title': '選擇權異常動向',
-        'new.f6.desc': '追蹤買權跟賣權的成交比例，以及波動率曲線的偏斜。有時候正股還沒動，這邊就先出現異常。我加這個主要是因為自己看大戶布局用得到。',
-        'new.f7.title': '這支股票在同產業裡強嗎？',
-        'new.f7.desc': '三層比較：個股跟同類股比、同類股跟大盤比。產業輪動的時候這個最好用 — 你會知道是整個族群在漲，還是只有這支在動。',
-        'new.f8.title': '基本面一覽',
-        'new.f8.desc': '本益比、每股盈餘、股利殖利率集中在一張卡片。美股另外多了一個功能：如果最近有內部人在大量買賣自家股票，App 會特別標記出來。',
-        'new.f9.title': '自己決定要看哪些卡片',
-        'new.f9.desc': '分析頁面可以自己選要顯示哪些區塊，不想看的就關掉。功能很簡單，但加了之後畫面清爽很多。',
-        'cases.label': '實戰案例',
-        'cases.title': '我們實際做過的東西',
-        'cases.desc': '不是示意圖，這些全都跑在正式環境。',
-        'cases.c1.title': '每日 AI 選擇權報告',
-        'cases.c1.desc': '全自動化每日選擇權賣方策略 — Black-Scholes 定價、AI 市場解讀、OI 持倉分佈、交易時機訊號，每個交易日美股開盤前送到信箱與 iOS app。Beta 期間免費。',
+        'new.f1.title': '圖表視圖與時間範圍',
+        'new.f1.desc': '可在 K 線圖與折線圖之間切換，時間範圍涵蓋一個月至三年。',
+        'new.f2.title': '市場方向訊號',
+        'new.f2.desc': '綜合台股加權指數與 SPY，判斷市場偏多、偏空或中性。',
+        'new.f3.title': '個股並列比較',
+        'new.f3.desc': '在同一個畫面比較估值、獲利、動能與殖利率等指標。',
+        'new.f4.title': '訊號變化排行',
+        'new.f4.desc': '檢視過去七天訊號變化最大的個股。',
+        'new.f5.title': '新聞情緒分析',
+        'new.f5.desc': '將繁體中文與英文新聞標題分類為正面或負面情緒。',
+        'new.f6.title': '選擇權流量異常',
+        'new.f6.desc': '追蹤買賣權成交量比與波動率偏斜，協助辨識異常選擇權活動。',
+        'new.f7.title': '產業相對強度',
+        'new.f7.desc': '比較個股、同業與大盤的表現，辨識產業中的領先標的。',
+        'new.f8.title': '基本面快速檢視',
+        'new.f8.desc': '在同一張卡片檢視估值、獲利、股利殖利率與美股內部人交易動向。',
+        'new.f9.title': '自訂分析版面',
+        'new.f9.desc': '選擇要顯示的分析區塊，讓工作畫面保持聚焦。',
+        'cases.label': '代表性成果',
+        'cases.title': '正式運行的產品與系統',
+        'cases.desc': 'DappGo 實際打造並持續運行的產品與自動化系統。',
+        'cases.c1.title': '每日選擇權情報',
+        'cases.c1.desc': '每個交易日自動運行的分析管線，涵蓋 Black-Scholes 定價、時機訊號、未平倉量集中度與模型輔助解讀。',
         'cases.c1.link': '查看今日報告 \u2192',
-        'cases.c2.title': '伴侶 iOS App',
-        'cases.c2.desc': '每日分析、即時履約價矩陣、回測模擬器、觀察清單，全在一個原生 app 裡。使用 Expo + React Native 打造。可申請 TestFlight 體驗。',
-        'cases.c2.link': '申請 TestFlight 體驗 \u2192',
-        'cases.c3.title': '企業 AI 自動化管線',
-        'cases.c3.desc': '為企業客戶打造的端到端自動化，資料擷取、模型推論、結果輸出都包。你的團隊拿到洞察，不用做那些重複的手工活。',
+        'cases.c2.title': 'DappGo 行動產品',
+        'cases.c2.desc': '三個原生市場應用程式將每日資料管線轉為實用研究工具，整合分析、觀察清單與圖表。',
+        'cases.c2.link': '查看產品 \u2192',
+        'cases.c3.title': '企業自動化系統',
+        'cases.c3.desc': '涵蓋資料擷取、模型推論與可靠結果交付的端到端工作流程自動化。',
         'cases.c3.link': '討論您的使用情境 \u2192',
         'tech.label': '技術棧',
-        'tech.title': '我們的 AI 技術',
-        'tech.desc': '我們用問題需要的工具。有時是 GPT-4，有時是微調過的開源模型，有時是自己做的東西。',
-        'tech.t1.title': 'LLM 與自然語言',
-        'tech.t2.title': '數據與分析',
+        'tech.title': '以問題為導向的技術',
+        'tech.desc': '依問題選擇合適的模型、資料工具與基礎設施，而不是套用固定技術。',
+        'tech.t1.title': '語言模型與自然語言處理',
+        'tech.t2.title': '資料與分析',
         'tech.t3.title': '機器學習與訓練',
         'tech.t4.title': '基礎設施',
-        'why.label': '為何選擇 DappGo',
-        'why.title': '數字會說話',
-        'why.w1.title': '專案交付數',
-        'why.w1.desc': '跨產業與規模',
-        'why.w2.title': '模型整合數',
-        'why.w2.desc': 'LLM、視覺、語音等',
-        'why.w3.title': '平均效率提升',
-        'why.w3.desc': '自動化工作流程',
-        'why.w4.title': '全天候支援',
-        'why.w4.desc': '監控與事件回應',
-        'contact.label': '聯絡我們',
-        'contact.title': '讓我們一起打造',
-        'contact.info.title': '有想做的事嗎？',
-        'contact.info.desc': '告訴我們你想自動化什麼。24 小時內回覆。',
-        'contact.form.company': '公司名稱',
-        'contact.form.name': '聯絡人',
-        'contact.form.email': '電子郵件',
-        'contact.form.message': '我們能如何協助您？',
-        'contact.form.submit': '發送訊息',
-        'contact.form.success': '訊息已送出！我們將盡快與您聯繫。',
-        'contact.form.error': '發生錯誤，請直接寄信給我們。',
+        'contact.label': '聯絡',
+        'contact.title': '討論您的需求',
+        'contact.info.title': '有自動化需求？',
+        'contact.info.desc': '告訴我們要改善的流程，我們會在 24 小時內回覆。',
+        'contact.cta.body': '點擊下方開啟聯絡表單，約 30 秒完成。我們會在 24 小時內回覆。',
+        'contact.cta.button': '聯絡 DappGo →',
+        'contact.cta.note': '表單會寄到 admin@dappgo.com，由 Google 表單提供服務。',
+        'nav.feedback': '意見回饋',
+        'pop.cta': '開啟訂閱表單 →',
+        'pop.cta_hint': '在表單中選擇報告與語言，約 30 秒完成。',
         'footer.rights': '版權所有。',
-        'footer.tagline': 'AI 自動化與模型整合',
-        'footer.apps': '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:middle;flex-shrink:0"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" x2="4" y1="22" y2="15"/></svg> 台股 | <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:middle;flex-shrink:0"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" x2="4" y1="22" y2="15"/></svg> 美股 | <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:middle;flex-shrink:0"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg> 選擇權 — 三款每日訊號 App',
-        'footer.note': 'DappGo 是一家 AI 自動化公司，與區塊鏈、加密貨幣或 DeFi 無關。',
-        'footer.top': '回到頂部',
+        'footer.tagline': '人工智慧產品與自動化',
+        'footer.products': '台股｜美股｜選擇權｜數字合併 — DappGo 產品系列',
+        'footer.note': 'DappGo 打造人工智慧產品與自動化系統，與區塊鏈、加密貨幣或去中心化金融無關。',
     }
 };
 
@@ -1961,7 +1925,21 @@ function setLang(lang) {
         const key = el.getAttribute('data-i18n-placeholder');
         if (t[key]) el.setAttribute('placeholder', t[key]);
     });
-    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n-title]').forEach(el => {
+        const key = el.getAttribute('data-i18n-title');
+        if (t[key]) el.setAttribute('title', t[key]);
+    });
+    document.querySelectorAll('[data-i18n-aria-label]').forEach(el => {
+        const key = el.getAttribute('data-i18n-aria-label');
+        if (t[key]) el.setAttribute('aria-label', t[key]);
+    });
+    document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+        const key = el.getAttribute('data-i18n-alt');
+        if (t[key]) el.setAttribute('alt', t[key]);
+    });
+    document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en';
+    document.documentElement.dataset.lang = lang;
+    document.title = t['page.title'];
     startHeroTypewriter();
 }
 
@@ -2114,34 +2092,11 @@ function startHeroTypewriter() {
     draw();
 })();
 
-/* ===== COUNTER ANIMATION ===== */
-function animateCounter(el, target, suffix = '') {
-    let current = 0;
-    const step = Math.ceil(target / 60);
-    const interval = setInterval(() => {
-        current += step;
-        if (current >= target) {
-            current = target;
-            clearInterval(interval);
-        }
-        el.textContent = current + suffix;
-    }, 25);
-}
-
 /* ===== SCROLL REVEAL ===== */
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-
-            // Trigger counters
-            if (entry.target.querySelector('#counter1')) {
-                animateCounter(document.getElementById('counter1'), 50, '+');
-                animateCounter(document.getElementById('counter2'), 120, '+');
-                const c3 = document.getElementById('counter3');
-                animateCounter(c3, 40);
-                setTimeout(() => c3.innerHTML = '40<span style="font-size:1.5rem">%</span>', 1600);
-            }
         }
     });
 }, { threshold: 0.2 });

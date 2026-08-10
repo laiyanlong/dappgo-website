@@ -14,7 +14,7 @@
 
 - **Inputs**: hand-edited HTML; pulls icons + fonts locally.
 - **Outputs**: `https://dappgo.com/` (GH Pages); `llms.txt` consumed by AI crawlers / MCP discovery.
-- **When to touch**: marketing copy / new screenshot; new public CDN endpoint exposed (update `llms.txt` AND `sitemap.xml`); privacy / terms / GDPR copy.
+- **When to touch**: marketing copy / new screenshot; new public CDN endpoint exposed (update `llms.txt` AND `sitemap.xml`); privacy / terms / GDPR copy. Number Merge has a separate local-only game data flow and Google AdMob / UMP disclosure; keep its wording aligned with `number-merge-app/docs/app-store-ios-readiness.md`.
 
 ## Sibling repos commonly edited together
 - `~/git/{tw,us,options}-stocks-daily-report` — when these repos add a new public endpoint (e.g. a future TW `weekly_summary.json`), add it to `llms.txt`.
@@ -41,6 +41,7 @@ Push to `main`. GH Pages auto-deploys; CNAME `dappgo.com` is configured in repo 
 index.html         landing page
 options.html       proxy/embed of options viewer
 privacy.html       privacy policy
+support.html       support FAQs and app-specific troubleshooting
 terms.html         terms of service
 llms.txt           AI crawler discovery — CDN endpoint catalogue
 sitemap.xml        SEO sitemap (keep in sync with llms.txt)

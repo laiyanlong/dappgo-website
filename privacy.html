@@ -353,16 +353,16 @@
         <span class="lang-en">Privacy Policy</span>
         <span class="lang-zh">隱私政策</span>
     </h1>
-    <p class="updated">最後更新 Last updated: 2026-05-17</p>
+    <p class="updated">最後更新 Last updated: 2026-08-07</p>
 
     <div class="summary">
         <div class="lang-zh">
             <strong>重點摘要：</strong>
-            我們不收集您的位置、聯絡人、相片、廣告 ID 或任何金融交易資料。App 只收集匿名裝置 ID 與當機報告幫助修 bug。AI 分析僅基於公開市場數據，不涉及您的個人資料。如果您主動訂閱每日報告或填寫表單，我們會儲存您提供的 email 用於回覆，不會分享或販售。
+            TW Stocks、US Stocks 與 Options App 的資料流程，與 Number Merge 不同。Number Merge 不使用 Firebase、Firestore、帳號或登入，遊戲設定與本機紀錄只保存在裝置上；它包含 Google AdMob 廣告，Google Mobile Ads SDK 可能依廣告投放、同意狀態與裝置設定處理廣告識別、裝置、診斷及廣告互動資料。AI 分析僅基於公開市場數據，不涉及您的個人資料。如果您主動訂閱每日報告或填寫表單，我們會儲存您提供的 email 用於回覆，不會分享或販售。
         </div>
         <div class="lang-en">
             <strong>TL;DR:</strong>
-            We don't collect your location, contacts, photos, advertising IDs, or any financial transaction data. The app collects only anonymous device ID and crash reports to help us fix bugs. AI analysis is based on public market data only — your personal data is never sent to AI providers. If you voluntarily subscribe or submit a form, we store the email you give us to reply; we never share or sell it.
+            TW Stocks, US Stocks, and Options have a different data flow from Number Merge. Number Merge uses no Firebase, Firestore, account, or sign-in; game settings and personal records remain on the device. It includes Google AdMob ads, and the Google Mobile Ads SDK may process advertising identifiers, device, diagnostic, and ad-interaction data depending on ad serving, consent, and device settings. AI analysis is based on public market data only — your personal data is never sent to AI providers. If you voluntarily subscribe or submit a form, we store the email you give us to reply; we never share or sell it.
         </div>
     </div>
 
@@ -403,9 +403,37 @@
         </p>
     </div>
 
+    <!-- Number Merge app-specific disclosure -->
+    <div class="lang-zh">
+        <h2>Number Merge（Number Merge - DappGo）</h2>
+        <p>
+            Number Merge 不需要建立帳號或登入，核心遊戲可以離線執行。遊戲設定、本機最高分與最高方塊使用裝置上的本機儲存，沒有送到 DappGo 的 Firebase、Firestore 或自有後端；Number Merge 也不使用股票 App 的匿名 Firebase uid、推播、使用事件或意見回饋流程。
+        </p>
+        <p>
+            Number Merge 包含 Google AdMob banner 廣告，以及只有在玩家主動選擇「看廣告 +1」時才開啟的獎勵廣告。Google Mobile Ads SDK 可能為投放、衡量、頻率控制及防止廣告詐欺處理裝置識別、廣告識別、診斷與廣告互動資料；實際資料處理會依 AdMob 設定、所在地區、同意狀態與裝置設定而定。DappGo 不會把這些資料與您的姓名、email 或金融資料連結。
+        </p>
+        <p>
+            在需要使用者選擇的地區，廣告 consent message 會由 Google User Messaging Platform（UMP）處理。您可以依裝置或廣告提示提供、拒絕或變更選擇；拒絕後仍可能顯示非個人化或受限制的廣告。
+        </p>
+    </div>
+    <div class="lang-en">
+        <h2>Number Merge (Number Merge - DappGo)</h2>
+        <p>
+            Number Merge does not require an account or sign-in, and the core game works offline. Game settings, personal best scores, and highest tiles use local device storage. They are not sent to DappGo Firebase, Firestore, or a DappGo application backend. Number Merge does not use the stock-app anonymous Firebase uid, push notification, usage-event, or feedback flows.
+        </p>
+        <p>
+            Number Merge includes Google AdMob banner ads and an optional rewarded ad that opens only when a player chooses “Watch ad +1”. The Google Mobile Ads SDK may process device identifiers, advertising identifiers, diagnostic data, and ad-interaction data for serving, measurement, frequency control, and fraud prevention. Actual processing depends on AdMob configuration, region, consent status, and device settings. DappGo does not connect this information to your name, email, or financial data.
+        </p>
+        <p>
+            Where user choice is required, Google User Messaging Platform (UMP) handles the advertising consent message. You can provide, decline, or change your choice through the device or advertising privacy controls; declining may still allow non-personalized or limited ads.
+        </p>
+    </div>
+
     <!-- What we collect -->
     <div class="lang-zh">
         <h2>我們收集什麼</h2>
+
+        <p><strong>以下 Firebase / Firestore 項目適用於 TW Stocks、US Stocks 與 Options；Number Merge 請見上方專屬說明。</strong></p>
 
         <h3>App 使用資料</h3>
         <ul>
@@ -438,6 +466,8 @@
     </div>
     <div class="lang-en">
         <h2>What we collect</h2>
+
+        <p><strong>The Firebase / Firestore items below apply to TW Stocks, US Stocks, and Options. See the Number Merge section above for that game's separate data flow.</strong></p>
 
         <h3>App usage</h3>
         <ul>
@@ -542,8 +572,8 @@
         <h2>我們<u>不</u>收集什麼</h2>
         <ul>
             <li>不收集 <strong>位置、聯絡人、相片、麥克風、相機、語音</strong> 資料。</li>
-            <li>不做 <strong>跨 App 或跨網站追蹤</strong>（App Tracking Transparency 不適用）。</li>
-            <li>不收集 <strong>廣告識別碼</strong>（IDFA / Google AAID）。</li>
+            <li>Number Merge 不要求位置、聯絡人、相片、麥克風、相機或語音權限；AdMob 可能依廣告設定處理廣告相關識別與診斷資料。</li>
+            <li>股票 App 不做跨 App 或跨網站追蹤；Number Merge 的第三方廣告資料處理依 AdMob、UMP consent、所在地區與裝置設定而定。</li>
             <li>不收集 <strong>使用者輸入的金融資料</strong>。我們只分析公開市場數據，您不需要連接券商或輸入 portfolio。</li>
             <li>不會用您的資料 <strong>訓練 ML 模型</strong>，不會販售或出租。</li>
         </ul>
@@ -551,9 +581,8 @@
     <div class="lang-en">
         <h2>What we DON'T collect</h2>
         <ul>
-            <li>No location, contacts, photos, microphone, camera, or audio data.</li>
-            <li>No tracking across other apps or websites — ATT prompt not required.</li>
-            <li>No advertising IDs (IDFA / AAID).</li>
+            <li>Number Merge does not request location, contacts, photos, microphone, camera, or audio permissions; AdMob may process ad-related identifiers and diagnostic data according to its configuration.</li>
+            <li>The stock apps do not track across other apps or websites; Number Merge's third-party advertising data processing depends on AdMob, UMP consent, region, and device settings.</li>
             <li>No user-input financial info. We only analyze public market data — no broker connection, no portfolio input required.</li>
             <li>We don't use your data to train ML models, and we don't sell or rent it.</li>
         </ul>
@@ -570,6 +599,7 @@
             <li><strong>Google Forms</strong>（Google LLC）— 處理 Contact Form 與 Feedback Form 提交；data sub-processor for DappGo。</li>
             <li><strong>Google Workspace</strong>（Google LLC）— admin@dappgo.com 信箱、Drive 儲存 Form 回應、Apps Script 執行週期任務（每週彙總、每日報告寄送）。</li>
             <li><strong>Google Gemini API</strong>（Google LLC）— AI 分析公開市場數據（無個人資料），詳見上方 §AI 處理。</li>
+            <li><strong>Google Mobile Ads / AdMob</strong>（Google LLC）— Number Merge 的 banner 與 optional rewarded ads；可能處理廣告識別、裝置、診斷與廣告互動資料，依 AdMob 設定與 consent 狀態而定。</li>
             <li><strong>GitHub Pages / GitHub Inc.</strong>（Microsoft Corp.）— 託管本網站、訂閱清單存放於 private repository；資料中心 US。GitHub（Microsoft）為訂閱清單儲存的資料處理者，處理依 <a href="https://github.com/customer-terms/data-protection-agreement" target="_blank" rel="noopener">GitHub 資料保護協議</a>及 Microsoft 的 DPF 認證規範。</li>
             <li><strong>jsDelivr</strong> — CDN，提供每日報告 JSON 公開端點。</li>
             <li><strong>訂閱流程</strong> — 訂閱 email 透過 Google Forms 收集（資料存放依 Google Workspace 規範，受 Google DPA 約束）。FormSubmit 已於 2026-05-10 自資料流程中移除。</li>
@@ -586,6 +616,7 @@
             <li><strong>Google Forms</strong> (Google LLC) — processes Contact and Feedback form submissions on DappGo's behalf.</li>
             <li><strong>Google Workspace</strong> (Google LLC) — admin@dappgo.com mailbox, Drive storage of form responses, Apps Script for scheduled tasks (weekly digest, daily report sending).</li>
             <li><strong>Google Gemini API</strong> (Google LLC) — AI analysis on public market data only (no personal data); see "AI Processing" above.</li>
+            <li><strong>Google Mobile Ads / AdMob</strong> (Google LLC) — banner and optional rewarded ads in Number Merge; may process advertising identifiers, device, diagnostic, and ad-interaction data depending on AdMob configuration and consent status.</li>
             <li><strong>GitHub Pages / GitHub Inc.</strong> (Microsoft Corp.) — hosts this website; subscriber list stored in a private repository; US data center. GitHub (Microsoft) is the data processor for the stored subscriber list; processing is governed by GitHub's Data Protection Agreement at <a href="https://github.com/customer-terms/data-protection-agreement" target="_blank" rel="noopener">https://github.com/customer-terms/data-protection-agreement</a> and Microsoft's DPF certification.</li>
             <li><strong>jsDelivr</strong> — CDN serving daily report JSON files.</li>
             <li><strong>Subscription flow</strong> — Subscription emails are collected via Google Forms (data residency follows Google Workspace; governed by Google's DPA). FormSubmit has been removed from the data flow as of 2026-05-10.</li>
