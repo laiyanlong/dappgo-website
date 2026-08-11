@@ -42,6 +42,7 @@ Initial documented release. Backfilled from git history.
 - Removed flagship section; redesigned popup top accent.
 
 ### Fixed
+- Fixed `/options` rendering for the current bilingual object-shaped AI commentary payload and aligned freshness checks with the US market date.
 - Subscribe CTA always works regardless of dismiss cache.
 - Replaced smart quotes with straight quotes in the popup dictionary.
 - Lychee link checker: excluded deferred-download fonts and GitHub Pages clean URLs; uses `--root-dir` (absolute) instead of `--base` for local paths; `--base` retained for root-relative paths; skips Google verification HTML; `/terms` excluded from filesystem check.

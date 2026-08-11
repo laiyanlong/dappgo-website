@@ -655,9 +655,31 @@ function setBadge(cls, i18nKey) {
     badgeText.textContent = t(i18nKey);
 }
 
-function todayUtc() {
-    const d = new Date();
-    return `${d.getUTCFullYear()}-${String(d.getUTCMonth()+1).padStart(2,'0')}-${String(d.getUTCDate()).padStart(2,'0')}`;
+function todayMarketDate() {
+    // Options report dates follow the US market session, not the browser's
+    // UTC calendar date. This keeps an evening Pacific-time report fresh
+    // until the corresponding Eastern-time market date has ended.
+    const parts = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/New_York',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+    }).formatToParts(new Date());
+    const values = Object.fromEntries(parts.map(part => [part.type, part.value]));
+    return `${values.year}-${values.month}-${values.day}`;
+}
+
+function getLocalizedCommentary(payload) {
+    const localized = payload && payload[currentLang];
+
+    // Current production payloads contain a language object with a market-wide
+    // summary plus one entry per ticker. Older payloads stored the commentary
+    // directly as a string, so keep that shape supported as well.
+    if (typeof localized === 'string') return localized.trim();
+    if (localized && typeof localized === 'object' && typeof localized.summary === 'string') {
+        return localized.summary.trim();
+    }
+    return '';
 }
 
 async function fetchLatestPayload() {
@@ -691,12 +713,12 @@ function renderContent(payload) {
     currentPayload = payload;
 
     // Freshness badge
-    const isToday = payload.date === todayUtc();
+    const isToday = payload.date === todayMarketDate();
     if (isToday) setBadge('badge-fresh', 'badge.fresh');
     else         setBadge('badge-stale', 'badge.stale');
 
     // Pick the commentary body for the current language
-    const body = (payload[currentLang] || '').trim();
+    const body = getLocalizedCommentary(payload);
     if (!body) {
         setBadge('badge-error', 'badge.empty');
         contentEl.innerHTML = `<div class="ai-fallback"><p>${t('error.markdown')}</p></div>`;
