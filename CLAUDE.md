@@ -39,6 +39,7 @@ Push to `main`. GH Pages auto-deploys; CNAME `dappgo.com` is configured in repo 
 
 ```
 index.html         landing page
+og-image-v2.png    Open Graph / Meta / LinkedIn share preview card
 options.html       proxy/embed of options viewer
 privacy.html       privacy policy
 support.html       support FAQs and app-specific troubleshooting
